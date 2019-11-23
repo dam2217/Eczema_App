@@ -35,20 +35,20 @@
         app:layout_constraintVertical_bias="0.146" />
 
     <TextView
-        android:id="@+id/button2"
+        android:id="@+id/button_notifications"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_notifications"
         android:textSize="18sp"
         app:fontFamily="@font/bubblegum_sans"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintBottom_toTopOf="@+id/button_location"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.051"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_profile" />
 
     <TextView
-        android:id="@+id/button3"
+        android:id="@+id/button_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_location"
@@ -65,10 +65,10 @@
         android:id="@+id/switch1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/button2"
+        app:layout_constraintBottom_toBottomOf="@+id/button_notifications"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.956"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button2" />
+        app:layout_constraintTop_toTopOf="@+id/button_notifications" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

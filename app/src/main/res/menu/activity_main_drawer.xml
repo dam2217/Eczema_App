@@ -28,6 +28,11 @@
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_menu_setting"
             android:title="@string/menu_settings" />
+
+        <item
+            android:id = "@+id/nav_more_details_symptoms"
+            android:title="@string/more_details" />
+
     </group>
 
 </menu>

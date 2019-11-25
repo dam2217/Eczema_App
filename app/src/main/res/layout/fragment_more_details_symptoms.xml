@@ -16,7 +16,7 @@
         android:text="@string/more_details"
         android:textAlignment="center"
         android:textSize="24sp"
-        app:fontFamily="@font/bubblegum_sans"
+        app:fontFamily="@font/assistant_bold"
         app:layout_constraintBottom_toTopOf="@+id/Side"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +35,7 @@
         android:text="@string/inflammation_side"
         android:textAlignment="center"
         android:textSize="18sp"
-        app:fontFamily="@font/bubblegum_sans"
+        app:fontFamily="@font/assistant_bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MoreDetails" />
@@ -53,7 +53,7 @@
         android:text="@string/inflammation_severity"
         android:textAlignment="center"
         android:textSize="18sp"
-        app:fontFamily="@font/bubblegum_sans"
+        app:fontFamily="@font/assistant_bold"
         app:layout_constraintBottom_toTopOf="@+id/mildButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -72,7 +72,7 @@
         android:text="@string/treatment"
         android:textAlignment="center"
         android:textSize="18sp"
-        app:fontFamily="@font/bubblegum_sans"
+        app:fontFamily="@font/assistant_bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.53"
         app:layout_constraintStart_toStartOf="parent"
@@ -93,6 +93,7 @@
         android:importantForAutofill="no"
         android:inputType="textMultiLine"
         android:text="@string/notes"
+        app:fontFamily="@font/assistant_bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/location" />
@@ -107,6 +108,7 @@
         android:layout_marginBottom="24dp"
         android:textOff = "@string/front"
         android:textOn = "@string/front"
+        app:fontFamily="@font/assistant_bold"
         app:layout_constraintBottom_toTopOf="@+id/Severity"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Side" />
@@ -119,8 +121,9 @@
         android:layout_marginEnd="95dp"
         android:layout_marginRight="95dp"
         android:layout_marginBottom="24dp"
+        android:textOff="@string/back"
         android:textOn="@string/back"
-        android:textOff = "@string/back"
+        app:fontFamily="@font/assistant_bold"
         app:layout_constraintBottom_toTopOf="@+id/Severity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Side" />
@@ -137,6 +140,7 @@
         android:textOn="@string/mild"
         android:textOff = "@string/mild"
         app:layout_constraintEnd_toEndOf="parent"
+        app:fontFamily="@font/assistant_bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Severity" />
 
@@ -152,6 +156,7 @@
         android:textOn="@string/low"
         android:textOff = "@string/low"
         app:layout_constraintEnd_toStartOf="@+id/mildButton"
+        app:fontFamily="@font/assistant_bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Severity" />
 
@@ -167,6 +172,7 @@
         android:textOn="@string/severe"
         android:textOff="@string/severe"
         app:layout_constraintEnd_toEndOf="parent"
+        app:fontFamily="@font/assistant_bold"
         app:layout_constraintStart_toEndOf="@+id/mildButton"
         app:layout_constraintTop_toBottomOf="@+id/Severity" />
 
@@ -182,6 +188,7 @@
         app:layout_constraintBottom_toTopOf="@+id/location"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
+        app:fontFamily="@font/assistant_bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Treatment" />
 
@@ -203,6 +210,7 @@
         android:text="@string/location"
         app:layout_constraintBottom_toTopOf="@+id/Notes"
         app:layout_constraintEnd_toEndOf="parent"
+        app:fontFamily="@font/assistant_bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Treatment"
         tools:targetApi="o" />

@@ -1,4 +1,4 @@
-package com.example.eczema_app.ui.gallery;
+package com.example.eczema_app.ui.log;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,14 +16,14 @@ import com.example.eczema_app.R;
 
 public class LogFragment extends Fragment {
 
-    private GalleryViewModel loggingViewModel;
+    private LoggingViewModel loggingViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         loggingViewModel =
-                ViewModelProviders.of(this).get(GalleryViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_gallery, container, false);
-        final TextView textView = root.findViewById(R.id.newLog);
+                ViewModelProviders.of(this).get(LoggingViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_new_log, container, false);
+        final TextView textView = root.findViewById(R.id.NewLog);
         loggingViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -32,4 +32,5 @@ public class LogFragment extends Fragment {
         });
         return root;
     }
+
 }

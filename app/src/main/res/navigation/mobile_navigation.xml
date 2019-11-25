@@ -40,4 +40,11 @@
         android:name="com.example.eczema_app.ui.settings.SettingsFragment"
         android:label="@string/menu_settings"
         tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id = "@+id/nav_more_details_symptoms"
+        android:name="com.example.eczema_app.ui.MoreDetailsSymptoms.MoreDetailsSymptomsFragment"
+        android:label="More Details"
+        tools:layout="@layout/fragment_more_details_symptoms"/>
+
 </navigation>

@@ -13,6 +13,9 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.eczema_app.R;
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
 
 public class ToolsFragment extends Fragment {
 
@@ -20,6 +23,7 @@ public class ToolsFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
         toolsViewModel =
                 ViewModelProviders.of(this).get(ToolsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_tools, container, false);
@@ -30,6 +34,15 @@ public class ToolsFragment extends Fragment {
                 textView.setText(s);
             }
         });
+
+
+
+
+
         return root;
     }
+
+
+
+
 }

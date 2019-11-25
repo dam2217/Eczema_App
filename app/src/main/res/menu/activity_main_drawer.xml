@@ -9,9 +9,9 @@
             android:icon="@drawable/ic_menu_home"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/newLog"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:title="New Log" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
@@ -28,6 +28,11 @@
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_menu_setting"
             android:title="@string/menu_settings" />
+
+        <item
+            android:id = "@+id/nav_more_details_symptoms"
+            android:title="@string/more_details" />
+
     </group>
 
 </menu>

@@ -12,8 +12,8 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.eczema_app.ui.gallery.GalleryFragment"
+        android:id="@+id/newLog"
+        android:name="com.example.eczema_app.ui.gallery.LogFragment"
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_gallery" />
 
@@ -40,4 +40,11 @@
         android:name="com.example.eczema_app.ui.settings.SettingsFragment"
         android:label="@string/menu_settings"
         tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id = "@+id/nav_more_details_symptoms"
+        android:name="com.example.eczema_app.ui.MoreDetailsSymptoms.MoreDetailsSymptomsFragment"
+        android:label="More Details"
+        tools:layout="@layout/fragment_more_details_symptoms"/>
+
 </navigation>

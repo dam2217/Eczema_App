@@ -33,4 +33,22 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.jjoe64:graphview:4.2.2'
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
+    implementation 'com.github.PhilJay:MPAndroidChart:v2.2.4'
+}
+
+buildscript {
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+repositories {
+    maven { url 'https://jitpack.io' }
 }

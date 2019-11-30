@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -33,8 +32,48 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/CurrentDate"
+<!--    <TextView-->
+<!--        android:id="@+id/CurrentDate"-->
+<!--        android:layout_width="156dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:layout_marginStart="54dp"-->
+<!--        android:layout_marginLeft="54dp"-->
+<!--        android:layout_marginTop="14dp"-->
+<!--        android:layout_marginEnd="12dp"-->
+<!--        android:layout_marginRight="12dp"-->
+<!--        android:layout_marginBottom="457dp"-->
+<!--        android:text=""-->
+<!--        android:textAlignment="center"-->
+<!--        android:textSize="24sp"-->
+<!--        app:fontFamily="@font/assistant_bold"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/CurrentTime"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/mapView"-->
+<!--        app:layout_constraintVertical_bias="0.0" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/CurrentTime"-->
+<!--        android:layout_width="150dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:layout_marginStart="12dp"-->
+<!--        android:layout_marginLeft="12dp"-->
+<!--        android:layout_marginTop="14dp"-->
+<!--        android:layout_marginEnd="54dp"-->
+<!--        android:layout_marginRight="54dp"-->
+<!--        android:layout_marginBottom="457dp"-->
+<!--        android:text=""-->
+<!--        android:textAlignment="center"-->
+<!--        android:textSize="24sp"-->
+<!--        app:fontFamily="@font/assistant_bold"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/CurrentDate"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/mapView"-->
+<!--        app:layout_constraintVertical_bias="0.0" />-->
+
+    <android.widget.TextClock
+        android:id="@+id/digitalClock"
         android:layout_width="156dp"
         android:layout_height="40dp"
         android:layout_marginStart="54dp"
@@ -43,34 +82,14 @@
         android:layout_marginEnd="12dp"
         android:layout_marginRight="12dp"
         android:layout_marginBottom="457dp"
-        android:autofillHints="@android:string/autofill"
-        android:ems="10"
-        android:hint="@android:string/autofill"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/CurrentTime"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mapView"
-        app:layout_constraintVertical_bias="0.0"
-        tools:visibility="visible" />
-
-    <TextView
-        android:id="@+id/CurrentTime"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="54dp"
-        android:layout_marginRight="54dp"
-        android:layout_marginBottom="457dp"
-        android:text="@string/date"
-        android:textAlignment="center"
-        android:textSize="24sp"
+        android:timeZone="GMT+0000"
+        android:format24Hour="dd MMM yy   k:mm"
+        android:format12Hour="@null"
+        android:textStyle="bold"
         app:fontFamily="@font/assistant_bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/CurrentDate"
+        app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mapView"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -79,7 +98,7 @@
         android:layout_width="68dp"
         android:layout_height="74dp"
         android:background="#00FFFFFF"
-        android:onClick="clicked"
+        android:onClick="sendMessage"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -94,7 +113,7 @@
         android:layout_width="98dp"
         android:layout_height="175dp"
         android:background="#00FFFFFF"
-        android:onClick="clicked"
+        android:onClick="sendMessage"
         android:scaleType="centerInside"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -108,7 +127,7 @@
         android:layout_width="87dp"
         android:layout_height="182dp"
         android:background="#00FFFFFF"
-        android:onClick="clicked"
+        android:onClick="sendMessage"
         android:scaleType="fitEnd"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -123,7 +142,7 @@
         android:layout_width="86dp"
         android:layout_height="188dp"
         android:background="#00FFFFFF"
-        android:onClick="clicked"
+        android:onClick="sendMessage"
         android:scaleType="fitStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -135,10 +154,10 @@
 
     <ImageButton
         android:id="@+id/rightleg"
-        android:layout_width="76dp"
-        android:layout_height="170dp"
+        android:layout_width="78dp"
+        android:layout_height="189dp"
         android:background="#00FFFFFF"
-        android:onClick="clicked"
+        android:onClick="sendMessage"
         android:scaleType="fitEnd"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -150,10 +169,10 @@
 
     <ImageButton
         android:id="@+id/leftleg"
-        android:layout_width="72dp"
-        android:layout_height="183dp"
+        android:layout_width="73dp"
+        android:layout_height="191dp"
         android:background="#00FFFFFF"
-        android:onClick="clicked"
+        android:onClick="sendMessage"
         android:scaleType="fitStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

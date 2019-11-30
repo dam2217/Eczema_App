@@ -1,5 +1,6 @@
 package com.example.eczema_app.ui.log;
 
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,19 +17,20 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.eczema_app.R;
 
-import java.util.ArrayList;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class LogFragment extends Fragment {
 
     private LoggingViewModel loggingViewModel;
 
-    int headclickcount = 0;
-    int torsoclickcount = 0;
-    int rarmclickcount = 0;
-    int larmclickcount = 0;
-    int rlegclickcount = 0;
-    int llegclickcount = 0;
-
+    private int headclickcount = 0;
+    private int torsoclickcount = 0;
+    private int rarmclickcount = 0;
+    private int larmclickcount = 0;
+    private int rlegclickcount = 0;
+    private int llegclickcount = 0;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -43,21 +45,19 @@ public class LogFragment extends Fragment {
             }
         });
 
+//        String currentDate = new SimpleDateFormat("dd-MM-yy", Locale.getDefault()).format(new Date());
+//        String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
+//        final TextView date = root.findViewById(R.id.CurrentDate);
+//        final TextView time = root.findViewById(R.id.CurrentTime);
+//        date.setText(currentDate);
+//        time.setText(currentTime);
+
         ImageButton head = root.findViewById(R.id.head);
         ImageButton torso = root.findViewById(R.id.torso);
         ImageButton rarm = root.findViewById(R.id.rightarm);
         ImageButton larm = root.findViewById(R.id.leftarm);
         ImageButton rleg = root.findViewById(R.id.rightleg);
         ImageButton lleg = root.findViewById(R.id.leftleg);
-
-//        bodyPartsList = new ArrayList<ImageButton>();
-//        bodyPartsList.add(head);
-//        bodyPartsList.add(torso);
-//        bodyPartsList.add(rarm);
-//        bodyPartsList.add(larm);
-//        bodyPartsList.add(rleg);
-//        bodyPartsList.add(lleg);
-
 
         final TextView headseverity = root.findViewById(R.id.headSeverity);
         final TextView torsoseverity = root.findViewById(R.id.torsoSeverity);
@@ -181,7 +181,7 @@ public class LogFragment extends Fragment {
             }
         });
 
-        head.setOnClickListener(new View.OnClickListener() {
+        lleg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 llegclickcount = llegclickcount + 1;
@@ -191,15 +191,15 @@ public class LogFragment extends Fragment {
                 }
                 if(llegclickcount%4==2)
                 {
-                    headseverity.setText("Moderate");
+                    llegseverity.setText("Moderate");
                 }
                 if(llegclickcount%4==3)
                 {
-                    headseverity.setText("Severe");
+                    llegseverity.setText("Severe");
                 }
                 if(llegclickcount%4==0)
                 {
-                    headseverity.setText("");
+                    llegseverity.setText("");
                 }
             }
         });

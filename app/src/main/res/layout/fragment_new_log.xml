@@ -15,8 +15,8 @@
         android:text="@string/more_details"
         android:textAlignment="center"
         android:textSize="24sp"
-        app:fontFamily="@font/bubblegum_sans"
-        app:layout_constraintBottom_toTopOf="@+id/Side"
+        app:fontFamily="@font/assistant_bold"
+        app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -45,8 +45,7 @@
         android:layout_marginBottom="457dp"
         android:autofillHints="@android:string/autofill"
         android:ems="10"
-        android:hint=""
-        android:inputType="date"
+        android:hint="@android:string/autofill"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/CurrentTime"
@@ -55,7 +54,7 @@
         app:layout_constraintVertical_bias="0.0"
         tools:visibility="visible" />
 
-    <EditText
+    <TextView
         android:id="@+id/CurrentTime"
         android:layout_width="150dp"
         android:layout_height="40dp"
@@ -65,13 +64,27 @@
         android:layout_marginEnd="54dp"
         android:layout_marginRight="54dp"
         android:layout_marginBottom="457dp"
-        android:ems="10"
-        android:hint=""
-        android:inputType="time"
+        android:text="@string/date"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:fontFamily="@font/assistant_bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/CurrentDate"
         app:layout_constraintTop_toBottomOf="@+id/mapView"
-        app:layout_constraintVertical_bias="0.0"
-        android:autofillHints="@android:string/autofill" />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="392dp"
+        android:layout_height="433dp"
+        android:background="#00FFFFFF"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.421"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mapView"
+        app:layout_constraintVertical_bias="0.761"
+        app:srcCompat="@drawable/silhouette" />
 </androidx.constraintlayout.widget.ConstraintLayout>

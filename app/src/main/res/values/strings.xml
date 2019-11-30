@@ -33,6 +33,7 @@
     <string name="location">Location</string>
     <string name="no">No</string>
     <string name="yes">Yes</string>
+    <string name="date">%1$s</string>DateFormat.getDateInstance(DateFormat.SHORT).format(date)
 
 
 </resources>

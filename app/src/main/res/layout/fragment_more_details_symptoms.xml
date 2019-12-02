@@ -3,90 +3,87 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#8edfdd"
+    tools:layout_editor_absoluteY="81dp">
 
 
     <TextView
         android:id="@+id/MoreDetails"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="20dp"
+        android:background="@android:color/white"
+        android:gravity="start|center"
         android:text="@string/more_details"
-        android:textAlignment="center"
+        android:textAlignment="gravity"
         android:textSize="24sp"
         app:fontFamily="@font/assistant_bold"
-        app:layout_constraintBottom_toTopOf="@+id/Side"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <TextView
-        android:id="@+id/Side"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginRight="60dp"
-        android:text="@string/inflammation_side"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        app:fontFamily="@font/assistant_bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MoreDetails" />
-
-    <TextView
-        android:id="@+id/Severity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="99dp"
-        android:layout_marginLeft="99dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="99dp"
-        android:layout_marginRight="99dp"
-        android:layout_marginBottom="10dp"
-        android:text="@string/inflammation_severity"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        app:fontFamily="@font/assistant_bold"
-        app:layout_constraintBottom_toTopOf="@+id/mildButton"
+        app:layout_constraintBottom_toTopOf="@+id/Treatment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Side" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/Treatment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="130dp"
-        android:layout_marginLeft="130dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="131dp"
-        android:layout_marginRight="131dp"
+        android:layout_marginTop="50dp"
+
+        android:layout_marginBottom="20dp"
         android:text="@string/treatment"
         android:textAlignment="center"
         android:textSize="18sp"
         app:fontFamily="@font/assistant_bold"
+        app:layout_constraintBottom_toTopOf="@+id/yesButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.53"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Severity" />
+        app:layout_constraintTop_toBottomOf="@+id/MoreDetails" />
+
+    <ToggleButton
+        android:id="@+id/yesButton"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@android:color/white"
+        android:textOff="@string/no"
+        android:textOn="@string/yes"
+        app:fontFamily="@font/assistant_bold"
+        app:layout_constraintBottom_toTopOf="@+id/whatTreatment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MoreDetails" />
+
+    <EditText
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="30dp"
+        android:autofillHints=""
+        android:background="@android:color/white"
+        android:ems="10"
+        android:hint="@string/location"
+        android:inputType="text"
+        android:text="@string/location"
+        app:fontFamily="@font/assistant_bold"
+        app:layout_constraintBottom_toTopOf="@+id/Notes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/whatTreatment"
+        tools:targetApi="o" />
 
     <EditText
         android:id="@+id/Notes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="99dp"
-        android:layout_marginLeft="99dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="99dp"
-        android:layout_marginRight="99dp"
+        android:layout_marginTop="30dp"
+        android:background="@android:color/white"
         android:ems="10"
         android:gravity="start|top"
         android:hint="@string/notes"
@@ -95,125 +92,35 @@
         android:text="@string/notes"
         app:fontFamily="@font/assistant_bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/location" />
 
-    <ToggleButton
-        android:id="@+id/frontButton"
+    <Button
+        android:id="@+id/save"
         android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginStart="95dp"
-        android:layout_marginLeft="95dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="24dp"
-        android:textOff = "@string/front"
-        android:textOn = "@string/front"
+        android:layout_height="40dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:background="@android:color/background_light"
+        android:text="@string/save_log"
         app:fontFamily="@font/assistant_bold"
-        app:layout_constraintBottom_toTopOf="@+id/Severity"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Side" />
-
-    <ToggleButton
-        android:id="@+id/rearButton"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="95dp"
-        android:layout_marginRight="95dp"
-        android:layout_marginBottom="24dp"
-        android:textOff="@string/back"
-        android:textOn="@string/back"
-        app:fontFamily="@font/assistant_bold"
-        app:layout_constraintBottom_toTopOf="@+id/Severity"
+        app:layout_constraintBottom_toBottomOf="@+id/MoreDetails"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Side" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <ToggleButton
-        android:id="@+id/mildButton"
+    <Spinner
+        android:id="@+id/whatTreatment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="165dp"
-        android:layout_marginLeft="165dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="165dp"
-        android:layout_marginRight="165dp"
-        android:textOn="@string/mild"
-        android:textOff = "@string/mild"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="50dp"
         app:fontFamily="@font/assistant_bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Severity" />
-
-    <ToggleButton
-        android:id="@+id/lowButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="13dp"
-        android:layout_marginRight="13dp"
-        android:textOn="@string/low"
-        android:textOff = "@string/low"
-        app:layout_constraintEnd_toStartOf="@+id/mildButton"
-        app:fontFamily="@font/assistant_bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Severity" />
-
-    <ToggleButton
-        android:id="@+id/severeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:layout_marginLeft="14dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginRight="60dp"
-        android:textOn="@string/severe"
-        android:textOff="@string/severe"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:fontFamily="@font/assistant_bold"
-        app:layout_constraintStart_toEndOf="@+id/mildButton"
-        app:layout_constraintTop_toBottomOf="@+id/Severity" />
-
-    <ToggleButton
-        android:id="@+id/yesButton"
-        android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="40dp"
-        android:text="@string/front"
-        android:textOff="@string/no"
-        android:textOn="@string/yes"
         app:layout_constraintBottom_toTopOf="@+id/location"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:fontFamily="@font/assistant_bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Treatment" />
-
-
-    <EditText
-        android:id="@+id/location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="95dp"
-        android:layout_marginLeft="95dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="95dp"
-        android:layout_marginRight="95dp"
-        android:layout_marginBottom="24dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/location"
-        android:inputType="text"
-        android:text="@string/location"
-        app:layout_constraintBottom_toTopOf="@+id/Notes"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:fontFamily="@font/assistant_bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Treatment"
-        tools:targetApi="o" />
+        app:layout_constraintTop_toBottomOf="@+id/yesButton" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

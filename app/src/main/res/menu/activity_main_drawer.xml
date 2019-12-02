@@ -33,6 +33,7 @@
             android:id = "@+id/nav_more_details_symptoms"
             android:title="@string/more_details" />
 
+        
     </group>
 
 </menu>

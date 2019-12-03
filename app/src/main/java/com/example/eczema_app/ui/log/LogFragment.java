@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -25,6 +26,7 @@ public class LogFragment extends Fragment {
 
     private LoggingViewModel loggingViewModel;
 
+    private int switchcount = 0;
     private int headclickcount = 0;
     private int torsoclickcount = 0;
     private int rarmclickcount = 0;
@@ -32,6 +34,7 @@ public class LogFragment extends Fragment {
     private int rlegclickcount = 0;
     private int llegclickcount = 0;
 
+    private String frontbackstate = "front";
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -51,6 +54,25 @@ public class LogFragment extends Fragment {
 //        final TextView time = root.findViewById(R.id.CurrentTime);
 //        date.setText(currentDate);
 //        time.setText(currentTime);
+
+        final Switch frontOrBack = root.findViewById(R.id.FrontOrBack);
+        frontOrBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switchcount = switchcount + 1;
+                if(switchcount%2==1)
+                {
+                    frontOrBack.setText("Back");
+                    frontbackstate = "back";
+
+                }
+                if(switchcount%2==0)
+                {
+                    frontOrBack.setText("Front");
+                    frontbackstate = "front";
+                }
+            }
+        });
 
         ImageButton head = root.findViewById(R.id.head);
         ImageButton torso = root.findViewById(R.id.torso);
@@ -201,6 +223,14 @@ public class LogFragment extends Fragment {
                 {
                     llegseverity.setText("");
                 }
+            }
+        });
+
+        Button submit = root.findViewById(R.id.submitButton);
+        frontOrBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // get current state of all body parts and submit to database here
             }
         });
 

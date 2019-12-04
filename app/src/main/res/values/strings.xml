@@ -45,5 +45,11 @@
     <string name="fragment_name">Name: </string>
     <string name="fragment_email">Email: </string>
     <string name="fragment_birth">Birth date: </string>
+    <string name="name_hint">Enter name here</string>
+    <string name="email_hint">Enter email here</string>
+    <string name="birth_hint">Enter birthday here</string>
+
+    <!--Location-->
+    <string name="allow_location">Allow Location Services</string>
 
 </resources>

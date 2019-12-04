@@ -20,57 +20,49 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <Button
         android:id="@+id/button_profile"
-        android:layout_width="70dp"
-        android:layout_height="26dp"
+        android:layout_width="356dp"
+        android:layout_height="57dp"
+        android:background="#F1F8FC"
         android:text="@string/button_profile"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="18sp"
-        app:fontFamily="@font/assistant_bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.146" />
+        app:layout_constraintVertical_bias="0.112" />
 
     <Button
         android:id="@+id/button_notifications"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="#3AC1DF"
+        android:layout_width="356dp"
+        android:layout_height="57dp"
+        android:background="#F1F8FC"
         android:text="@string/button_notifications"
         android:textAllCaps="false"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="18sp"
-        android:typeface="normal"
         app:layout_constraintBottom_toTopOf="@+id/button_location"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_profile" />
+        app:layout_constraintTop_toBottomOf="@+id/button_profile"
+        app:layout_constraintVertical_bias="0.551" />
 
-    <TextView
+    <Button
         android:id="@+id/button_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="356dp"
+        android:layout_height="57dp"
+        android:background="#F1F8FC"
         android:text="@string/button_location"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="18sp"
-        app:fontFamily="@font/assistant_bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.063"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.427" />
-
-    <Switch
-        android:id="@+id/switch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/button_notifications"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.956"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button_notifications" />
+        app:layout_constraintVertical_bias="0.349" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

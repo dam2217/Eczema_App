@@ -35,10 +35,15 @@
     <string name="no">No</string>
     <string name="yes">Yes</string>
 
-    <!--Adding different parts to the settings-->
+    <!--Notifications-->
     <string name="fragment_notifications">Notifications</string>
     <string name="fragment_allow_notifications">Allow notifications</string>
     <string name="fragment_alert_time">Alert Time</string>
     <string name="fragment_repeat">Repeat notification if log not entered? </string>
+
+    <!--Profile-->
+    <string name="fragment_name">Name: </string>
+    <string name="fragment_email">Email: </string>
+    <string name="fragment_birth">Birth date: </string>
 
 </resources>

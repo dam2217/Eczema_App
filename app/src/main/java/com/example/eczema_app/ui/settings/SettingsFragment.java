@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.eczema_app.NotiActivity;
 import com.example.eczema_app.R;
 
 public class SettingsFragment extends Fragment {
@@ -43,6 +44,7 @@ public class SettingsFragment extends Fragment {
     }
 
     public void openNotificationsPage(){
-        Intent not_intent = new Intent()
+        Intent intent = new Intent(this, NotiActivity.class);
+        startActivity(intent);
     }
 }

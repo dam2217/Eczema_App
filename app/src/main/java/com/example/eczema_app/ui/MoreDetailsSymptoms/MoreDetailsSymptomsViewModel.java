@@ -10,7 +10,7 @@ public class MoreDetailsSymptomsViewModel extends ViewModel {
 
     public MoreDetailsSymptomsViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("More Detailed Symptoms");
+        mText.setValue("\tMore Details");
     }
 
     public LiveData<String> getText() {

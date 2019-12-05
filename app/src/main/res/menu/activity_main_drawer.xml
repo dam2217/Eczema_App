@@ -10,8 +10,8 @@
             android:title="@string/menu_home" />
         <item
             android:id="@+id/newLog"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="New Log" />
+            android:icon="@drawable/ic_menu_new"
+            android:title="@string/menu_new_log" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
@@ -33,6 +33,7 @@
             android:id = "@+id/nav_more_details_symptoms"
             android:title="@string/more_details" />
 
+        
     </group>
 
 </menu>

@@ -1,16 +1,16 @@
-package com.example.eczema_app.ui.gallery;
+package com.example.eczema_app.ui.log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class GalleryViewModel extends ViewModel {
+public class LoggingViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public GalleryViewModel() {
+    public LoggingViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is gallery fragment");
+        mText.setValue("Log Eczema");
     }
 
     public LiveData<String> getText() {

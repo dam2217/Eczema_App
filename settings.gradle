@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':servlet'
 rootProject.name='Eczema_App'

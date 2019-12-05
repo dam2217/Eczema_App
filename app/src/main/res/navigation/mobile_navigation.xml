@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/newLog"
-        android:name="com.example.eczema_app.ui.gallery.LogFragment"
+        android:name="com.example.eczema_app.ui.log.LogFragment"
         android:label="@string/menu_new_log"
         tools:layout="@layout/fragment_new_log" />
 

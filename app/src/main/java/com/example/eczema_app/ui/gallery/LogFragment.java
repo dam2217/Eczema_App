@@ -22,7 +22,7 @@ public class LogFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         loggingViewModel =
                 ViewModelProviders.of(this).get(GalleryViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_gallery, container, false);
+        View root = inflater.inflate(R.layout.fragment_new_log, container, false);
         final TextView textView = root.findViewById(R.id.newLog);
         loggingViewModel.getText().observe(this, new Observer<String>() {
             @Override

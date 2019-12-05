@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/CurrentDate"-->
+    <!--        android:layout_width="156dp"-->
+    <!--        android:layout_height="40dp"-->
+    <!--        android:layout_marginStart="54dp"-->
+    <!--        android:layout_marginLeft="54dp"-->
+    <!--        android:layout_marginTop="14dp"-->
+    <!--        android:layout_marginEnd="12dp"-->
+    <!--        android:layout_marginRight="12dp"-->
+    <!--        android:layout_marginBottom="457dp"-->
+    <!--        android:text=""-->
+    <!--        android:textAlignment="center"-->
+    <!--        android:textSize="24sp"-->
+    <!--        app:fontFamily="@font/assistant_bold"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toStartOf="@+id/CurrentTime"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/mapView"-->
+    <!--        app:layout_constraintVertical_bias="0.0" />-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/CurrentTime"-->
+    <!--        android:layout_width="150dp"-->
+    <!--        android:layout_height="40dp"-->
+    <!--        android:layout_marginStart="12dp"-->
+    <!--        android:layout_marginLeft="12dp"-->
+    <!--        android:layout_marginTop="14dp"-->
+    <!--        android:layout_marginEnd="54dp"-->
+    <!--        android:layout_marginRight="54dp"-->
+    <!--        android:layout_marginBottom="457dp"-->
+    <!--        android:text=""-->
+    <!--        android:textAlignment="center"-->
+    <!--        android:textSize="24sp"-->
+    <!--        app:fontFamily="@font/assistant_bold"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toEndOf="@+id/CurrentDate"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/mapView"-->
+    <!--        app:layout_constraintVertical_bias="0.0" />-->
+
+    <android.widget.TextClock
+
+        android:id="@+id/digitalClock"
+        android:layout_width="198dp"
+        android:layout_height="39dp"
+        android:layout_marginBottom="457dp"
+        android:format12Hour="@null"
+        android:format24Hour="dd MM yy   k:mm"
+        android:textStyle="bold"
+        android:timeZone="GMT+0000"
+        app:fontFamily="@font/assistant_bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/head"
+        android:layout_width="68dp"
+        android:layout_height="74dp"
+        android:background="#00FFFFFF"
+        android:onClick="sendMessage"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/torso"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FrontOrBack"
+        app:layout_constraintVertical_bias="0.16000003"
+        app:srcCompat="@drawable/head" />
+
+    <ImageButton
+        android:id="@+id/torso"
+        android:layout_width="98dp"
+        android:layout_height="175dp"
+        android:background="#00FFFFFF"
+        android:onClick="sendMessage"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FrontOrBack"
+        app:layout_constraintVertical_bias="0.26"
+        app:srcCompat="@drawable/torso" />
+
+    <ImageButton
+        android:id="@+id/rightarm"
+        android:layout_width="87dp"
+        android:layout_height="182dp"
+        android:background="#00FFFFFF"
+        android:onClick="sendMessage"
+        android:scaleType="fitEnd"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.259"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.41000003"
+        app:srcCompat="@drawable/rightarm" />
+
+    <ImageButton
+        android:id="@+id/leftarm"
+        android:layout_width="86dp"
+        android:layout_height="188dp"
+        android:background="#00FFFFFF"
+        android:onClick="sendMessage"
+        android:scaleType="fitStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.756"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.41000003"
+        app:srcCompat="@drawable/leftarm" />
+
+    <ImageButton
+        android:id="@+id/rightleg"
+        android:layout_width="78dp"
+        android:layout_height="189dp"
+        android:background="#00FFFFFF"
+        android:onClick="sendMessage"
+        android:scaleType="fitEnd"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.39"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/torso"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/rightleg" />
+
+    <ImageButton
+        android:id="@+id/leftleg"
+        android:layout_width="73dp"
+        android:layout_height="191dp"
+        android:background="#00FFFFFF"
+        android:onClick="sendMessage"
+        android:scaleType="fitStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.616"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/torso"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/leftleg" />
+
+    <TextView
+        android:id="@+id/headSeverity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.683"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.19999999" />
+
+    <TextView
+        android:id="@+id/torsoSeverity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.683"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.26999998" />
+
+    <TextView
+        android:id="@+id/rarmSeverity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.228"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.469" />
+
+    <TextView
+        android:id="@+id/larmSeverity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.751"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.47" />
+
+    <TextView
+        android:id="@+id/rlegSeverity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.287"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.777" />
+
+    <TextView
+        android:id="@+id/llegSeverity"
+        android:layout_width="0dp"
+        android:layout_height="13dp"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.683"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.775" />
+
+    <Switch
+        android:id="@+id/FrontOrBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Front"
+        android:textColorLink="#009688"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.07999998" />
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit Log"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.93"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.88" />
+</androidx.constraintlayout.widget.ConstraintLayout>

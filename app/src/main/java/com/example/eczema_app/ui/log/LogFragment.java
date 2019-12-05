@@ -1,4 +1,4 @@
-package com.example.eczema_app.ui.gallery;
+package com.example.eczema_app.ui.log;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

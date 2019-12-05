@@ -1,4 +1,4 @@
-package com.example.eczema_app.ui.gallery;
+package com.example.eczema_app.ui.log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

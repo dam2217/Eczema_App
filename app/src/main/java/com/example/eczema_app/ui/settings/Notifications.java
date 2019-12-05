@@ -1,15 +1,12 @@
-package com.example.eczema_app;
+package com.example.eczema_app.ui.settings;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.ui.AppBarConfiguration;
 
 import android.os.Bundle;
 
-import com.example.eczema_app.ui.noti.NotiFragment;
+import com.example.eczema_app.R;
 
-public class NotiActivity extends AppCompatActivity {
-
-    private AppBarConfiguration mAppBarConfiguration;
+public class Notifications extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -14,7 +14,7 @@
     <fragment
         android:id="@+id/newLog"
         android:name="com.example.eczema_app.ui.gallery.LogFragment"
-        android:label="@string/menu_gallery"
+        android:label="@string/menu_new_log"
         tools:layout="@layout/fragment_gallery" />
 
     <fragment

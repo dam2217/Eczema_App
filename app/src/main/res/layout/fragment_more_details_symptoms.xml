@@ -67,7 +67,7 @@
         android:autofillHints=""
         android:background="@android:color/white"
         android:ems="10"
-        android:hint="@string/location"
+        android:hint="@string/current_city_hint"
         android:inputType="text"
         android:text="@string/location"
         app:fontFamily="@font/assistant_bold"

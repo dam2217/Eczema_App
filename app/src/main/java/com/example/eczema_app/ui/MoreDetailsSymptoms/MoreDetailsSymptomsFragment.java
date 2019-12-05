@@ -16,9 +16,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
+
+
 import android.widget.TextView;
-import android.widget.ToggleButton;
 
 //import com.example.eczema_app.Eczema;
 //import com.example.eczema_app.HerokuService;
@@ -60,6 +62,7 @@ public class MoreDetailsSymptomsFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     private MoreDetailsSymptomsViewModel moreDetailsSymptomsViewModel;
+    public String currentCity;
 
     public MoreDetailsSymptomsFragment() {
         // Required empty public constructor
@@ -72,6 +75,7 @@ public class MoreDetailsSymptomsFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_more_details_symptoms, container, false);
         final TextView textView = root.findViewById(R.id.MoreDetails);
         final Button button = root.findViewById(R.id.save);
+        final EditText locationText = root.findViewById(R.id.location);
         moreDetailsSymptomsViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {

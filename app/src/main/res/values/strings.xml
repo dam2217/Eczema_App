@@ -2,11 +2,12 @@
     <string name="app_name">xma</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_title">Jane Doe</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <!--This is for the navigation panel    -->
     <string name="menu_home">Home</string>
     <string name="menu_new_log">Log Symptoms</string>
     <string name="menu_slideshow">Slideshow</string>
@@ -32,5 +33,21 @@
     <string name="current_city_hint">Enter your current city</string>
     <string name="date">%1$s</string>DateFormat.getDateInstance(DateFormat.SHORT).format(date)
 
+    <!--Notifications-->
+    <string name="fragment_notifications">Notifications</string>
+    <string name="fragment_allow_notifications">Allow notifications</string>
+    <string name="fragment_alert_time">Alert Time</string>
+    <string name="fragment_repeat">Repeat notification if log not entered? </string>
+
+    <!--Profile-->
+    <string name="fragment_name">Name: </string>
+    <string name="fragment_email">Email: </string>
+    <string name="fragment_birth">Birth date: </string>
+    <string name="name_hint">Enter name here</string>
+    <string name="email_hint">Enter email here</string>
+    <string name="birth_hint">Enter birthday here</string>
+
+    <!--Location-->
+    <string name="allow_location">Allow Location Services</string>
 
 </resources>

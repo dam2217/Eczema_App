@@ -40,13 +40,6 @@ public class LogFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         loggingViewModel = ViewModelProviders.of(this).get(LoggingViewModel.class);
         View root = inflater.inflate(R.layout.fragment_new_log, container, false);
-        final TextView textView = root.findViewById(R.id.NewLogTitle);
-        loggingViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
 
 //        String currentDate = new SimpleDateFormat("dd-MM-yy", Locale.getDefault()).format(new Date());
 //        String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());

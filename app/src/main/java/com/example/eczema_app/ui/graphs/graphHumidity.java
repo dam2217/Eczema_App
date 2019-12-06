@@ -1,4 +1,4 @@
-package com.example.eczema_app.ui.tools;
+package com.example.eczema_app.ui.graphs;
 
 import android.content.Context;
 import android.net.Uri;
@@ -16,12 +16,12 @@ import com.example.eczema_app.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link graphTime.OnFragmentInteractionListener} interface
+ * {@link graphHumidity.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link graphTime#newInstance} factory method to
+ * Use the {@link graphHumidity#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class graphTime extends ToolsFragment {
+public class graphHumidity extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -33,7 +33,7 @@ public class graphTime extends ToolsFragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public graphTime() {
+    public graphHumidity() {
         // Required empty public constructor
     }
 
@@ -43,11 +43,11 @@ public class graphTime extends ToolsFragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment graphTime.
+     * @return A new instance of fragment graphHumidity.
      */
     // TODO: Rename and change types and number of parameters
-    public static graphTime newInstance(String param1, String param2) {
-        graphTime fragment = new graphTime();
+    public static graphHumidity newInstance(String param1, String param2) {
+        graphHumidity fragment = new graphHumidity();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -68,7 +68,7 @@ public class graphTime extends ToolsFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_graph_time, container, false);
+        return inflater.inflate(R.layout.fragment_graph_humidity, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event

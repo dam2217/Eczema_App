@@ -1,4 +1,4 @@
-package com.example.eczema_app.ui.tools;
+package com.example.eczema_app.ui.graphs;
 
 
 import android.os.Bundle;
@@ -14,22 +14,19 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.eczema_app.R;
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
 
-public class ToolsFragment extends Fragment {
+public class GraphsFragment extends Fragment {
 
-    private ToolsViewModel toolsViewModel;
+    private GraphsViewModel graphsViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        toolsViewModel =
-                ViewModelProviders.of(this).get(ToolsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_tools, container, false);
+        graphsViewModel =
+                ViewModelProviders.of(this).get(GraphsViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_graphs, container, false);
         final TextView textView = root.findViewById(R.id.text_tools);
-        toolsViewModel.getText().observe(this, new Observer<String>() {
+        graphsViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

@@ -1,14 +1,14 @@
-package com.example.eczema_app.ui.tools;
+package com.example.eczema_app.ui.graphs;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class ToolsViewModel extends ViewModel {
+public class GraphsViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public ToolsViewModel() {
+    public GraphsViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is tools fragment");
     }

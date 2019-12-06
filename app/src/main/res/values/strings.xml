@@ -49,5 +49,6 @@
 
     <!--Location-->
     <string name="allow_location">Allow Location Services</string>
+    <string name="next">Next</string>
 
 </resources>

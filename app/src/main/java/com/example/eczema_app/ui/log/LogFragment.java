@@ -1,5 +1,6 @@
 package com.example.eczema_app.ui.log;
 
+import android.content.Intent;
 import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -220,7 +221,25 @@ public class LogFragment extends Fragment {
             }
         });
 
-        Button submit = root.findViewById(R.id.submitButton);
+
+        Button more_details = root.findViewById(R.id.submitButton);
+        more_details.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openMoreDetailsPage();
+            }
+        });
+
+        return root;
+        }
+
+        private void openMoreDetailsPage(){
+        Intent md_intent = new Intent(getActivity(), MoreDetailsSymptomsFragment.class);
+        startActivity(md_intent);}
+
+
+
+//        Button submit = root.findViewById(R.id.submitButton);
 //        frontOrBack.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -248,9 +267,5 @@ public class LogFragment extends Fragment {
 //            }
 //        });
 
-        return root;
+
     }
-
-
-
-}

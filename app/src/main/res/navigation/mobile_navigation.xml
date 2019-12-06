@@ -31,7 +31,7 @@
 
     <fragment
         android:id = "@+id/nav_more_details_symptoms"
-        android:name="com.example.eczema_app.ui.MoreDetailsSymptoms.MoreDetailsSymptomsFragment"
+        android:name="com.example.eczema_app.ui.log.MoreDetailsSymptomsFragment"
         android:label="More Details"
         tools:layout="@layout/fragment_more_details_symptoms"/>
 

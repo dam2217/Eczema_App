@@ -1,13 +1,10 @@
-package com.example.eczema_app.ui.MoreDetailsSymptoms;
+package com.example.eczema_app.ui.log;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.view.LayoutInflater;
@@ -20,26 +17,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 
-import android.widget.TextView;
-
 //import com.example.eczema_app.Eczema;
 //import com.example.eczema_app.HerokuService;
-import com.example.eczema_app.MainActivity;
 import com.example.eczema_app.R;
 //import com.example.eczema_app.Service;
 //
 
-import org.w3c.dom.Text;
-
-import java.io.IOException;
-import java.util.List;
-
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /*
  * A simple {@link Fragment} subclass.

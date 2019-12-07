@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -220,12 +221,32 @@ public class LogFragment extends Fragment {
         });
 
         Button submit = root.findViewById(R.id.submitButton);
-        frontOrBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+//        frontOrBack.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
                 // get current state of all body parts and submit to database here
-            }
-        });
+//                submit.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        // Create fragment and give it an argument specifying the article it should show
+//                        ArticleFragment newFragment = new ArticleFragment();
+//                        Bundle args = new Bundle();
+//                        args.putInt(ArtiARG_POSITION, position);
+//                        newFragment.setArguments(args);
+//
+//                        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//
+//// Replace whatever is in the fragment_container view with this fragment,
+//// and add the transaction to the back stack so the user can navigate back
+//                        transaction.replace(R.id.fragment_container, newFragment);
+//                        transaction.addToBackStack(null);
+//
+//// Commit the transaction
+//                        transaction.commit();
+//                    }
+//                });
+//            }
+//        });
 
         return root;
     }

@@ -73,15 +73,15 @@ public class MoreDetailsSymptomsFragment extends Fragment {
         moreDetailsSymptomsViewModel =
                 ViewModelProviders.of(this).get(MoreDetailsSymptomsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_more_details_symptoms, container, false);
-        final TextView textView = root.findViewById(R.id.MoreDetails);
+//        final TextView textView = root.findViewById(R.id.MoreDetails);
         final Button button = root.findViewById(R.id.save);
         final EditText locationText = root.findViewById(R.id.location);
-        moreDetailsSymptomsViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+//        moreDetailsSymptomsViewModel.getText().observe(this, new Observer<String>() {
+//            @Override
+//            public void onChanged(@Nullable String s) {
+////                textView.setText(s);
+//            }
+//        });
 
         /* Reference 1 - taken from http://jkutner.github.io/2016/08/18/android-backend-api-heroku-retrofit.html */
 

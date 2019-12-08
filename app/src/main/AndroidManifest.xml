@@ -13,6 +13,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.tools.graphStress"></activity>
+        <activity android:name=".ui.tools.graphHumidity" />
+        <activity android:name=".ui.tools.graphTime" />
+        <activity android:name=".ui.tools.testing" />
+        <activity
+            android:name=".GraphActivity"
+            android:label="@string/title_activity_graph"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.settings.Profile"></activity>
         <activity android:name=".ui.settings.Locations" />
         <activity android:name=".ui.settings.Notifications" />

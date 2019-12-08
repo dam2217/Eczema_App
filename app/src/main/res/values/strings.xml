@@ -30,6 +30,7 @@
     <string name="save_log">Save Log</string>
     <string name="current_city_hint">Enter your current city</string>
     <string name="date">%1$s</string>DateFormat.getDateInstance(DateFormat.SHORT).format(date)
+    <string name="title_activity_graph">GraphActivity</string>
 
     <!--Notifications-->
     <string name="fragment_notifications">Notifications</string>

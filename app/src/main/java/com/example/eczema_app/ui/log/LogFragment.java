@@ -1,7 +1,6 @@
 package com.example.eczema_app.ui.log;
 
 import android.content.Intent;
-import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,18 +10,11 @@ import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.eczema_app.R;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 public class LogFragment extends Fragment {
 
@@ -234,7 +226,7 @@ public class LogFragment extends Fragment {
         }
 
         private void openMoreDetailsPage(){
-        Intent md_intent = new Intent(getActivity(), MoreDetailsSymptomsFragment.class);
+        Intent md_intent = new Intent(getActivity(), MoreDetailsSymptomActivity.class);
         startActivity(md_intent);}
 
 

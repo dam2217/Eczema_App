@@ -1,13 +1,11 @@
-package com.example.eczema_app.ui.MoreDetailsSymptoms;
+package com.example.eczema_app.ui.log;
 
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.view.LayoutInflater;
@@ -20,36 +18,22 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 
-import android.widget.TextView;
-
 //import com.example.eczema_app.Eczema;
 //import com.example.eczema_app.HerokuService;
-import com.example.eczema_app.MainActivity;
 import com.example.eczema_app.R;
 //import com.example.eczema_app.Service;
 //
 
-import org.w3c.dom.Text;
-
-import java.io.IOException;
-import java.util.List;
-
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /*
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link MoreDetailsSymptomsFragment.OnFragmentInteractionListener} interface
+ * {@link MoreDetailsSymptomActivity.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link MoreDetailsSymptomsFragment#newInstance} factory method to
+ * Use the {@link MoreDetailsSymptomActivity#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MoreDetailsSymptomsFragment extends Fragment {
+public class MoreDetailsSymptomActivity extends AppCompatActivity {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -64,9 +48,16 @@ public class MoreDetailsSymptomsFragment extends Fragment {
     private MoreDetailsSymptomsViewModel moreDetailsSymptomsViewModel;
     public String currentCity;
 
-    public MoreDetailsSymptomsFragment() {
+    public MoreDetailsSymptomActivity() {
         // Required empty public constructor
     }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_more_details_symptoms);
+    }
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -120,7 +111,7 @@ public class MoreDetailsSymptomsFragment extends Fragment {
 
         Spinner dropDown = root.findViewById(R.id.whatTreatment);
         String[] treatments = new String[] {"No Treatment Used", "Corticosteroids", "Emollient", "Systematic Therapy", "Other"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_dropdown_item, treatments);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, treatments);
 //        ArrayAdapter<String> adapter = ArrayAdapter.createFromResource(treatments, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -157,33 +148,33 @@ public class MoreDetailsSymptomsFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment MoreDetailsSymptomsFragment.
+     * @return A new instance of fragment MoreDetailsSymptomActivity.
      */
-    // TODO: Rename and change types and number of parameters
-    public static MoreDetailsSymptomsFragment newInstance(String param1, String param2) {
-        MoreDetailsSymptomsFragment fragment = new MoreDetailsSymptomsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-public void onButtonPressed(Uri uri) {
-    if (mListener != null) {
-        mListener.onFragmentInteraction(uri);
-    }
-}
+//    // TODO: Rename and change types and number of parameters
+//    public static MoreDetailsSymptomActivity newInstance(String param1, String param2) {
+//        MoreDetailsSymptomActivity fragment = new MoreDetailsSymptomActivity();
+//        Bundle args = new Bundle();
+//        args.putString(ARG_PARAM1, param1);
+//        args.putString(ARG_PARAM2, param2);
+//        fragment.setArguments(args);
+//        return fragment;
+//    }
+//
+//    @Override
+//    public void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        if (getArguments() != null) {
+//            mParam1 = getArguments().getString(ARG_PARAM1);
+//            mParam2 = getArguments().getString(ARG_PARAM2);
+//        }
+//    }
+//
+//    // TODO: Rename method, update argument and hook method into UI event
+//public void onButtonPressed(Uri uri) {
+//    if (mListener != null) {
+//        mListener.onFragmentInteraction(uri);
+//    }
+//}
 //
 //    @Override
 //    public void onAttach(Context context) {
@@ -196,11 +187,11 @@ public void onButtonPressed(Uri uri) {
 //        }
 //    }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
+//    @Override
+//    public void onDetach() {
+//        super.onDetach();
+//        mListener = null;
+//    }
 
     /**
      * This interface must be implemented by activities that contain this

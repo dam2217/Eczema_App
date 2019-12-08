@@ -1,4 +1,4 @@
-package com.example.eczema_app.ui.MoreDetailsSymptoms;
+package com.example.eczema_app.ui.log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

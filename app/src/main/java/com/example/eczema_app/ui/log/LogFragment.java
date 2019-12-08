@@ -1,6 +1,6 @@
 package com.example.eczema_app.ui.log;
 
-import android.icu.util.Calendar;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,18 +10,11 @@ import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.eczema_app.R;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 public class LogFragment extends Fragment {
 
@@ -220,7 +213,25 @@ public class LogFragment extends Fragment {
             }
         });
 
-        Button submit = root.findViewById(R.id.submitButton);
+
+        Button more_details = root.findViewById(R.id.submitButton);
+        more_details.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openMoreDetailsPage();
+            }
+        });
+
+        return root;
+        }
+
+        private void openMoreDetailsPage(){
+        Intent md_intent = new Intent(getActivity(), MoreDetailsSymptomActivity.class);
+        startActivity(md_intent);}
+
+
+
+//        Button submit = root.findViewById(R.id.submitButton);
 //        frontOrBack.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -248,9 +259,5 @@ public class LogFragment extends Fragment {
 //            }
 //        });
 
-        return root;
+
     }
-
-
-
-}

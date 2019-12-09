@@ -33,21 +33,6 @@ class LogEntry {
         this.treatment = "";
     }
 
-    public LogEntry(CharSequence hf, CharSequence hb, CharSequence tf, CharSequence tb, CharSequence raf, CharSequence rab, CharSequence laf, CharSequence lab, CharSequence rlf, CharSequence rlb, CharSequence llf, CharSequence llb) {
-        this.hf = hf;
-        this.hb = hb;
-        this.tf = tf;
-        this.tb = tb;
-        this.raf = raf;
-        this.rab = rab;
-        this.laf = laf;
-        this.lab = lab;
-        this.rlf = rlf;
-        this.rlb = rlb;
-        this.llf = llf;
-        this.llb = llb;
-    }
-
     public void setHf(CharSequence hf) {
         this.hf = hf;
         Log.i("head front", hf.toString());
@@ -110,5 +95,6 @@ class LogEntry {
 
     public void setTreatment(CharSequence treatment) {
         this.treatment = treatment;
+        Log.i("treatment", treatment.toString());
     }
 }

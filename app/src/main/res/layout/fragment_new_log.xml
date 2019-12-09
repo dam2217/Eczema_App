@@ -132,10 +132,10 @@
         android:scaleType="fitEnd"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.216"
-        app:layout_constraintStart_toEndOf="@+id/rarmSeverity"
-        app:layout_constraintTop_toBottomOf="@+id/head"
-        app:layout_constraintVertical_bias="0.648"
+        app:layout_constraintHorizontal_bias="0.18"
+        app:layout_constraintStart_toStartOf="@+id/rightarm"
+        app:layout_constraintTop_toTopOf="@+id/torso"
+        app:layout_constraintVertical_bias="0.642"
         app:srcCompat="@drawable/rightleg" />
 
     <ImageButton
@@ -147,9 +147,9 @@
         android:scaleType="fitStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.369"
+        app:layout_constraintHorizontal_bias="0.35"
         app:layout_constraintStart_toStartOf="@+id/rightleg"
-        app:layout_constraintTop_toBottomOf="@+id/head"
+        app:layout_constraintTop_toTopOf="@+id/torso"
         app:layout_constraintVertical_bias="0.649"
         app:srcCompat="@drawable/leftleg" />
 

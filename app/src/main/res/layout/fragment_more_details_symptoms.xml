@@ -39,7 +39,6 @@
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="30dp"
-        android:background="#F1F8FC"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textOff="@string/no"
         android:textOn="@string/yes"
@@ -49,7 +48,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Treatment" />
+        app:layout_constraintTop_toBottomOf="@+id/Treatment"
+        android:theme="@style/AppTheme.ToggleButton"/>
+
+
 
     <TextView
         android:id="@+id/selectTreatment"
@@ -143,6 +145,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintHorizontal_bias="0.93"
         app:layout_constraintVertical_bias="0.88" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

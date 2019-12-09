@@ -1,4 +1,4 @@
-package com.example.eczema_app.ui.tools;
+package com.example.eczema_app.ui.graphs;
 
 import android.content.Context;
 import android.net.Uri;
@@ -21,7 +21,7 @@ import com.example.eczema_app.R;
  * Use the {@link graphTime#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class graphTime extends ToolsFragment {
+public class graphTime extends GraphsFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";

@@ -1,16 +1,16 @@
-package com.example.eczema_app.ui.tools;
+package com.example.eczema_app.ui.log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class ToolsViewModel extends ViewModel {
+public class MoreDetailsSymptomsViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public ToolsViewModel() {
+    public MoreDetailsSymptomsViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is tools fragment");
+        mText.setValue("\tMore Details");
     }
 
     public LiveData<String> getText() {

@@ -13,25 +13,13 @@
             android:icon="@drawable/ic_menu_new"
             android:title="@string/menu_new_log" />
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
-        <item
-            android:id="@+id/nav_tools"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/menu_tools" />
-        <item
-            android:id="@+id/nav_share"
-            android:icon="@drawable/ic_menu_share"
-            android:title="@string/menu_share" />
+            android:id="@+id/nav_graphs"
+            android:icon="@android:drawable/ic_menu_sort_by_size"
+            android:title="@string/menu_graphs" />
         <item
             android:id="@+id/nav_settings"
             android:icon="@drawable/ic_menu_setting"
             android:title="@string/menu_settings" />
-
-        <item
-            android:id = "@+id/nav_more_details_symptoms"
-            android:title="@string/more_details" />
 
         
     </group>

@@ -1,13 +1,16 @@
 package com.example.eczema_app.ui.log;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -46,6 +49,9 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
 
 
         dropDown.setAdapter(adapter);
+
+//        getSupportActionBar().setHomeButtonEnabled(true);
+
 
     }
 }

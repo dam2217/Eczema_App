@@ -408,6 +408,8 @@ public class LogFragment extends Fragment {
                         currentLog.setLlb(llegseverity.getText());
                     }
                 }
+
+
             }
         });
 

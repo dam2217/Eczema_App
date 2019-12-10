@@ -35,17 +35,34 @@ import com.example.eczema_app.R;
  * Use the {@link MoreDetailsSymptomActivity#newInstance} factory method to
  * create an instance of this fragment.
  */
+
 public class MoreDetailsSymptomActivity extends AppCompatActivity {
+
+    private String selectedTreatment = "No Treatment Used";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_more_details_symptoms);
-        Spinner dropDown = findViewById(R.id.whatTreatment);
+        final Spinner dropDown = findViewById(R.id.whatTreatment);
         String[] treatments = new String[]{"No Treatment Used", "Corticosteroids", "Emollient", "Systematic Therapy", "Other"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, treatments);
 //        ArrayAdapter<String> adapter = ArrayAdapter.createFromResource(treatments, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        dropDown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                selectedTreatment = dropDown.getSelectedItem().toString();
+                Log.i("treatment", selectedTreatment);
+                currentLog.setTreatment(selectedTreatment);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+
+        });
 
 
         dropDown.setAdapter(adapter);

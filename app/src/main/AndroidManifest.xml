@@ -2,25 +2,54 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.eczema_app">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
-        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".ui.settings.Profile"></activity>
-        <activity android:name=".ui.settings.Locations" />
-        <activity android:name=".ui.settings.Notifications" />
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".ui.settings.Profile"
+            android:label ="Profile"
+            android:parentActivityName=".ui.settings.SettingsActivity"/>
+<!--        <activity-->
+<!--            android:name=".ui.tools.graphStress"/>-->
+        <activity
+            android:name=".ui.graphs.graphHumidity" />
+        <activity
+            android:name=".ui.graphs.graphTime" />
+<!--        <activity-->
+<!--            android:name=".ui.tools.testing" />-->
+<!--        <activity-->
+<!--            android:name=".GraphActivity"-->
+<!--            android:label="@string/title_activity_graph"-->
+<!--            android:theme="@style/AppTheme.NoActionBar" />-->
+        <activity
+            android:name=".ui.settings.Locations"
+            android:parentActivityName=".ui.settings.SettingsActivity"
+            android:label="Location Services"/>
+        <activity
+            android:name=".ui.settings.Notifications"
+            android:parentActivityName=".ui.settings.SettingsActivity"
+            android:label="Notifications"/>
+        <activity
+            android:name=".ui.log.MoreDetailsSymptomActivity"
+            android:label="More Details"
+            android:parentActivityName=".ui.log.LogActivity"/>
+        <activity
+            android:name=".ui.log.LogActivity"/>
+        <activity
+            android:name=".ui.settings.SettingsActivity"/>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

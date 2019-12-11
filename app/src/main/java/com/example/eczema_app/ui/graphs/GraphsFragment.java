@@ -25,13 +25,13 @@ public class GraphsFragment extends Fragment {
         graphsViewModel =
                 ViewModelProviders.of(this).get(GraphsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_graphs, container, false);
-        final TextView textView = root.findViewById(R.id.text_tools);
-        graphsViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+//        final TextView textView = root.findViewById(R.id.text_tools);
+//        graphsViewModel.getText().observe(this, new Observer<String>() {
+//            @Override
+//            public void onChanged(@Nullable String s) {
+//                textView.setText(s);
+//            }
+//        });
 
 
 

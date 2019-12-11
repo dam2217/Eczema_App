@@ -1,6 +1,6 @@
 package com.example.eczema_app.ui.log;
 
-import android.icu.util.Calendar;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,18 +10,11 @@ import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.eczema_app.R;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
 
 public class LogFragment extends Fragment {
 
@@ -36,6 +29,8 @@ public class LogFragment extends Fragment {
     private int llegclickcount = 0;
 
     private String frontbackstate = "front";
+
+    public LogEntry currentLog = new LogEntry();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -82,6 +77,10 @@ public class LogFragment extends Fragment {
         final TextView rlegseverity = root.findViewById(R.id.rlegSeverity);
         final TextView llegseverity = root.findViewById(R.id.llegSeverity);
 
+//        currentLog = LogEntry(headseverity.getText(), headseverity.getText(), torsoseverity.getText(), torsoseverity.getText(),
+//                rarmseverity.getText(), rarmseverity.getText(), larmseverity.getText(), larmseverity.getText(), rlegseverity.getText(), rlegseverity.getText(),
+//                llegseverity.getText(), llegseverity.getText());
+
         head.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,18 +88,50 @@ public class LogFragment extends Fragment {
                 if(headclickcount%4==1)
                 {
                     headseverity.setText("Mild");
+                    if(frontbackstate=="front")
+                    {
+                        currentLog.setHf(headseverity.getText());
+                    }
+                    if(frontbackstate=="back")
+                    {
+                        currentLog.setHb(headseverity.getText());
+                    }
                 }
                 if(headclickcount%4==2)
                 {
                     headseverity.setText("Moderate");
+                    if(frontbackstate=="front")
+                    {
+                        currentLog.setHf(headseverity.getText());
+                    }
+                    if(frontbackstate=="back")
+                    {
+                        currentLog.setHb(headseverity.getText());
+                    }
                 }
                 if(headclickcount%4==3)
                 {
                     headseverity.setText("Severe");
+                    if(frontbackstate=="front")
+                    {
+                        currentLog.setHf(headseverity.getText());
+                    }
+                    if(frontbackstate=="back")
+                    {
+                        currentLog.setHb(headseverity.getText());
+                    }
                 }
                 if(headclickcount%4==0)
                 {
                     headseverity.setText("");
+                    if(frontbackstate=="front")
+                    {
+                        currentLog.setHf(headseverity.getText());
+                    }
+                    if(frontbackstate=="back")
+                    {
+                        currentLog.setHb(headseverity.getText());
+                    }
                 }
             }
         });
@@ -112,18 +143,50 @@ public class LogFragment extends Fragment {
                 if(torsoclickcount%4==1)
                 {
                     torsoseverity.setText("Mild");
+                    if(frontbackstate=="front")
+                {
+                    currentLog.setTf(torsoseverity.getText());
+                }
+                    if(frontbackstate=="back")
+                    {
+                        currentLog.setTb(torsoseverity.getText());
+                    }
                 }
                 if(torsoclickcount%4==2)
                 {
                     torsoseverity.setText("Moderate");
+                    if(frontbackstate=="front")
+                    {
+                        currentLog.setTf(torsoseverity.getText());
+                    }
+                    if(frontbackstate=="back")
+                    {
+                        currentLog.setTb(torsoseverity.getText());
+                    }
                 }
                 if(torsoclickcount%4==3)
                 {
                     torsoseverity.setText("Severe");
+                    if(frontbackstate=="front")
+                    {
+                        currentLog.setTf(torsoseverity.getText());
+                    }
+                    if(frontbackstate=="back")
+                    {
+                        currentLog.setTb(torsoseverity.getText());
+                    }
                 }
                 if(torsoclickcount%4==0)
                 {
                     torsoseverity.setText("");
+                    if(frontbackstate=="front")
+                    {
+                        currentLog.setTf(torsoseverity.getText());
+                    }
+                    if(frontbackstate=="back")
+                    {
+                        currentLog.setTb(torsoseverity.getText());
+                    }
                 }
             }
         });
@@ -135,18 +198,50 @@ public class LogFragment extends Fragment {
                 if(rarmclickcount%4==1)
                 {
                     rarmseverity.setText("Mild");
+                    if(frontbackstate=="front")
+                    {
+                        currentLog.setRaf(rarmseverity.getText());
+                    }
+                    if(frontbackstate=="back")
+                    {
+                        currentLog.setRab(rarmseverity.getText());
+                    }
                 }
                 if(rarmclickcount%4==2)
                 {
                     rarmseverity.setText("Moderate");
+                    if(frontbackstate=="front")
+                    {
+                        currentLog.setRaf(rarmseverity.getText());
+                    }
+                    if(frontbackstate=="back")
+                    {
+                        currentLog.setRab(rarmseverity.getText());
+                    }
                 }
                 if(rarmclickcount%4==3)
                 {
                     rarmseverity.setText("Severe");
+                    if(frontbackstate=="front")
+                    {
+                        currentLog.setRaf(rarmseverity.getText());
+                    }
+                    if(frontbackstate=="back")
+                    {
+                        currentLog.setRab(rarmseverity.getText());
+                    }
                 }
                 if(rarmclickcount%4==0)
                 {
                     rarmseverity.setText("");
+                    if(frontbackstate=="front")
+                    {
+                        currentLog.setRaf(rarmseverity.getText());
+                    }
+                    if(frontbackstate=="back")
+                    {
+                        currentLog.setRab(rarmseverity.getText());
+                    }
                 }
             }
         });
@@ -158,18 +253,50 @@ public class LogFragment extends Fragment {
                 if(larmclickcount%4==1)
                 {
                     larmseverity.setText("Mild");
+                    if(frontbackstate=="front")
+                    {
+                        currentLog.setLaf(larmseverity.getText());
+                    }
+                    if(frontbackstate=="back")
+                    {
+                        currentLog.setLab(larmseverity.getText());
+                    }
                 }
                 if(larmclickcount%4==2)
                 {
                     larmseverity.setText("Moderate");
+                    if(frontbackstate=="front")
+                    {
+                        currentLog.setLaf(larmseverity.getText());
+                    }
+                    if(frontbackstate=="back")
+                    {
+                        currentLog.setLab(larmseverity.getText());
+                    }
                 }
                 if(larmclickcount%4==3)
                 {
                     larmseverity.setText("Severe");
+                    if(frontbackstate=="front")
+                    {
+                        currentLog.setLaf(larmseverity.getText());
+                    }
+                    if(frontbackstate=="back")
+                    {
+                        currentLog.setLab(larmseverity.getText());
+                    }
                 }
                 if(larmclickcount%4==0)
                 {
                     larmseverity.setText("");
+                    if(frontbackstate=="front")
+                    {
+                        currentLog.setLaf(larmseverity.getText());
+                    }
+                    if(frontbackstate=="back")
+                    {
+                        currentLog.setLab(larmseverity.getText());
+                    }
                 }
             }
         });
@@ -181,18 +308,50 @@ public class LogFragment extends Fragment {
                 if(rlegclickcount%4==1)
                 {
                     rlegseverity.setText("Mild");
+                    if(frontbackstate=="front")
+                    {
+                        currentLog.setRlf(rlegseverity.getText());
+                    }
+                    if(frontbackstate=="back")
+                    {
+                        currentLog.setRlb(rlegseverity.getText());
+                    }
                 }
                 if(rlegclickcount%4==2)
                 {
                     rlegseverity.setText("Moderate");
+                    if(frontbackstate=="front")
+                    {
+                        currentLog.setRlf(rlegseverity.getText());
+                    }
+                    if(frontbackstate=="back")
+                    {
+                        currentLog.setRlb(rlegseverity.getText());
+                    }
                 }
                 if(rlegclickcount%4==3)
                 {
                     rlegseverity.setText("Severe");
+                    if(frontbackstate=="front")
+                    {
+                        currentLog.setRlf(rlegseverity.getText());
+                    }
+                    if(frontbackstate=="back")
+                    {
+                        currentLog.setRlb(rlegseverity.getText());
+                    }
                 }
                 if(rlegclickcount%4==0)
                 {
                     rlegseverity.setText("");
+                    if(frontbackstate=="front")
+                    {
+                        currentLog.setRlf(rlegseverity.getText());
+                    }
+                    if(frontbackstate=="back")
+                    {
+                        currentLog.setRlb(rlegseverity.getText());
+                    }
                 }
             }
         });
@@ -204,23 +363,76 @@ public class LogFragment extends Fragment {
                 if(llegclickcount%4==1)
                 {
                     llegseverity.setText("Mild");
+                    if(frontbackstate=="front")
+                    {
+                        currentLog.setLlf(llegseverity.getText());
+                    }
+                    if(frontbackstate=="back")
+                    {
+                        currentLog.setLlb(llegseverity.getText());
+                    }
                 }
                 if(llegclickcount%4==2)
                 {
                     llegseverity.setText("Moderate");
+                    if(frontbackstate=="front")
+                    {
+                        currentLog.setLlf(llegseverity.getText());
+                    }
+                    if(frontbackstate=="back")
+                    {
+                        currentLog.setLlb(llegseverity.getText());
+                    }
                 }
                 if(llegclickcount%4==3)
                 {
                     llegseverity.setText("Severe");
+                    if(frontbackstate=="front")
+                    {
+                        currentLog.setLlf(llegseverity.getText());
+                    }
+                    if(frontbackstate=="back")
+                    {
+                        currentLog.setLlb(llegseverity.getText());
+                    }
                 }
                 if(llegclickcount%4==0)
                 {
                     llegseverity.setText("");
+                    if(frontbackstate=="front")
+                    {
+                        currentLog.setLlf(llegseverity.getText());
+                    }
+                    if(frontbackstate=="back")
+                    {
+                        currentLog.setLlb(llegseverity.getText());
+                    }
                 }
+
+
             }
         });
 
-        Button submit = root.findViewById(R.id.submitButton);
+
+
+        Button more_details = root.findViewById(R.id.submitButton);
+        more_details.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openMoreDetailsPage();
+            }
+        });
+
+        return root;
+        }
+
+        private void openMoreDetailsPage(){
+        Intent md_intent = new Intent(getActivity(), MoreDetailsSymptomActivity.class);
+        startActivity(md_intent);}
+
+
+
+//        Button submit = root.findViewById(R.id.submitButton);
 //        frontOrBack.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -248,9 +460,5 @@ public class LogFragment extends Fragment {
 //            }
 //        });
 
-        return root;
+
     }
-
-
-
-}

@@ -1,0 +1,14 @@
+<resources>
+    <!-- Repeat Preference -->
+    <string-array name="reply_entries">
+        <item>30 Minutes</item>
+        <item>1 hour</item>
+        <item>2 hours</item>
+    </string-array>
+
+    <string-array name="reply_values">
+        <item>half_hour</item>
+        <item>one_hour</item>
+        <item>two_hour</item>
+    </string-array>
+</resources>

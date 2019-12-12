@@ -1,83 +1,59 @@
 package com.example.eczema_app.ui.settings;
-
+import android.app.TaskInfo;
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
+import android.provider.Settings;
 
-import androidx.annotation.Nullable;
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragmentCompat;
 
 import com.example.eczema_app.R;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 
-public class SettingsFragment extends Fragment {
+//Code developed from https://developer.android.com/guide/topics/ui/settings
 
-    private Button not_button;
-    private Button location_button;
-    private Button profile_button;
+public class SettingsFragment extends PreferenceFragmentCompat {
 
-    private SettingsViewModel settingsViewModel;
+//    private FusedLocationProviderClient fusedLocationClient;
+//    private double lat;
+//    private double lon;
 
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        settingsViewModel= ViewModelProviders.of(this).get(SettingsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_settings, container, false);
-//        final TextView textView = root.findViewById(R.id.);
-//        settingsViewModel.getText().observe(this, new Observer<String>() {
-//            @Override
-//            public void onChanged(@Nullable String s) {
-//                textView.setText(s);
-//            }
-//        });
+    @Override
+    public void onCreatePreferences(Bundle savedInstanceState, String rootKey){
+        setPreferencesFromResource(R.xml.root_preferences, rootKey);
+        Preference locationsettings = findPreference("launch_settings");
 
-        //Notification Button Action
-        not_button = root.findViewById(R.id.button_notifications);
-        not_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openNotificationsPage();
-            }
-        });
+        Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+        startActivityForResult(intent, 0);
+        locationsettings.setIntent(intent);
 
-        //Location Button Action
-        location_button = root.findViewById(R.id.button_location);
-        location_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openLocationsPage();
-            }
-        });
-
-        //Profile Button Action
-        profile_button = root.findViewById(R.id.button_profile);
-        profile_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openProfilePage();
-            }
-        });
-
-
-
-        return root;
+//        fusedLocationClient = LocationServices.getFusedLocationProviderClient(com.example.eczema_app.ui.settings.SettingsFragment);
+//        fusedLocationClient.getLastLocation().addOnSuccessListener(this,  new OnSuccessListener<Location>(){
+//                    @Override
+//                    public void onSuccess(Location location) {
+//                        // Got last known location. In some rare situations this can be null.
+//                        if (location != null) {
+//                            // Logic to handle location object
+//                            lat = location.getLatitude();
+//                            lon = location.getLongitude();
+//                        }
+//                  }
+//                });
+//        System.out.print(lat);
+//        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
+//                .addLocationRequest(locationRequest);
     }
-
-    public void openNotificationsPage(){
-        Intent not_intent = new Intent(getActivity(), Notifications.class);
-        startActivity(not_intent);
-    }
-
-    public void openLocationsPage(){
-        Intent location_intent = new Intent(getActivity(), Locations.class);
-        startActivity(location_intent);
-    }
-    public void  openProfilePage(){
-        Intent profile_intent = new Intent(getActivity(),Profile.class);
-        startActivity(profile_intent);
-    }
+//    code adapted from https://developer.android.com/training/location/change-location-settings
+    protected void createLocationRequest() {
+        LocationRequest locationRequest = LocationRequest.create();
+        locationRequest.setInterval(10000);
+        locationRequest.setFastestInterval(5000);
+        locationRequest.setPriority(LocationRequest.PRIORITY_LOW_POWER);
+}
 }

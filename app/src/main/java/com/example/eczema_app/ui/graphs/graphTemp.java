@@ -20,13 +20,14 @@ import com.example.eczema_app.R;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import com.github.mikephil.charting.utils.ViewPortHandler;
 
-public class graphHumidity extends AppCompatActivity {
+public class graphTemp extends AppCompatActivity {
+
     private LineChart lineChart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_graph_humidity);
+        setContentView(R.layout.activity_graph_temp);
 
         lineChart = (LineChart)findViewById(R.id.lineChart);
         LineDataSet lineDataSet = new LineDataSet(getData(), "Severity levels");
@@ -37,7 +38,7 @@ public class graphHumidity extends AppCompatActivity {
          */
         XAxis xAxis = lineChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        final String[] dates = new String[]{"0%", "20%", "40%", "60%","80%","100%"};
+        final String[] dates = new String[]{"-10°", "0°", "10°", "20°","30°","40°"};
         ValueFormatter formatter = new ValueFormatter() {
             @Override
             public String getAxisLabel(float value, AxisBase axis) {
@@ -81,6 +82,5 @@ public class graphHumidity extends AppCompatActivity {
         entries.add(new Entry(5f, 2f));
 
         return entries;
-         
     }
 }

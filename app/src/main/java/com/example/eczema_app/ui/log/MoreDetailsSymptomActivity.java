@@ -27,7 +27,6 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
     public static String lon = "0.1278";
 
     public static String API_KEY = "192f3b8d3bcf418c816fcfeb4934475f";
-    public static TextView weather;
 
 
 

@@ -58,13 +58,13 @@
         <SwitchPreference
             app:key="location"
             app:title="@string/allow_location"/>
-        <Preference
-            app:key="launch_settings"
-            app:title="Launch Settings">
-            <intent
-                android:action="android.intent.action.VIEW"
-                />
-        </Preference>
+<!--        <Preference-->
+<!--            app:key="launch_settings"-->
+<!--            app:title="Launch Settings">-->
+<!--            <intent-->
+<!--                android:action="android.intent.action.VIEW"-->
+<!--                />-->
+<!--        </Preference>-->
     </PreferenceCategory>
 
 

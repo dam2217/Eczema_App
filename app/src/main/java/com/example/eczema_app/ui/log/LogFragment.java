@@ -16,6 +16,9 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.eczema_app.R;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 public class LogFragment extends Fragment {
 
     private LoggingViewModel loggingViewModel;
@@ -427,6 +430,8 @@ public class LogFragment extends Fragment {
         }
 
         private void openMoreDetailsPage(){
+
+
         Intent md_intent = new Intent(getActivity(), MoreDetailsSymptomActivity.class);
         startActivity(md_intent);}
 

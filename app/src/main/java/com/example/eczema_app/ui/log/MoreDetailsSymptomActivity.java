@@ -111,6 +111,9 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
         });
     }
 
+
+//    https://www.androdocs.com/java/creating-an-android-weather-app-using-java.html
+
     class weatherTask extends AsyncTask<String, Void, String> {
         @Override
         protected void onPreExecute() {
@@ -207,5 +210,7 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
 
         }
     }
+
+//     end of ref
 }
 

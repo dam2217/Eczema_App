@@ -50,5 +50,6 @@
     <!--Location-->
     <string name="allow_location">Allow Location Services</string>
     <string name="next">Next</string>
+    <string name="select_your_treatment">Select your treatment</string>
 
 </resources>

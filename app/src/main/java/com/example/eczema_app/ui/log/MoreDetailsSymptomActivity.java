@@ -41,16 +41,7 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
         @Override
 //      The first item in the spinner is disabled, so that it can be used as a 'hint' but not selected by the user
         public boolean isEnabled(int position){
-            if(position == 0)
-            {
-                // Disable the first item from Spinner
-                // First item will be use for hint
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            return !(position == 0);
         }
 
         @Override

@@ -38,7 +38,10 @@
     <string name="fragment_allow_notifications">Allow notifications</string>
     <string name="fragment_alert_time">Alert Time</string>
     <string name="fragment_repeat">Repeat notification if log not entered? </string>
+    <string name="attachment_summary_on">Automatically send reminder if log not entered</string>
+    <string name="attachment_summary_off">Never send a reminder notification to enter log</string>
 
+    
     <!--Profile-->
     <string name="fragment_name">Name: </string>
     <string name="fragment_email">Email: </string>
@@ -51,5 +54,9 @@
     <string name="allow_location">Allow Location Services</string>
     <string name="next">Next</string>
     <string name="select_your_treatment">Select your treatment</string>
+    <string name="title_activity_settings2">Settings</string>
+    <string name="location_sum_on">Allow app to automatically use location</string>
+    <string name="location_sum_off">Manually enter location when prompted</string>
 
+    
 </resources>

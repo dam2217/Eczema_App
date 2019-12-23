@@ -43,6 +43,8 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0-alpha01'
     implementation 'com.google.code.gson:gson:2.7'
     testImplementation 'org.hamcrest:hamcrest:2.2'
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+
 
 }
 

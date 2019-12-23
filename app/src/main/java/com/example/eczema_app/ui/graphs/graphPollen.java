@@ -1,8 +1,10 @@
 package com.example.eczema_app.ui.graphs;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 
+import com.example.eczema_app.R;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
@@ -10,23 +12,19 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.components.AxisBase;
-import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.formatter.ValueFormatter;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 
-import com.example.eczema_app.R;
-import com.github.mikephil.charting.utils.ColorTemplate;
-import com.github.mikephil.charting.utils.ViewPortHandler;
+public class graphPollen extends AppCompatActivity {
 
-public class graphHumidity extends AppCompatActivity {
     private LineChart lineChart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_graph_humidity);
+        setContentView(R.layout.activity_graph_pollen);
 
         lineChart = (LineChart)findViewById(R.id.lineChart);
         LineDataSet lineDataSet = new LineDataSet(getData(), "Severity levels");
@@ -37,7 +35,7 @@ public class graphHumidity extends AppCompatActivity {
          */
         XAxis xAxis = lineChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        final String[] dates = new String[]{"0%", "20%", "40%", "60%","80%","100%"};
+        final String[] dates = new String[]{"none", "low°", "moderate°", "severe"};
         ValueFormatter formatter = new ValueFormatter() {
             @Override
             public String getAxisLabel(float value, AxisBase axis) {
@@ -77,10 +75,10 @@ public class graphHumidity extends AppCompatActivity {
         entries.add(new Entry(1f, 1f));
         entries.add(new Entry(2f, 2f));
         entries.add(new Entry(3f, 2f));
-        entries.add(new Entry(4f, 2f));
-        entries.add(new Entry(5f, 2f));
+        //entries.add(new Entry(4f, 1f));
+        //entries.add(new Entry(5f, 1f));
 
         return entries;
-         
+
     }
 }

@@ -17,7 +17,8 @@ public class LogEntry implements Parcelable {
     public CharSequence rlb;
     public CharSequence llf;
     public CharSequence llb;
-    public String treatment;
+    public String treatmentYorN;
+    public String treatmentUsed;
 
     public LogEntry(){
         this.hf = "";
@@ -32,7 +33,8 @@ public class LogEntry implements Parcelable {
         this.rlb = "";
         this.llf = "";
         this.llb = "";
-        this.treatment = "";
+        this.treatmentYorN = "";
+        this.treatmentUsed = "";
     }
 
     public void setHf(CharSequence hf) {
@@ -95,14 +97,19 @@ public class LogEntry implements Parcelable {
         Log.i("left leg back", llb.toString());
     }
 
-    public void setTreatment(String treatment) {
-        this.treatment = treatment;
-        Log.i("treatment", treatment.toString());
+    public void setTreatmentYorN(String treatmentYorN) {
+        this.treatmentYorN = treatmentYorN;
+        Log.i("treatmentYorN", treatmentYorN);
+    }
+
+    public void setTreatmentUsed(String treatmentUsed) {
+        this.treatmentUsed = treatmentUsed;
+        Log.i("treatmentUsed", treatmentUsed);
     }
 
     //parcel part
     public LogEntry(Parcel in){
-        String[] data= new String[13];
+        String[] data= new String[14];
 
         in.readStringArray(data);
         this.hf= data[0];
@@ -117,7 +124,8 @@ public class LogEntry implements Parcelable {
         this.rlb= data[9];
         this.llf= data[10];
         this.llb= data[11];
-        this.treatment= data[12];
+        this.treatmentYorN= data[12];
+        this.treatmentUsed= data[13];
 
     }
     @Override
@@ -134,7 +142,7 @@ public class LogEntry implements Parcelable {
                 String.valueOf(this.tf), String.valueOf(this.tb), String.valueOf(this.raf),
                 String.valueOf(this.rab), String.valueOf(this.laf), String.valueOf(this.lab),
                 String.valueOf(this.rlf), String.valueOf(this.rlb), String.valueOf(this.llf),
-                String.valueOf(this.llb), this.treatment});
+                String.valueOf(this.llb), this.treatmentYorN, this.treatmentUsed});
     }
 
     public static final Parcelable.Creator<LogEntry> CREATOR= new Parcelable.Creator<LogEntry>() {

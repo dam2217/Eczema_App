@@ -50,13 +50,12 @@
         android:theme="@style/AppTheme.ToggleButton"/>
 
 
-
     <TextView
         android:id="@+id/selectTreatment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="If applicable, select your treatment"
+        android:text="@string/select_your_treatment"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="18sp"
@@ -71,6 +70,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="#F1F8FC"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="18sp"
+        app:fontFamily="@font/assistant_bold"
+        app:layout_constraintBottom_toTopOf="@id/whereTreatment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectTreatment" />
+
+    <Spinner
+        android:id="@+id/whereTreatment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="50dp"
         android:background="#F1F8FC"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -80,7 +95,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectTreatment" />
+        app:layout_constraintTop_toBottomOf="@+id/whatTreatment" />
 
 
 
@@ -104,7 +119,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/whatTreatment" />
+        app:layout_constraintTop_toBottomOf="@+id/whereTreatment" />
 
     <EditText
         android:id="@+id/Notes"
@@ -142,6 +157,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintHorizontal_bias="0.93"
         app:layout_constraintVertical_bias="0.88" />
+
 
 
 

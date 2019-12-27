@@ -4,12 +4,20 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
 
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
+import android.widget.ToggleButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 import com.androdocs.httprequest.HttpRequest;
@@ -23,15 +31,19 @@ import org.json.JSONObject;
 
 public class MoreDetailsSymptomActivity extends AppCompatActivity {
 
+    LogEntry currentLog = new LogEntry();
+
+    private String selectedYorN = "No";
+    private String selectedTreatment = "No Treatment Used";
+
     public static String lat = "51.5074";
     public static String lon = "0.1278";
 
     public static String API_KEY = "192f3b8d3bcf418c816fcfeb4934475f";
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        currentLog = getIntent().getParcelableExtra("currentLog");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_more_details_symptoms);
 
@@ -80,14 +92,13 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
 //      create spinner
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         dropDownWhat.setAdapter(adapter);
-
+          
         dropDownWhat.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-        @Override
-        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            String selectedItemText = (String) parent.getItemAtPosition(position);
-            // If user change the default selection
-            // First item is disable and it is used for hint
-        }
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                selectedTreatment = dropDownWhat.getSelectedItem().toString();
+                currentLog.setTreatmentUsed(selectedTreatment);
+            }
 
         @Override
         public void onNothingSelected(AdapterView<?> parent) {
@@ -103,9 +114,13 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
                 if (yesNo.isChecked()) {
                     txt.setVisibility(View.VISIBLE);
                     dropDownWhat.setVisibility(View.VISIBLE);
+                    selectedYorN = yesNo.getText().toString();
+                    currentLog.setTreatmentYorN(selectedYorN);
                 } else {
                     txt.setVisibility(View.GONE);
                     dropDownWhat.setVisibility(View.GONE);
+                    selectedYorN = yesNo.getText().toString();
+                    currentLog.setTreatmentYorN(selectedYorN);
                 }
             }
         });

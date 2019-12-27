@@ -52,14 +52,12 @@ public class LogFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 switchcount = switchcount + 1;
-                if(switchcount%2==1)
-                {
+                if (switchcount % 2 == 1) {
                     frontOrBack.setText("Back");
                     frontbackstate = "back";
 
                 }
-                if(switchcount%2==0)
-                {
+                if (switchcount % 2 == 0) {
                     frontOrBack.setText("Front");
                     frontbackstate = "front";
                 }
@@ -88,51 +86,39 @@ public class LogFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 headclickcount = headclickcount + 1;
-                if(headclickcount%4==1)
-                {
+                if (headclickcount % 4 == 1) {
                     headseverity.setText("Mild");
-                    if(frontbackstate=="front")
-                    {
+                    if (frontbackstate == "front") {
                         currentLog.setHf(headseverity.getText());
                     }
-                    if(frontbackstate=="back")
-                    {
+                    if (frontbackstate == "back") {
                         currentLog.setHb(headseverity.getText());
                     }
                 }
-                if(headclickcount%4==2)
-                {
+                if (headclickcount % 4 == 2) {
                     headseverity.setText("Moderate");
-                    if(frontbackstate=="front")
-                    {
+                    if (frontbackstate == "front") {
                         currentLog.setHf(headseverity.getText());
                     }
-                    if(frontbackstate=="back")
-                    {
+                    if (frontbackstate == "back") {
                         currentLog.setHb(headseverity.getText());
                     }
                 }
-                if(headclickcount%4==3)
-                {
+                if (headclickcount % 4 == 3) {
                     headseverity.setText("Severe");
-                    if(frontbackstate=="front")
-                    {
+                    if (frontbackstate == "front") {
                         currentLog.setHf(headseverity.getText());
                     }
-                    if(frontbackstate=="back")
-                    {
+                    if (frontbackstate == "back") {
                         currentLog.setHb(headseverity.getText());
                     }
                 }
-                if(headclickcount%4==0)
-                {
+                if (headclickcount % 4 == 0) {
                     headseverity.setText("");
-                    if(frontbackstate=="front")
-                    {
+                    if (frontbackstate == "front") {
                         currentLog.setHf(headseverity.getText());
                     }
-                    if(frontbackstate=="back")
-                    {
+                    if (frontbackstate == "back") {
                         currentLog.setHb(headseverity.getText());
                     }
                 }
@@ -143,51 +129,39 @@ public class LogFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 torsoclickcount = torsoclickcount + 1;
-                if(torsoclickcount%4==1)
-                {
+                if (torsoclickcount % 4 == 1) {
                     torsoseverity.setText("Mild");
-                    if(frontbackstate=="front")
-                {
-                    currentLog.setTf(torsoseverity.getText());
-                }
-                    if(frontbackstate=="back")
-                    {
+                    if (frontbackstate == "front") {
+                        currentLog.setTf(torsoseverity.getText());
+                    }
+                    if (frontbackstate == "back") {
                         currentLog.setTb(torsoseverity.getText());
                     }
                 }
-                if(torsoclickcount%4==2)
-                {
+                if (torsoclickcount % 4 == 2) {
                     torsoseverity.setText("Moderate");
-                    if(frontbackstate=="front")
-                    {
+                    if (frontbackstate == "front") {
                         currentLog.setTf(torsoseverity.getText());
                     }
-                    if(frontbackstate=="back")
-                    {
+                    if (frontbackstate == "back") {
                         currentLog.setTb(torsoseverity.getText());
                     }
                 }
-                if(torsoclickcount%4==3)
-                {
+                if (torsoclickcount % 4 == 3) {
                     torsoseverity.setText("Severe");
-                    if(frontbackstate=="front")
-                    {
+                    if (frontbackstate == "front") {
                         currentLog.setTf(torsoseverity.getText());
                     }
-                    if(frontbackstate=="back")
-                    {
+                    if (frontbackstate == "back") {
                         currentLog.setTb(torsoseverity.getText());
                     }
                 }
-                if(torsoclickcount%4==0)
-                {
+                if (torsoclickcount % 4 == 0) {
                     torsoseverity.setText("");
-                    if(frontbackstate=="front")
-                    {
+                    if (frontbackstate == "front") {
                         currentLog.setTf(torsoseverity.getText());
                     }
-                    if(frontbackstate=="back")
-                    {
+                    if (frontbackstate == "back") {
                         currentLog.setTb(torsoseverity.getText());
                     }
                 }
@@ -198,51 +172,39 @@ public class LogFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 rarmclickcount = rarmclickcount + 1;
-                if(rarmclickcount%4==1)
-                {
+                if (rarmclickcount % 4 == 1) {
                     rarmseverity.setText("Mild");
-                    if(frontbackstate=="front")
-                    {
+                    if (frontbackstate == "front") {
                         currentLog.setRaf(rarmseverity.getText());
                     }
-                    if(frontbackstate=="back")
-                    {
+                    if (frontbackstate == "back") {
                         currentLog.setRab(rarmseverity.getText());
                     }
                 }
-                if(rarmclickcount%4==2)
-                {
+                if (rarmclickcount % 4 == 2) {
                     rarmseverity.setText("Moderate");
-                    if(frontbackstate=="front")
-                    {
+                    if (frontbackstate == "front") {
                         currentLog.setRaf(rarmseverity.getText());
                     }
-                    if(frontbackstate=="back")
-                    {
+                    if (frontbackstate == "back") {
                         currentLog.setRab(rarmseverity.getText());
                     }
                 }
-                if(rarmclickcount%4==3)
-                {
+                if (rarmclickcount % 4 == 3) {
                     rarmseverity.setText("Severe");
-                    if(frontbackstate=="front")
-                    {
+                    if (frontbackstate == "front") {
                         currentLog.setRaf(rarmseverity.getText());
                     }
-                    if(frontbackstate=="back")
-                    {
+                    if (frontbackstate == "back") {
                         currentLog.setRab(rarmseverity.getText());
                     }
                 }
-                if(rarmclickcount%4==0)
-                {
+                if (rarmclickcount % 4 == 0) {
                     rarmseverity.setText("");
-                    if(frontbackstate=="front")
-                    {
+                    if (frontbackstate == "front") {
                         currentLog.setRaf(rarmseverity.getText());
                     }
-                    if(frontbackstate=="back")
-                    {
+                    if (frontbackstate == "back") {
                         currentLog.setRab(rarmseverity.getText());
                     }
                 }
@@ -253,51 +215,39 @@ public class LogFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 larmclickcount = larmclickcount + 1;
-                if(larmclickcount%4==1)
-                {
+                if (larmclickcount % 4 == 1) {
                     larmseverity.setText("Mild");
-                    if(frontbackstate=="front")
-                    {
+                    if (frontbackstate == "front") {
                         currentLog.setLaf(larmseverity.getText());
                     }
-                    if(frontbackstate=="back")
-                    {
+                    if (frontbackstate == "back") {
                         currentLog.setLab(larmseverity.getText());
                     }
                 }
-                if(larmclickcount%4==2)
-                {
+                if (larmclickcount % 4 == 2) {
                     larmseverity.setText("Moderate");
-                    if(frontbackstate=="front")
-                    {
+                    if (frontbackstate == "front") {
                         currentLog.setLaf(larmseverity.getText());
                     }
-                    if(frontbackstate=="back")
-                    {
+                    if (frontbackstate == "back") {
                         currentLog.setLab(larmseverity.getText());
                     }
                 }
-                if(larmclickcount%4==3)
-                {
+                if (larmclickcount % 4 == 3) {
                     larmseverity.setText("Severe");
-                    if(frontbackstate=="front")
-                    {
+                    if (frontbackstate == "front") {
                         currentLog.setLaf(larmseverity.getText());
                     }
-                    if(frontbackstate=="back")
-                    {
+                    if (frontbackstate == "back") {
                         currentLog.setLab(larmseverity.getText());
                     }
                 }
-                if(larmclickcount%4==0)
-                {
+                if (larmclickcount % 4 == 0) {
                     larmseverity.setText("");
-                    if(frontbackstate=="front")
-                    {
+                    if (frontbackstate == "front") {
                         currentLog.setLaf(larmseverity.getText());
                     }
-                    if(frontbackstate=="back")
-                    {
+                    if (frontbackstate == "back") {
                         currentLog.setLab(larmseverity.getText());
                     }
                 }
@@ -308,51 +258,39 @@ public class LogFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 rlegclickcount = rlegclickcount + 1;
-                if(rlegclickcount%4==1)
-                {
+                if (rlegclickcount % 4 == 1) {
                     rlegseverity.setText("Mild");
-                    if(frontbackstate=="front")
-                    {
+                    if (frontbackstate == "front") {
                         currentLog.setRlf(rlegseverity.getText());
                     }
-                    if(frontbackstate=="back")
-                    {
+                    if (frontbackstate == "back") {
                         currentLog.setRlb(rlegseverity.getText());
                     }
                 }
-                if(rlegclickcount%4==2)
-                {
+                if (rlegclickcount % 4 == 2) {
                     rlegseverity.setText("Moderate");
-                    if(frontbackstate=="front")
-                    {
+                    if (frontbackstate == "front") {
                         currentLog.setRlf(rlegseverity.getText());
                     }
-                    if(frontbackstate=="back")
-                    {
+                    if (frontbackstate == "back") {
                         currentLog.setRlb(rlegseverity.getText());
                     }
                 }
-                if(rlegclickcount%4==3)
-                {
+                if (rlegclickcount % 4 == 3) {
                     rlegseverity.setText("Severe");
-                    if(frontbackstate=="front")
-                    {
+                    if (frontbackstate == "front") {
                         currentLog.setRlf(rlegseverity.getText());
                     }
-                    if(frontbackstate=="back")
-                    {
+                    if (frontbackstate == "back") {
                         currentLog.setRlb(rlegseverity.getText());
                     }
                 }
-                if(rlegclickcount%4==0)
-                {
+                if (rlegclickcount % 4 == 0) {
                     rlegseverity.setText("");
-                    if(frontbackstate=="front")
-                    {
+                    if (frontbackstate == "front") {
                         currentLog.setRlf(rlegseverity.getText());
                     }
-                    if(frontbackstate=="back")
-                    {
+                    if (frontbackstate == "back") {
                         currentLog.setRlb(rlegseverity.getText());
                     }
                 }
@@ -363,51 +301,39 @@ public class LogFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 llegclickcount = llegclickcount + 1;
-                if(llegclickcount%4==1)
-                {
+                if (llegclickcount % 4 == 1) {
                     llegseverity.setText("Mild");
-                    if(frontbackstate=="front")
-                    {
+                    if (frontbackstate == "front") {
                         currentLog.setLlf(llegseverity.getText());
                     }
-                    if(frontbackstate=="back")
-                    {
+                    if (frontbackstate == "back") {
                         currentLog.setLlb(llegseverity.getText());
                     }
                 }
-                if(llegclickcount%4==2)
-                {
+                if (llegclickcount % 4 == 2) {
                     llegseverity.setText("Moderate");
-                    if(frontbackstate=="front")
-                    {
+                    if (frontbackstate == "front") {
                         currentLog.setLlf(llegseverity.getText());
                     }
-                    if(frontbackstate=="back")
-                    {
+                    if (frontbackstate == "back") {
                         currentLog.setLlb(llegseverity.getText());
                     }
                 }
-                if(llegclickcount%4==3)
-                {
+                if (llegclickcount % 4 == 3) {
                     llegseverity.setText("Severe");
-                    if(frontbackstate=="front")
-                    {
+                    if (frontbackstate == "front") {
                         currentLog.setLlf(llegseverity.getText());
                     }
-                    if(frontbackstate=="back")
-                    {
+                    if (frontbackstate == "back") {
                         currentLog.setLlb(llegseverity.getText());
                     }
                 }
-                if(llegclickcount%4==0)
-                {
+                if (llegclickcount % 4 == 0) {
                     llegseverity.setText("");
-                    if(frontbackstate=="front")
-                    {
+                    if (frontbackstate == "front") {
                         currentLog.setLlf(llegseverity.getText());
                     }
-                    if(frontbackstate=="back")
-                    {
+                    if (frontbackstate == "back") {
                         currentLog.setLlb(llegseverity.getText());
                     }
                 }
@@ -415,25 +341,25 @@ public class LogFragment extends Fragment {
 
             }
         });
-
 
 
         Button more_details = root.findViewById(R.id.submitButton);
         more_details.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openMoreDetailsPage();
+                Intent md_intent = new Intent(getActivity(), MoreDetailsSymptomActivity.class);
+                md_intent.putExtra("currentLog", currentLog);
+                startActivity(md_intent);
             }
         });
 
         return root;
-        }
+    }
 
-        private void openMoreDetailsPage(){
+//        private void openMoreDetailsPage(){
+//
+//        }
 
-
-        Intent md_intent = new Intent(getActivity(), MoreDetailsSymptomActivity.class);
-        startActivity(md_intent);}
 
 
 

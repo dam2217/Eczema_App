@@ -33,7 +33,6 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
 
     LogEntry currentLog = new LogEntry();
 
-    private int yornclickcount = 0;
     private String selectedYorN = "No";
     private String selectedTreatment = "No Treatment Used";
 
@@ -97,7 +96,7 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
         dropDownWhat.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                selectedTreatment = dropDown.getSelectedItem().toString();
+                selectedTreatment = dropDownWhat.getSelectedItem().toString();
                 currentLog.setTreatmentUsed(selectedTreatment);
             }
 

@@ -3,27 +3,17 @@ package com.example.eczema_app.ui.log;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
-import android.os.Parcel;
-import android.os.Parcelable;
-
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-
-import android.widget.ToggleButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
-import com.androdocs.httprequest.HttpRequest;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.androdocs.httprequest.HttpRequest;
 import com.example.eczema_app.R;
 
 import org.json.JSONException;
@@ -62,6 +52,9 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
 
 //      strings of the locations selected on previous page
 //        String[] locations = new String[]{}
+//      find which of the body parts have been selected - which have values in their string
+//        spinner "select all that apply" for those parts
+//        will assume that the same treatment has been used for all locations
 
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, treatments){
 
@@ -150,12 +143,18 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
                 int humidity = data.getInt("relative_humidity");
                 float temp = (float) temperature.getDouble("value");
 
+                String tempStr = String.valueOf(temp);
+                String humidityStr = String.valueOf(humidity);
 
-                System.out.println(humidity);
-                System.out.println(temp);
+                currentLog.setHumidity(humidityStr);
+                currentLog.setTemperature(tempStr);
 
 
             } catch (JSONException e) {
+//                System.out.println("No weather info available");
+                currentLog.setHumidity("Error");
+                currentLog.setTemperature("Error");
+
             }
 
         }
@@ -182,12 +181,13 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
                 JSONObject baqi = indexes.getJSONObject("baqi");
                 int aqi = baqi.getInt("aqi");
 
+                String aqi_str = String.valueOf(aqi);
 
-                System.out.println(aqi);
-//                System.out.println(temp);
+                currentLog.setPollutionLevel(aqi_str);
 
 
             } catch (JSONException e) {
+                currentLog.setPollutionLevel("Error");
             }
 
         }
@@ -214,13 +214,14 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
                 JSONObject index = tree.getJSONObject("index");
                 int pollenValue = index.getInt("value");
 
+                String pollenValueStr = String.valueOf(pollenValue);
 
-                System.out.println(pollenValue);
-//                System.out.println(temp);
+                currentLog.setPollenLevel(pollenValueStr);
+
 
 
             } catch (JSONException e) {
-                System.out.println("No pollen info available");
+                currentLog.setPollenLevel("Error");
             }
 
         }

@@ -19,6 +19,10 @@ public class LogEntry implements Parcelable {
     public CharSequence llb;
     public String treatmentYorN;
     public String treatmentUsed;
+    public String temperature;
+    public String humidity;
+    public String pollutionLevel;
+    public String pollenLevel;
 
     public LogEntry(){
         this.hf = "";
@@ -35,6 +39,10 @@ public class LogEntry implements Parcelable {
         this.llb = "";
         this.treatmentYorN = "";
         this.treatmentUsed = "";
+        this.temperature = "";
+        this.humidity = "";
+        this.pollutionLevel = "";
+        this.pollenLevel = "";
     }
 
     public void setHf(CharSequence hf) {
@@ -107,9 +115,29 @@ public class LogEntry implements Parcelable {
         Log.i("treatmentUsed", treatmentUsed);
     }
 
+    public void setTemperature(String temperatureVal){
+        this.temperature = temperatureVal;
+        Log.i("temperature", temperature);
+    }
+
+    public void setHumidity(String humidityVal){
+        this.humidity = humidityVal;
+        Log.i("humidity", humidity);
+    }
+
+    public void setPollutionLevel(String pollutionAQI){
+        this.pollutionLevel = pollutionAQI;
+        Log.i("pollutionLevel", pollutionLevel);
+    }
+
+    public void setPollenLevel(String pollenIndex){
+        this.pollenLevel = pollenIndex;
+        Log.i("pollenLevel", pollenLevel);
+    }
+
     //parcel part
     public LogEntry(Parcel in){
-        String[] data= new String[14];
+        String[] data= new String[18];
 
         in.readStringArray(data);
         this.hf= data[0];
@@ -126,6 +154,11 @@ public class LogEntry implements Parcelable {
         this.llb= data[11];
         this.treatmentYorN= data[12];
         this.treatmentUsed= data[13];
+        this.pollenLevel = data[14];
+        this.pollutionLevel = data[15];
+        this.humidity = data[16];
+        this.temperature = data[17];
+
 
     }
     @Override
@@ -142,7 +175,7 @@ public class LogEntry implements Parcelable {
                 String.valueOf(this.tf), String.valueOf(this.tb), String.valueOf(this.raf),
                 String.valueOf(this.rab), String.valueOf(this.laf), String.valueOf(this.lab),
                 String.valueOf(this.rlf), String.valueOf(this.rlb), String.valueOf(this.llf),
-                String.valueOf(this.llb), this.treatmentYorN, this.treatmentUsed});
+                String.valueOf(this.llb), this.treatmentYorN, this.treatmentUsed, this.pollenLevel, this.pollutionLevel, this.humidity, this.temperature});
     }
 
     public static final Parcelable.Creator<LogEntry> CREATOR= new Parcelable.Creator<LogEntry>() {

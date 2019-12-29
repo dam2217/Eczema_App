@@ -6,6 +6,7 @@ import android.app.NotificationManager;
 import android.os.Build;
 
 public class App extends Application {
+    public String CHANNEL_ID = "testt";
     @Override
     public void  onCreate(){
         super.onCreate();
@@ -14,7 +15,7 @@ public class App extends Application {
     private void createNotificationChannel() {
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
-        String CHANNEL_ID = "testt";
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence name = getString(R.string.channel_name);
             String description = getString(R.string.channel_description);

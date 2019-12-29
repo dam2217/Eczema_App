@@ -28,7 +28,7 @@ import com.example.eczema_app.ui.settings.SettingsFragment;
 public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
-    public static String CHANNEL_ID = "testt";
+    //public static String CHANNEL_ID = "testt";
     private NotificationManagerCompat notiManager;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -52,16 +52,20 @@ public class HomeFragment extends Fragment {
 
     private void addnotification(){
         System.out.println("entered");
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext())
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext(), "testt")
                 .setSmallIcon(R.mipmap.ic_launcher_round)
                 .setContentTitle("XMA Logbook")
                 .setContentText("Don't forget to log your symptoms today!");
+        System.out.println(builder);
+
         Intent notificationsIntent = new Intent(getActivity(), HomeFragment.class);
         System.out.println("fuck");
         PendingIntent contentIntent = PendingIntent.getActivity(getContext(),0, notificationsIntent,PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setContentIntent(contentIntent);
         System.out.println("help");
+
         NotificationManager manager = (NotificationManager) getContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        System.out.println(builder.build());
         manager.notify(1, builder.build());
         System.out.println("yikes");
     }

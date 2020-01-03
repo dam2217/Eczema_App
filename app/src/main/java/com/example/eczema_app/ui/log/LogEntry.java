@@ -36,6 +36,7 @@ public class LogEntry implements Parcelable {
     public String rlbTreated;
     public String llfTreated;
     public String llbTreated;
+    public String notes;
 
     public LogEntry(){
         this.hf = "";
@@ -69,6 +70,7 @@ public class LogEntry implements Parcelable {
         this.rlbTreated = "";
         this.llfTreated = "";
         this.llbTreated = "";
+        this.notes = "";
     }
 
     public void setHf(CharSequence hf) {
@@ -228,6 +230,11 @@ public class LogEntry implements Parcelable {
         Log.i("rafTreated", rafTreated);
     }
 
+    public void setNotes(String extraInfo){
+        this.notes = extraInfo;
+        Log.i("notes", notes);
+    }
+
 
     public CharSequence getLlf(){
         return this.llf;
@@ -266,9 +273,10 @@ public class LogEntry implements Parcelable {
         return this.hb;
     }
 
+
     //parcel part
     public LogEntry(Parcel in){
-        String[] data= new String[31];
+        String[] data= new String[32];
 
         in.readStringArray(data);
         this.hf= data[0];
@@ -302,6 +310,7 @@ public class LogEntry implements Parcelable {
         this.rlbTreated = data[28];
         this.llfTreated = data[29];
         this.llbTreated = data[30];
+        this.notes = data[31];
 
 
     }
@@ -323,7 +332,7 @@ public class LogEntry implements Parcelable {
                 this.pollutionLevel, this.humidity, this.temperature, this.location, this.hfTreated,
                 this.hbTreated, this.tfTreated, this.tbTreated, this.rafTreated, this.rabTreated,
                 this.lafTreated, this.labTreated, this.rlfTreated, this.rlbTreated, this.llfTreated,
-                this.llbTreated});
+                this.llbTreated, this.notes});
     }
 
     public static final Parcelable.Creator<LogEntry> CREATOR= new Parcelable.Creator<LogEntry>() {
@@ -340,6 +349,9 @@ public class LogEntry implements Parcelable {
         }
     };
 
+    public String getNotes() {
+        return this.notes;
+    }
 }
 
 

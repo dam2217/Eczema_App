@@ -71,6 +71,7 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
         final TextView cityText = findViewById(R.id.locFromGPS);
         final EditText cityLocation = findViewById(R.id.location);
         final Button getLoc = findViewById(R.id.findLocation);
+        final EditText notes = findViewById(R.id.Notes);
 
 //      initially, the treatment spinners are set to be invisible
         txt.setVisibility(View.GONE);
@@ -249,6 +250,9 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
 
                 String treatedAreas = dropDownWhere.getSelectedItemsAsString();
                 setTreatedAreas(treatedAreas);
+
+                String extraInformation = String.valueOf(notes.getText());
+                currentLog.setNotes(extraInformation);
 
 //              when save button clicked, return to home page
                 if (locationFound) {

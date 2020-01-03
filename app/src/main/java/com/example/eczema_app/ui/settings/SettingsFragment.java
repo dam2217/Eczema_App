@@ -30,8 +30,6 @@ import com.google.android.gms.tasks.Task;
 //
 public class SettingsFragment extends PreferenceFragmentCompat {
 
-//    public Coordinates locationCoords = new Coordinates();
-
 
     public String lat = "";
     public String lon = "";

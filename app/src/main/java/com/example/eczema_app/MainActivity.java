@@ -2,26 +2,16 @@ package com.example.eczema_app;
 
 import android.os.Bundle;
 
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import android.view.View;
-
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
-import com.jjoe64.graphview.GraphView;
-
-import androidx.drawerlayout.widget.DrawerLayout;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import android.view.Menu;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,6 +35,21 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        final AlertDialog inflammationLocations = new AlertDialog.Builder(this, R.style.CustomDialogTheme).create();
+        inflammationLocations.setTitle("Inflammations");
+        inflammationLocations.setMessage("Insert list of locations and severity ");
+//        show on click of locations button
+//        inflammationLocations.show();
+
+        final AlertDialog treatments = new AlertDialog.Builder(this, R.style.CustomDialogTheme).create();
+        treatments.setTitle("Treatment: **Name of Treatment**");
+        treatments.setMessage("Insert list of where treatment used");
+//        treatments.show();
+
+        final AlertDialog notes = new AlertDialog.Builder(this, R.style.CustomDialogTheme).create();
+        notes.setTitle("Notes");
+        notes.setMessage("Insert Notes");
+//        notes.show();
 
 
     }

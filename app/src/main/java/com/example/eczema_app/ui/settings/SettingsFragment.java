@@ -1,11 +1,9 @@
 package com.example.eczema_app.ui.settings;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.TaskInfo;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
@@ -15,25 +13,16 @@ import android.provider.Settings;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
-import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
-import com.example.eczema_app.MainActivity;
 import com.example.eczema_app.R;
-import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.LocationSettingsRequest;
-import com.google.android.gms.location.LocationSettingsResponse;
-import com.google.android.gms.location.SettingsClient;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 //
 //
@@ -41,18 +30,22 @@ import com.google.android.gms.tasks.Task;
 //
 public class SettingsFragment extends PreferenceFragmentCompat {
 
-        private String lat = "lllll";
-        private String lon;
-        private FusedLocationProviderClient mFusedLocationClient;
-        private int PERMISSION_ID = 44;
+//    public Coordinates locationCoords = new Coordinates();
+
+
+    public String lat = "";
+    public String lon = "";
+    private Context mContext;
+    private FusedLocationProviderClient mFusedLocationClient;
+    private int PERMISSION_ID = 44;
 
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey);
-            System.out.println("asdfghjkl");
-            mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this.getActivity());
-            getLastLocation();
+        System.out.println("asdfghjkl");
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this.getActivity());
+        getLastLocation();
 
     }
 
@@ -68,25 +61,22 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                                     Location location = task.getResult();
                                     if (location == null) {
                                         requestNewLocationData();
-                                        System.out.println("bbbb");
                                     } else {
                                         lat = Double.toString(location.getLatitude());
-                                        System.out.println(lat);
-                                        System.out.println("cccccc");
                                         lon = Double.toString(location.getLongitude());
+                                        System.out.println(lat);
                                         System.out.println(lon);
                                     }
                                 }
                             });
                     } else {
-                        Toast.makeText(this.getContext(), "Turn on location sdfghjnmk,", Toast.LENGTH_LONG).show();
+                        Toast.makeText(this.getContext(), "Turn on location", Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                         startActivity(intent);
                     }
                 } else {
                     requestPermissions();
 
-                    System.out.println("meg");
                 }
         }
 
@@ -157,6 +147,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                 }
 
         }
+
 
 }
 

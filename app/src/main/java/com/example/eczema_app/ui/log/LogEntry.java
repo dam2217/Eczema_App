@@ -23,6 +23,19 @@ public class LogEntry implements Parcelable {
     public String humidity;
     public String pollutionLevel;
     public String pollenLevel;
+    public String location;
+    public String hfTreated;
+    public String hbTreated;
+    public String tfTreated;
+    public String tbTreated;
+    public String rafTreated;
+    public String rabTreated;
+    public String lafTreated;
+    public String labTreated;
+    public String rlfTreated;
+    public String rlbTreated;
+    public String llfTreated;
+    public String llbTreated;
 
     public LogEntry(){
         this.hf = "";
@@ -43,6 +56,19 @@ public class LogEntry implements Parcelable {
         this.humidity = "";
         this.pollutionLevel = "";
         this.pollenLevel = "";
+        this.location = "";
+        this.hfTreated = "";
+        this.hbTreated = "";
+        this.tfTreated = "";
+        this.tbTreated = "";
+        this.rafTreated = "";
+        this.rabTreated = "";
+        this.lafTreated = "";
+        this.labTreated = "";
+        this.rlfTreated = "";
+        this.rlbTreated = "";
+        this.llfTreated = "";
+        this.llbTreated = "";
     }
 
     public void setHf(CharSequence hf) {
@@ -135,6 +161,73 @@ public class LogEntry implements Parcelable {
         Log.i("pollenLevel", pollenLevel);
     }
 
+    public void setLocation(String city){
+        this.location = city;
+
+        Log.i("location", location);
+    }
+
+    public void setHbTreated(boolean treatmentUsed){
+        this.hbTreated = String.valueOf(treatmentUsed);
+        Log.i("hbTreated", hbTreated);
+    }
+
+    public void setHfTreated(boolean treatmentUsed){
+        this.hfTreated = String.valueOf(treatmentUsed);
+        Log.i("hfTreated", hfTreated);
+    }
+
+    public void setTbTreated(boolean treatmentUsed){
+        this.tbTreated = String.valueOf(treatmentUsed);
+        Log.i("tbTreated", tbTreated);
+
+    }
+
+    public void setTfTreated(boolean treatmentUsed){
+        this.tfTreated = String.valueOf(treatmentUsed);
+        Log.i("tfTreated", tfTreated);
+    }
+
+    public void setLabTreated(boolean treatmentUsed){
+        this.labTreated = String.valueOf(treatmentUsed);
+        Log.i("labTreated", labTreated);
+    }
+
+    public void setLafTreated(boolean treatmentUsed){
+        this.lafTreated = String.valueOf(treatmentUsed);
+        Log.i("lafTreated", lafTreated);
+    }
+
+    public void setLlbTreated(boolean treatmentUsed){
+        this.llbTreated = String.valueOf(treatmentUsed);
+        Log.i("llbTreated", llbTreated);
+    }
+
+    public void setLlfTreated(boolean treatmentUsed){
+        this.llfTreated = String.valueOf(treatmentUsed);
+        Log.i("llfTreated", llfTreated);
+    }
+
+    public void setRlbTreated(boolean treatmentUsed){
+        this.rlbTreated = String.valueOf(treatmentUsed);
+        Log.i("rlbTreated", rlbTreated);
+    }
+
+    public void setRlfTreated(boolean treatmentUsed){
+        this.rlfTreated = String.valueOf(treatmentUsed);
+        Log.i("rlfTreated", rlfTreated);
+    }
+
+    public void setRabTreated(boolean treatmentUsed){
+        this.rabTreated = String.valueOf(treatmentUsed);
+        Log.i("rabTreated", rabTreated);
+    }
+
+    public void setRafTreated(boolean treatmentUsed){
+        this.rafTreated = String.valueOf(treatmentUsed);
+        Log.i("rafTreated", rafTreated);
+    }
+
 
     public CharSequence getLlf(){
         return this.llf;
@@ -175,7 +268,7 @@ public class LogEntry implements Parcelable {
 
     //parcel part
     public LogEntry(Parcel in){
-        String[] data= new String[18];
+        String[] data= new String[31];
 
         in.readStringArray(data);
         this.hf= data[0];
@@ -196,6 +289,19 @@ public class LogEntry implements Parcelable {
         this.pollutionLevel = data[15];
         this.humidity = data[16];
         this.temperature = data[17];
+        this.location = data[18];
+        this.hfTreated = data[19];
+        this.hbTreated = data[20];
+        this.tfTreated = data[21];
+        this.tbTreated = data[22];
+        this.rafTreated = data[23];
+        this.rabTreated = data[24];
+        this.lafTreated = data[25];
+        this.labTreated = data[26];
+        this.rlfTreated = data[27];
+        this.rlbTreated = data[28];
+        this.llfTreated = data[29];
+        this.llbTreated = data[30];
 
 
     }
@@ -213,7 +319,11 @@ public class LogEntry implements Parcelable {
                 String.valueOf(this.tf), String.valueOf(this.tb), String.valueOf(this.raf),
                 String.valueOf(this.rab), String.valueOf(this.laf), String.valueOf(this.lab),
                 String.valueOf(this.rlf), String.valueOf(this.rlb), String.valueOf(this.llf),
-                String.valueOf(this.llb), this.treatmentYorN, this.treatmentUsed, this.pollenLevel, this.pollutionLevel, this.humidity, this.temperature});
+                String.valueOf(this.llb), this.treatmentYorN, this.treatmentUsed, this.pollenLevel,
+                this.pollutionLevel, this.humidity, this.temperature, this.location, this.hfTreated,
+                this.hbTreated, this.tfTreated, this.tbTreated, this.rafTreated, this.rabTreated,
+                this.lafTreated, this.labTreated, this.rlfTreated, this.rlbTreated, this.llfTreated,
+                this.llbTreated});
     }
 
     public static final Parcelable.Creator<LogEntry> CREATOR= new Parcelable.Creator<LogEntry>() {

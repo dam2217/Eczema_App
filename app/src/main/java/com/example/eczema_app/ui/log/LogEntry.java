@@ -163,6 +163,54 @@ public class LogEntry implements Parcelable {
         Log.i("pollenLevel", pollenLevel);
     }
 
+    public CharSequence getHf() {
+        return hf;
+    }
+
+    public CharSequence getHb() {
+        return hb;
+    }
+
+    public CharSequence getTf() {
+        return tf;
+    }
+
+    public CharSequence getTb() {
+        return tb;
+    }
+
+    public CharSequence getRaf() {
+        return raf;
+    }
+
+    public CharSequence getRab() {
+        return rab;
+    }
+
+    public CharSequence getLaf() {
+        return laf;
+    }
+
+    public CharSequence getLab() {
+        return lab;
+    }
+
+    public CharSequence getRlf() {
+        return rlf;
+    }
+
+    public CharSequence getRlb() {
+        return rlb;
+    }
+
+    public CharSequence getLlf() {
+        return llf;
+    }
+
+    public CharSequence getLlb() {
+        return llb;
+    }
+  
     public void setLocation(String city){
         this.location = city;
 
@@ -234,45 +282,6 @@ public class LogEntry implements Parcelable {
         this.notes = extraInfo;
         Log.i("notes", notes);
     }
-
-
-    public CharSequence getLlf(){
-        return this.llf;
-    }
-    public CharSequence getLlb(){
-        return this.llb;
-    }
-    public CharSequence getRlb(){
-        return this.rlb;
-    }
-    public CharSequence getRlf(){
-        return this.rlf;
-    }
-    public CharSequence getLab(){
-        return this.lab;
-    }
-    public CharSequence getLaf(){
-        return this.laf;
-    }
-    public CharSequence getRab(){
-        return this.rab;
-    }
-    public CharSequence getRaf(){
-        return this.raf;
-    }
-    public CharSequence getTf(){
-        return this.tf;
-    }
-    public CharSequence getTb(){
-        return this.tb;
-    }
-    public CharSequence getHf(){
-        return this.hf;
-    }
-    public CharSequence getHb(){
-        return this.hb;
-    }
-
 
     //parcel part
     public LogEntry(Parcel in){

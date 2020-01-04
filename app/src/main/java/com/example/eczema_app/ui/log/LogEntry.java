@@ -135,6 +135,55 @@ public class LogEntry implements Parcelable {
         Log.i("pollenLevel", pollenLevel);
     }
 
+
+    public CharSequence getHf() {
+        return hf;
+    }
+
+    public CharSequence getHb() {
+        return hb;
+    }
+
+    public CharSequence getTf() {
+        return tf;
+    }
+
+    public CharSequence getTb() {
+        return tb;
+    }
+
+    public CharSequence getRaf() {
+        return raf;
+    }
+
+    public CharSequence getRab() {
+        return rab;
+    }
+
+    public CharSequence getLaf() {
+        return laf;
+    }
+
+    public CharSequence getLab() {
+        return lab;
+    }
+
+    public CharSequence getRlf() {
+        return rlf;
+    }
+
+    public CharSequence getRlb() {
+        return rlb;
+    }
+
+    public CharSequence getLlf() {
+        return llf;
+    }
+
+    public CharSequence getLlb() {
+        return llb;
+    }
+
     //parcel part
     public LogEntry(Parcel in){
         String[] data= new String[18];

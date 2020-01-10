@@ -272,8 +272,6 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
                 String extraInformation = String.valueOf(notes.getText());
                 currentLog.setNotes(extraInformation);
 
-                Log.i("clicked?", "clicked");
-
 //              when save button clicked, return to home page
                 if (locationFound) {
                     Intent home_intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -300,11 +298,13 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
                 // POST Request
                 JSONObject postDataParams = new JSONObject();
 
-                LogEntrySerial currentLogSerial = new LogEntrySerial(currentLog.getHf(),
-                        currentLog.getHb(), currentLog.getTf(), currentLog.getTb(),
-                        currentLog.getRaf(), currentLog.getRab(), currentLog.getLaf(),
-                        currentLog.getLab(), currentLog.getRlf(), currentLog.getRlb(),
-                        currentLog.getLlf(), currentLog.getLlb(), currentLog.getTreatmentYorN(),
+//                currentLog.getHf(),
+//                        currentLog.getHb(), currentLog.getTf(), currentLog.getTb(),
+//                        currentLog.getRaf(), currentLog.getRab(), currentLog.getLaf(),
+//                        currentLog.getLab(), currentLog.getRlf(), currentLog.getRlb(),
+//                        currentLog.getLlf(), currentLog.getLlb(),
+
+                        LogEntrySerial currentLogSerial = new LogEntrySerial(currentLog.getTreatmentYorN(),
                         currentLog.getTreatmentUsed(), currentLog.getTemperature(),
                         currentLog.getHumidity(), currentLog.getPollutionLevel(),
                         currentLog.getPollenLevel(), currentLog.getLocation(),

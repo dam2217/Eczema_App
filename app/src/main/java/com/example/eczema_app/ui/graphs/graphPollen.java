@@ -1,10 +1,10 @@
 package com.example.eczema_app.ui.graphs;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.os.Bundle;
 
-import com.example.eczema_app.R;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
@@ -12,10 +12,15 @@ import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.formatter.ValueFormatter;
-import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+
+import com.example.eczema_app.R;
+import com.github.mikephil.charting.utils.ColorTemplate;
+import com.github.mikephil.charting.utils.ViewPortHandler;
 
 public class graphPollen extends AppCompatActivity {
 
@@ -28,11 +33,11 @@ public class graphPollen extends AppCompatActivity {
 
         lineChart = (LineChart)findViewById(R.id.lineChart);
         LineDataSet lineDataSet = new LineDataSet(getData(), "Severity levels");
-        lineDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-        /*
-        lineDataSet.setColor(ContextCompat.getColor(this, R.color.colorPrimary));
-        lineDataSet.setValueTextColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
-         */
+        //lineDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+
+        lineDataSet.setColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
+        //lineDataSet.setValueTextColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
+
         XAxis xAxis = lineChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         final String[] dates = new String[]{"none", "low°", "moderate°", "severe"};
@@ -48,7 +53,6 @@ public class graphPollen extends AppCompatActivity {
 
         YAxis yAxisRight = lineChart.getAxisRight();
         yAxisRight.setEnabled(false);
-
         YAxis yAxisLeft = lineChart.getAxisLeft();
 
         //
@@ -61,6 +65,7 @@ public class graphPollen extends AppCompatActivity {
         };
         //
         yAxisLeft.setGranularity(1f);
+        yAxisLeft.setValueFormatter(formatter1);
 
         LineData data = new LineData(lineDataSet);
         lineChart.setData(data);

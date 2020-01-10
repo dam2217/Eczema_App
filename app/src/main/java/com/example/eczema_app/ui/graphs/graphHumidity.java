@@ -1,6 +1,8 @@
 package com.example.eczema_app.ui.graphs;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import android.os.Bundle;
 
 import com.github.mikephil.charting.charts.LineChart;
@@ -30,11 +32,9 @@ public class graphHumidity extends AppCompatActivity {
 
         lineChart = (LineChart)findViewById(R.id.lineChart);
         LineDataSet lineDataSet = new LineDataSet(getData(), "Severity levels");
-        lineDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-        /*
-        lineDataSet.setColor(ContextCompat.getColor(this, R.color.colorPrimary));
-        lineDataSet.setValueTextColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
-         */
+        lineDataSet.setColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
+
+
         XAxis xAxis = lineChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         final String[] dates = new String[]{"0%", "20%", "40%", "60%","80%","100%"};
@@ -48,10 +48,12 @@ public class graphHumidity extends AppCompatActivity {
         xAxis.setValueFormatter(formatter);
 
 
+
         YAxis yAxisRight = lineChart.getAxisRight();
         yAxisRight.setEnabled(false);
 
         YAxis yAxisLeft = lineChart.getAxisLeft();
+
 
         //
         final String[] severity = new String[]{"Mild", "Moderate", "Severe"};
@@ -63,6 +65,7 @@ public class graphHumidity extends AppCompatActivity {
         };
         //
         yAxisLeft.setGranularity(1f);
+        yAxisLeft.setValueFormatter(formatter1);
 
         LineData data = new LineData(lineDataSet);
         lineChart.setData(data);
@@ -71,6 +74,7 @@ public class graphHumidity extends AppCompatActivity {
         lineDataSet.setLineWidth(7);
 
     }
+    
     private ArrayList getData(){
         ArrayList<Entry> entries = new ArrayList<>();
         entries.add(new Entry(0f, 0f));
@@ -81,6 +85,6 @@ public class graphHumidity extends AppCompatActivity {
         entries.add(new Entry(5f, 2f));
 
         return entries;
-         
+
     }
 }

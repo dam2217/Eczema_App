@@ -1,6 +1,8 @@
 package com.example.eczema_app.ui.graphs;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import android.os.Bundle;
 
 import com.github.mikephil.charting.charts.LineChart;
@@ -31,11 +33,11 @@ public class graphTemp extends AppCompatActivity {
 
         lineChart = (LineChart)findViewById(R.id.lineChart);
         LineDataSet lineDataSet = new LineDataSet(getData(), "Severity levels");
-        lineDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-        /*
-        lineDataSet.setColor(ContextCompat.getColor(this, R.color.colorPrimary));
-        lineDataSet.setValueTextColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
-         */
+        //lineDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+
+        lineDataSet.setColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
+        //lineDataSet.setValueTextColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
+
         XAxis xAxis = lineChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         final String[] dates = new String[]{"-10°", "0°", "10°", "20°","30°","40°"};
@@ -64,6 +66,7 @@ public class graphTemp extends AppCompatActivity {
         };
         //
         yAxisLeft.setGranularity(1f);
+        yAxisLeft.setValueFormatter(formatter1);
 
         LineData data = new LineData(lineDataSet);
         lineChart.setData(data);

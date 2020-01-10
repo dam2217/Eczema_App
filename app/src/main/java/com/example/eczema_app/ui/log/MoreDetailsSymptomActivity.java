@@ -6,8 +6,10 @@ import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -16,8 +18,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,11 +29,23 @@ import com.androdocs.httprequest.HttpRequest;
 import com.example.eczema_app.MainActivity;
 import com.example.eczema_app.R;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -196,6 +212,7 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
   //                when the 'Find' button is clicked, if there has been no text input to the 'Enter City' box (i.e. location has been automatically found), set the
     //              latitude and longitude to those obtained from location services
                     //
+
                 if (TextUtils.isEmpty(cityLocation.getText().toString())) {
                       lat = locServLat;
                       lon = locServLon;
@@ -240,6 +257,7 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
         });
 
         save.setOnClickListener(new View.OnClickListener(){
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             public void onClick(View view) {
 
 
@@ -254,15 +272,70 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
                 String extraInformation = String.valueOf(notes.getText());
                 currentLog.setNotes(extraInformation);
 
+                Log.i("clicked?", "clicked");
+
 //              when save button clicked, return to home page
                 if (locationFound) {
                     Intent home_intent = new Intent(getApplicationContext(), MainActivity.class);
+
+
+                    new RequestAsync().execute();
+
                     startActivity(home_intent);
                 }
+
             }
 
 
         });
+    }
+
+    public class RequestAsync extends AsyncTask<String,String,String> {
+        @Override
+        protected String doInBackground(String... strings) {
+            try {
+                //GET Request
+                //return RequestHandler.sendGet("http://eczema-app.herokuapp.com");
+
+                // POST Request
+                JSONObject postDataParams = new JSONObject();
+
+                LogEntrySerial currentLogSerial = new LogEntrySerial(currentLog.getHf(),
+                        currentLog.getHb(), currentLog.getTf(), currentLog.getTb(),
+                        currentLog.getRaf(), currentLog.getRab(), currentLog.getLaf(),
+                        currentLog.getLab(), currentLog.getRlf(), currentLog.getRlb(),
+                        currentLog.getLlf(), currentLog.getLlb(), currentLog.getTreatmentYorN(),
+                        currentLog.getTreatmentUsed(), currentLog.getTemperature(),
+                        currentLog.getHumidity(), currentLog.getPollutionLevel(),
+                        currentLog.getPollenLevel(), currentLog.getLocation(),
+                        currentLog.getHfTreated(), currentLog.getHbTreated(),
+                        currentLog.getTfTreated(), currentLog.getTbTreated(),
+                        currentLog.getRafTreated(), currentLog.getRabTreated(),
+                        currentLog.getLafTreated(), currentLog.getLabTreated(),
+                        currentLog.getRlfTreated(), currentLog.getRlbTreated(),
+                        currentLog.getLlfTreated(), currentLog.getLlbTreated(),
+                        currentLog.getNotes());
+
+                Gson gson = new Gson();
+                String jsonString = gson.toJson(currentLogSerial);
+                String message = jsonString;
+                byte[] body = message.getBytes(StandardCharsets.UTF_8);
+
+                postDataParams.put("message", body);
+
+
+                return HttpTest.sendPost("https://eczema-app.herokuapp.com/eczemadatabase", postDataParams);
+            } catch (Exception e) {
+                return new String("Exception: " + e.getMessage());
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            if (s != null) {
+                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_LONG).show();
+            }
+        }
     }
 
     private String[] getAffectedAreas() {

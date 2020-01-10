@@ -217,6 +217,82 @@ public class LogEntry implements Parcelable {
         Log.i("location", location);
     }
 
+    public String getHbTreated() {
+        return hbTreated;
+    }
+
+    public String getHfTreated() {
+        return hfTreated;
+    }
+
+    public String getHumidity() {
+        return humidity;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public String getLabTreated() {
+        return labTreated;
+    }
+
+    public String getLafTreated() {
+        return lafTreated;
+    }
+
+    public String getLlbTreated() {
+        return llbTreated;
+    }
+
+    public String getLlfTreated() {
+        return llfTreated;
+    }
+
+    public String getPollenLevel() {
+        return pollenLevel;
+    }
+
+    public String getPollutionLevel() {
+        return pollutionLevel;
+    }
+
+    public String getTemperature() {
+        return temperature;
+    }
+
+    public String getRabTreated() {
+        return rabTreated;
+    }
+
+    public String getRafTreated() {
+        return rafTreated;
+    }
+
+    public String getRlbTreated() {
+        return rlbTreated;
+    }
+
+    public String getTreatmentUsed() {
+        return treatmentUsed;
+    }
+
+    public String getRlfTreated() {
+        return rlfTreated;
+    }
+
+    public String getTbTreated() {
+        return tbTreated;
+    }
+
+    public String getTfTreated() {
+        return tfTreated;
+    }
+
+    public String getTreatmentYorN() {
+        return treatmentYorN;
+    }
+
     public void setHbTreated(boolean treatmentUsed){
         this.hbTreated = String.valueOf(treatmentUsed);
         Log.i("hbTreated", hbTreated);

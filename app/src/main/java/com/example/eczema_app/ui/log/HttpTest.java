@@ -1,7 +1,10 @@
 package com.example.eczema_app.ui.log;
 
 import android.os.AsyncTask;
+import android.os.Build;
 import android.util.Log;
+
+import androidx.annotation.RequiresApi;
 
 import org.json.JSONObject;
 
@@ -21,9 +24,10 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class HttpTest {
 
-    public static String sendPost(String r_url , JSONObject postDataParams) throws Exception {
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public static String sendPost(String r_url , byte[] body) throws Exception {
 
-        URL url = new URL("https://eczema-app.herokuapp.com/eczemadatabase");
+        URL url = new URL(r_url);
         HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
         Log.i("works?", "yes");
 
@@ -31,17 +35,23 @@ public class HttpTest {
         conn.setReadTimeout(20000);
         conn.setConnectTimeout(20000);
         conn.setRequestMethod("POST");
+        conn.setRequestProperty("Content-Length", Integer.toString(body.length));
         conn.setDoInput(true);
         conn.setDoOutput(true);
 
+        try (OutputStream outputStream = conn.getOutputStream()) {
+
+            outputStream.write(body, 0, body.length);
+
+        }
 
         //Send the message to the server
-        OutputStream os = conn.getOutputStream();
-        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-        writer.write(encodeParams(postDataParams));
-        writer.flush();
-        writer.close();
-        os.close();
+//        OutputStream os = conn.getOutputStream();
+//        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
+//        writer.write(encodeParams(postDataParams));
+//        writer.flush();
+//        writer.close();
+//        os.close();
 
         int responseCode = conn.getResponseCode(); // To Check for 200
         if (responseCode == HttpsURLConnection.HTTP_OK) {
@@ -80,24 +90,24 @@ public class HttpTest {
         }
     }
 
-    private static String encodeParams(JSONObject params) throws Exception {
-        StringBuilder result = new StringBuilder();
-        boolean first = true;
-        Iterator<String> itr = params.keys();
-        while(itr.hasNext()){
-            String key= itr.next();
-            Object value = params.get(key);
-            if (first) {
-                first = false;
-            } else
-                result.append("&");
-
-            result.append(URLEncoder.encode(key, "UTF-8"));
-            result.append("=");
-            result.append(URLEncoder.encode(value.toString(), "UTF-8"));
-        }
-        return result.toString();
-    }
+//    private static String encodeParams(JSONObject params) throws Exception {
+//        StringBuilder result = new StringBuilder();
+//        boolean first = true;
+//        Iterator<String> itr = params.keys();
+//        while(itr.hasNext()){
+//            String key= itr.next();
+//            Object value = params.get(key);
+//            if (first) {
+//                first = false;
+//            } else
+//                result.append("&");
+//
+//            result.append(URLEncoder.encode(key, "UTF-8"));
+//            result.append("=");
+//            result.append(URLEncoder.encode(value.toString(), "UTF-8"));
+//        }
+//        return result.toString();
+//    }
 
 }
 

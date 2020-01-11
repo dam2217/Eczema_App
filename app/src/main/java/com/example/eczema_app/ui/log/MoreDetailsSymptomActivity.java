@@ -289,6 +289,7 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
     }
 
     public class RequestAsync extends AsyncTask<String,String,String> {
+        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
         @Override
         protected String doInBackground(String... strings) {
             try {
@@ -318,13 +319,13 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
 
                 Gson gson = new Gson();
                 String jsonString = gson.toJson(currentLogSerial);
+                System.out.println("JSON: " + jsonString);
                 String message = jsonString;
                 byte[] body = message.getBytes(StandardCharsets.UTF_8);
 
                 postDataParams.put("message", body);
 
-
-                return HttpTest.sendPost("https://eczema-app.herokuapp.com/eczemadatabase", postDataParams);
+                return HttpTest.sendPost("https://eczema-app.herokuapp.com/eczemadatabase", body);
             } catch (Exception e) {
                 return new String("Exception: " + e.getMessage());
             }

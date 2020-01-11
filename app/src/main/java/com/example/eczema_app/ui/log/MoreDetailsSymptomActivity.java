@@ -52,7 +52,7 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
     public String city;
 
 
-    public static String API_KEY = "192f3b8d3bcf418c816fcfeb4934475f";
+    public static String API_KEY = "e495f8ed38cd43febc7730b66034f2cf";
 
 
     @Override

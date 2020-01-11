@@ -54,6 +54,14 @@ public class HomeFragment extends Fragment {
         final TextView date4 = root.findViewById((R.id.date_4));
         final Button notes4 = root.findViewById(R.id.notes_4);
 
+//        check number of entries, if less than 4 set additional cards to invisible
+
+//        check and set number of locations
+//        get the affected locations and put strings as list in popup
+//        get the treatment used
+//        if no notes, set button to 'gone', else set textview to gone
+//        get the locations on which treatment was used and put strings as list in popup
+
 
         noLocations1.setOnClickListener(new View.OnClickListener() {
             @Override

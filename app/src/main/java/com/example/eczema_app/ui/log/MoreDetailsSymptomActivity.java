@@ -299,13 +299,13 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
                 // POST Request
                 JSONObject postDataParams = new JSONObject();
 
-//                currentLog.getHf(),
-//                        currentLog.getHb(), currentLog.getTf(), currentLog.getTb(),
-//                        currentLog.getRaf(), currentLog.getRab(), currentLog.getLaf(),
-//                        currentLog.getLab(), currentLog.getRlf(), currentLog.getRlb(),
-//                        currentLog.getLlf(), currentLog.getLlb(),
+//
 
-                        LogEntrySerial currentLogSerial = new LogEntrySerial(currentLog.getTreatmentYorN(),
+                        LogEntrySerial currentLogSerial = new LogEntrySerial(currentLog.getHf(),
+                        currentLog.getHb(), currentLog.getTf(), currentLog.getTb(),
+                        currentLog.getRaf(), currentLog.getRab(), currentLog.getLaf(),
+                        currentLog.getLab(), currentLog.getRlf(), currentLog.getRlb(),
+                        currentLog.getLlf(), currentLog.getLlb(),currentLog.getTreatmentYorN(),
                         currentLog.getTreatmentUsed(), currentLog.getTemperature(),
                         currentLog.getHumidity(), currentLog.getPollutionLevel(),
                         currentLog.getPollenLevel(), currentLog.getLocation(),

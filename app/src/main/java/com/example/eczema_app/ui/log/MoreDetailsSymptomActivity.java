@@ -368,7 +368,7 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
                 case "Back of Right Arm":
                     currentLog.setRabTreated(true);
                     break;
-                default:
+                case "Front of Right Arm":
                     currentLog.setRafTreated(true);
                     break;
             }

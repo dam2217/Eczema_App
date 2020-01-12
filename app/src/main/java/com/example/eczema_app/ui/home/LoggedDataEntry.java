@@ -1,22 +1,24 @@
-package com.example.eczema_app.ui.log;
+package com.example.eczema_app.ui.home;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.util.Log;
 
-public class LogEntry implements Parcelable {
-    public CharSequence hf;
-    public CharSequence hb;
-    public CharSequence tf;
-    public CharSequence tb;
-    public CharSequence raf;
-    public CharSequence rab;
-    public CharSequence laf;
-    public CharSequence lab;
-    public CharSequence rlf;
-    public CharSequence rlb;
-    public CharSequence llf;
-    public CharSequence llb;
+public class LoggedDataEntry implements Parcelable {
+    public String date;
+    public String time;
+    public String hf;
+    public String hb;
+    public String tf;
+    public String tb;
+    public String raf;
+    public String rab;
+    public String laf;
+    public String lab;
+    public String rlf;
+    public String rlb;
+    public String llf;
+    public String llb;
     public String treatmentYorN;
     public String treatmentUsed;
     public String temperature;
@@ -38,99 +40,163 @@ public class LogEntry implements Parcelable {
     public String llbTreated;
     public String notes;
 
-    public LogEntry(){
-        this.hf = "N/A";
-        this.hb = "N/A";
-        this.tf = "N/A";
-        this.tb = "N/A";
-        this.raf = "N/A";
-        this.rab = "N/A";
-        this.laf = "N/A";
-        this.lab = "N/A";
-        this.rlf = "N/A";
-        this.rlb = "N/A";
-        this.llf = "N/A";
-        this.llb = "N/A";
-        this.treatmentYorN = "N/A";
-        this.treatmentUsed = "N/A";
-        this.temperature = "N/A";
-        this.humidity = "N/A";
-        this.pollutionLevel = "N/A";
-        this.pollenLevel = "N/A";
-        this.location = "N/A";
-        this.hfTreated = "N/A";
-        this.hbTreated = "N/A";
-        this.tfTreated = "N/A";
-        this.tbTreated = "N/A";
-        this.rafTreated = "N/A";
-        this.rabTreated = "N/A";
-        this.lafTreated = "N/A";
-        this.labTreated = "N/A";
-        this.rlfTreated = "N/A";
-        this.rlbTreated = "N/A";
-        this.llfTreated = "N/A";
-        this.llbTreated = "N/A";
-        this.notes = "N/A";
+    public LoggedDataEntry(){
+        this.date = "";
+        this.time = "";
+        this.hf = "";
+        this.hb = "";
+        this.tf = "";
+        this.tb = "";
+        this.raf = "";
+        this.rab = "";
+        this.laf = "";
+        this.lab = "";
+        this.rlf = "";
+        this.rlb = "";
+        this.llf = "";
+        this.llb = "";
+        this.treatmentYorN = "";
+        this.treatmentUsed = "";
+        this.temperature = "";
+        this.humidity = "";
+        this.pollutionLevel = "";
+        this.pollenLevel = "";
+        this.location = "";
+        this.hfTreated = "";
+        this.hbTreated = "";
+        this.tfTreated = "";
+        this.tbTreated = "";
+        this.rafTreated = "";
+        this.rabTreated = "";
+        this.lafTreated = "";
+        this.labTreated = "";
+        this.rlfTreated = "";
+        this.rlbTreated = "";
+        this.llfTreated = "";
+        this.llbTreated = "";
+        this.notes = "";
     }
 
-    public void setHf(CharSequence hf) {
+    public LoggedDataEntry(String dateNow, String timeNow, String headf, String headb, String torsof,
+                          String torsob, String rarmf,
+                          String rarmb, String larmf, String larmb,
+                          String rlegf, String rlegb,
+                          String llegf, String llegb, String treatmentyesorno,
+                          String treatmentu, String temp, String hum, String pollution,
+                          String pollen, String loc, String hft, String hbt, String tft, String tbt,
+                          String raft, String rabt, String laft, String labt, String rlft,
+                          String rlbt, String llft, String llbt, String n){
+
+        this.date = dateNow;
+        this.time = timeNow;
+        this.hf = headf;
+        this.hb = headb;
+        this.tf = torsof;
+        this.tb = torsob;
+        this.raf = rarmf;
+        this.rab = rarmb;
+        this.laf = larmf;
+        this.lab = larmb;
+        this.rlf = rlegf;
+        this.rlb = rlegb;
+        this.llf = llegf;
+        this.llb = llegb;
+        this.treatmentYorN = treatmentyesorno;
+        this.treatmentUsed = treatmentu;
+        this.temperature = temp;
+        this.humidity = hum;
+        this.pollutionLevel = pollution;
+        this.pollenLevel = pollen;
+        this.location = loc;
+        this.hfTreated = hft;
+        this.hbTreated = hbt;
+        this.tfTreated = tft;
+        this.tbTreated = tbt;
+        this.rafTreated = raft;
+        this.rabTreated = rabt;
+        this.lafTreated = laft;
+        this.labTreated = labt;
+        this.rlfTreated = rlft;
+        this.rlbTreated = rlbt;
+        this.llfTreated = llft;
+        this.llbTreated = llbt;
+        this.notes = n;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setHf(String hf) {
         this.hf = hf;
-        Log.i("head front", hf.toString());
+        Log.i("head front", hf);
     }
 
-    public void setHb(CharSequence hb){
+    public void setHb(String hb){
         this.hb = hb;
-        Log.i("head back", hb.toString());
+        Log.i("head back", hb);
     }
 
-    public void setTf(CharSequence tf) {
+    public void setTf(String tf) {
         this.tf = tf;
-        Log.i("torso front", tf.toString());
+        Log.i("torso front", tf);
     }
 
-    public void setTb(CharSequence tb) {
+    public void setTb(String tb) {
         this.tb = tb;
-        Log.i("torso back", tb.toString());
+        Log.i("torso back", tb);
     }
 
-    public void setRaf(CharSequence raf) {
+    public void setRaf(String raf) {
         this.raf = raf;
-        Log.i("right arm front", raf.toString());
+        Log.i("right arm front", raf);
     }
 
-    public void setRab(CharSequence rab) {
+    public void setRab(String rab) {
         this.rab = rab;
-        Log.i("right arm back", rab.toString());
+        Log.i("right arm back", rab);
     }
 
-    public void setLaf(CharSequence laf) {
+    public void setLaf(String laf) {
         this.laf = laf;
-        Log.i("left arm front", laf.toString());
+        Log.i("left arm front", laf);
     }
 
-    public void setLab(CharSequence lab) {
+    public void setLab(String lab) {
         this.lab = lab;
-        Log.i("left arm back", lab.toString());
+        Log.i("left arm back", lab);
     }
 
-    public void setRlf(CharSequence rlf) {
+    public void setRlf(String rlf) {
         this.rlf = rlf;
-        Log.i("right leg front", rlf.toString());
+        Log.i("right leg front", rlf);
     }
 
-    public void setRlb(CharSequence rlb) {
+    public void setRlb(String rlb) {
         this.rlb = rlb;
-        Log.i("right leg back", rlb.toString());
+        Log.i("right leg back", rlb);
     }
 
-    public void setLlf(CharSequence llf) {
+    public void setLlf(String llf) {
         this.llf = llf;
-        Log.i("left leg front", llf.toString());
+        Log.i("left leg front", llf);
     }
 
-    public void setLlb(CharSequence llb) {
+    public void setLlb(String llb) {
         this.llb = llb;
-        Log.i("left leg back", llb.toString());
+        Log.i("left leg back", llb);
     }
 
     public void setTreatmentYorN(String treatmentYorN) {
@@ -163,54 +229,54 @@ public class LogEntry implements Parcelable {
         Log.i("pollenLevel", pollenLevel);
     }
 
-    public CharSequence getHf() {
+    public String getHf() {
         return hf;
     }
 
-    public CharSequence getHb() {
+    public String getHb() {
         return hb;
     }
 
-    public CharSequence getTf() {
+    public String getTf() {
         return tf;
     }
 
-    public CharSequence getTb() {
+    public String getTb() {
         return tb;
     }
 
-    public CharSequence getRaf() {
+    public String getRaf() {
         return raf;
     }
 
-    public CharSequence getRab() {
+    public String getRab() {
         return rab;
     }
 
-    public CharSequence getLaf() {
+    public String getLaf() {
         return laf;
     }
 
-    public CharSequence getLab() {
+    public String getLab() {
         return lab;
     }
 
-    public CharSequence getRlf() {
+    public String getRlf() {
         return rlf;
     }
 
-    public CharSequence getRlb() {
+    public String getRlb() {
         return rlb;
     }
 
-    public CharSequence getLlf() {
+    public String getLlf() {
         return llf;
     }
 
-    public CharSequence getLlb() {
+    public String getLlb() {
         return llb;
     }
-  
+
     public void setLocation(String city){
         this.location = city;
 
@@ -359,57 +425,63 @@ public class LogEntry implements Parcelable {
         Log.i("notes", notes);
     }
 
+    public String getNotes() {
+        return this.notes;
+    }
+
     //parcel part
-    public LogEntry(Parcel in){
-        String[] data= new String[32];
+    public LoggedDataEntry(Parcel in){
+        String[] data= new String[34];
 
         in.readStringArray(data);
-        this.hf= data[0];
-        this.hb= data[1];
-        this.tf= data[2];
-        this.tb= data[3];
-        this.raf= data[4];
-        this.rab= data[5];
-        this.laf= data[6];
-        this.lab= data[7];
-        this.rlf= data[8];
-        this.rlb= data[9];
-        this.llf= data[10];
-        this.llb= data[11];
-        this.treatmentYorN= data[12];
-        this.treatmentUsed= data[13];
-        this.pollenLevel = data[14];
-        this.pollutionLevel = data[15];
-        this.humidity = data[16];
-        this.temperature = data[17];
-        this.location = data[18];
-        this.hfTreated = data[19];
-        this.hbTreated = data[20];
-        this.tfTreated = data[21];
-        this.tbTreated = data[22];
-        this.rafTreated = data[23];
-        this.rabTreated = data[24];
-        this.lafTreated = data[25];
-        this.labTreated = data[26];
-        this.rlfTreated = data[27];
-        this.rlbTreated = data[28];
-        this.llfTreated = data[29];
-        this.llbTreated = data[30];
-        this.notes = data[31];
+        this.date= data[0];
+        this.date= data[1];
+        this.hf= data[2];
+        this.hb= data[3];
+        this.tf= data[4];
+        this.tb= data[5];
+        this.raf= data[6];
+        this.rab= data[7];
+        this.laf= data[8];
+        this.lab= data[9];
+        this.rlf= data[10];
+        this.rlb= data[11];
+        this.llf= data[12];
+        this.llb= data[13];
+        this.treatmentYorN= data[14];
+        this.treatmentUsed= data[15];
+        this.pollenLevel = data[16];
+        this.pollutionLevel = data[17];
+        this.humidity = data[18];
+        this.temperature = data[19];
+        this.location = data[20];
+        this.hfTreated = data[21];
+        this.hbTreated = data[22];
+        this.tfTreated = data[23];
+        this.tbTreated = data[24];
+        this.rafTreated = data[25];
+        this.rabTreated = data[26];
+        this.lafTreated = data[27];
+        this.labTreated = data[28];
+        this.rlfTreated = data[29];
+        this.rlbTreated = data[30];
+        this.llfTreated = data[31];
+        this.llbTreated = data[32];
+        this.notes = data[33];
 
 
     }
     @Override
     public int describeContents() {
-    // TODO Auto-generated method stub
+        // TODO Auto-generated method stub
         return 0;
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-    // TODO Auto-generated method stub
+        // TODO Auto-generated method stub
 
-        dest.writeStringArray(new String[]{String.valueOf(this.hf), String.valueOf(this.hb),
+        dest.writeStringArray(new String[]{this.date, this.time, String.valueOf(this.hf), String.valueOf(this.hb),
                 String.valueOf(this.tf), String.valueOf(this.tb), String.valueOf(this.raf),
                 String.valueOf(this.rab), String.valueOf(this.laf), String.valueOf(this.lab),
                 String.valueOf(this.rlf), String.valueOf(this.rlb), String.valueOf(this.llf),
@@ -420,23 +492,19 @@ public class LogEntry implements Parcelable {
                 this.llbTreated, this.notes});
     }
 
-    public static final Parcelable.Creator<LogEntry> CREATOR= new Parcelable.Creator<LogEntry>() {
+    public static final Parcelable.Creator<LoggedDataEntry> CREATOR= new Parcelable.Creator<LoggedDataEntry>() {
         @Override
-        public LogEntry createFromParcel(Parcel source) {
-        // TODO Auto-generated method stub
-            return new LogEntry(source);  //using parcelable constructor
+        public LoggedDataEntry createFromParcel(Parcel source) {
+            // TODO Auto-generated method stub
+            return new LoggedDataEntry(source);  //using parcelable constructor
         }
 
         @Override
-        public LogEntry[] newArray(int size) {
-        // TODO Auto-generated method stub
-            return new LogEntry[size];
+        public LoggedDataEntry[] newArray(int size) {
+            // TODO Auto-generated method stub
+            return new LoggedDataEntry[size];
         }
     };
-
-    public String getNotes() {
-        return this.notes;
-    }
 }
 
 

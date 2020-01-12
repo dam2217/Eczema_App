@@ -1,64 +1,70 @@
 package com.example.eczema_app.ui.settings;
 
 
-import android.Manifest;
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentSender;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationManager;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Looper;
-import android.provider.Settings;
-import android.widget.Toast;
+import android.preference.PreferenceActivity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-
-import com.example.eczema_app.MainActivity;
-import com.example.eczema_app.R;
-import com.google.android.gms.common.api.ResolvableApiException;
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationCallback;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationResult;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.LocationSettingsRequest;
-import com.google.android.gms.location.LocationSettingsResponse;
-import com.google.android.gms.location.SettingsClient;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
+import androidx.preference.PreferenceManager;
 
 //code adapted from https://developer.android.com/guide/topics/ui/settings
 
-public class SettingsActivity extends AppCompatActivity{
+public class SettingsActivity extends PreferenceActivity {
 //
 //    private String lat = "lllll";
 //    private String lon;
 //    private FusedLocationProviderClient mFusedLocationClient;
 //    private int PERMISSION_ID = 44;
 
+    private SharedPreferences prefs;
+    SharedPreferences.OnSharedPreferenceChangeListener listener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//        System.out.println(lat);
         super.onCreate(savedInstanceState);
+
+
+//            };//        System.out.println(lat);
+
 //        System.out.println(lat);
 
 //        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 //        getLastLocation();
 //        System.out.println(lat);
 
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.nav_settings, new SettingsFragment())
-                .commit();
+//        getSupportFragmentManager()
+//                .beginTransaction()
+//                .replace(R.id.nav_settings, new SettingsFragment())
+//
+//
+//              .commit();
+
+//        SharedPreferences.OnSharedPreferenceChangeListener spChanged = new
+//                SharedPreferences.OnSharedPreferenceChangeListener() {
+//                    @Override
+//                    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences,
+//                                                          String key) {
+//                        // your stuff here
+//                    }
+//                };
+
 
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        listener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+
+            public void onSharedPreferenceChanged(SharedPreferences prefs, String key) {
+                int flag = 1;
+            }
+        };
+        prefs.registerOnSharedPreferenceChangeListener(listener);
+
+    }
+
 
 //
 //    @SuppressLint("MissingPermission")

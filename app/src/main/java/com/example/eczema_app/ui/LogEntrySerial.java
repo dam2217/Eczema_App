@@ -1,4 +1,4 @@
-package com.example.eczema_app.ui.log;
+package com.example.eczema_app.ui;
 
 import java.io.Serializable;
 

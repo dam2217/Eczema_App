@@ -28,23 +28,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.androdocs.httprequest.HttpRequest;
 import com.example.eczema_app.MainActivity;
 import com.example.eczema_app.R;
+import com.example.eczema_app.ui.LogEntrySerial;
+import com.example.eczema_app.ui.home.LoggedDataEntry;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -56,6 +48,10 @@ import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
 public class MoreDetailsSymptomActivity extends AppCompatActivity {
+
+    String data = "";
+
+    List<LoggedDataEntry> logList = new ArrayList<LoggedDataEntry>();
 
     LogEntry currentLog = new LogEntry();
 
@@ -110,7 +106,7 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
 //        System.out.println(!locServLat.equals(""));
 
 //      if there IS a location from location services (i.e. they are on), get the city name from the pulled coordinates to display
-        if (!locServLat.equals("")){
+        if (!locServLat.equals("")) {
             city = getCityName(locServLat, locServLon);
 //          show city name as non-editable text
             String dispLocation = "Current Location: " + city;
@@ -120,13 +116,13 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
         }
 
 //      create a dropdown for the different treatments
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, treatments){
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, treatments) {
 
 
-    //            https://android--code.blogspot.com/2015/08/android-spinner-hint.html
+            //            https://android--code.blogspot.com/2015/08/android-spinner-hint.html
             @Override
-    //      The first item in the spinner is disabled, so that it can be used as a 'hint' but not selected by the user
-            public boolean isEnabled(int position){
+            //      The first item in the spinner is disabled, so that it can be used as a 'hint' but not selected by the user
+            public boolean isEnabled(int position) {
                 return !(position == 0);
             }
 
@@ -134,11 +130,10 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
             public View getDropDownView(int position, View convertView, ViewGroup parent) {
                 View view = super.getDropDownView(position, convertView, parent);
                 TextView tv = (TextView) view;
-                if(position == 0){
+                if (position == 0) {
                     // Set the hint text color gray
                     tv.setTextColor(Color.GRAY);
-                }
-                else {
+                } else {
                     tv.setTextColor(Color.BLACK);
                 }
                 return view;
@@ -157,11 +152,11 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
                 currentLog.setTreatmentUsed(selectedTreatment);
             }
 
-        @Override
-        public void onNothingSelected(AdapterView<?> parent) {
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
 
-        }
-    });
+            }
+        });
 
 // end of ref
 
@@ -169,23 +164,22 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
         final String[] affectedAreas = getAffectedAreas();
 
 
-
 //      create the dropdown of the affected areas for selection of where treatment is used
         dropDownWhere.setItems(affectedAreas);
 
 
 //      ensure that both spinners are only visible when toggle is on 'yes' state
-        yesNo.setOnClickListener(new View.OnClickListener(){
+        yesNo.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 if (yesNo.isChecked()) {
-    //              setting the treatment spinners to be visible
+                    //              setting the treatment spinners to be visible
 
                     setTreatmentSpinnersToBe(VISIBLE);
 
                     selectedYorN = yesNo.getText().toString();
                     currentLog.setTreatmentYorN(selectedYorN);
                 } else {
-    //              reset the treatment spinners to 'GONE' if toggle button is set back to 'NO'
+                    //              reset the treatment spinners to 'GONE' if toggle button is set back to 'NO'
                     setTreatmentSpinnersToBe(GONE);
                     dropDownWhat.setAdapter(adapter);
                     selectedYorN = yesNo.getText().toString();
@@ -211,17 +205,18 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
         getLoc.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
-  //                when the 'Find' button is clicked, if there has been no text input to the 'Enter City' box (i.e. location has been automatically found), set the
-    //              latitude and longitude to those obtained from location services
-                    //
+                //                when the 'Find' button is clicked, if there has been no text input to the 'Enter City' box (i.e. location has been automatically found), set the
+                //              latitude and longitude to those obtained from location services
+                //
 
                 if (TextUtils.isEmpty(cityLocation.getText().toString())) {
-                      lat = locServLat;
-                      lon = locServLon;
+                    lat = locServLat;
+                    lon = locServLon;
 
-                      locationFound = true;
-  //              if text is input to the enter city box (i.e. location could not be automatically found), convert the city name to latitude and longitude
-                } while (!locationFound) {
+                    locationFound = true;
+                    //              if text is input to the enter city box (i.e. location could not be automatically found), convert the city name to latitude and longitude
+                }
+                while (!locationFound) {
 //                  https://stackoverflow.com/questions/20166328/how-to-get-longitude-latitude-from-the-city-name-android-code
 
                     String city = cityLocation.getText().toString();
@@ -231,7 +226,7 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
 
                         ll = getLatAndLon(ll, city);
 
-  //                    if no coordinates could be found (e.g. spelling error), present a message to the user to re-enter their location
+                        //                    if no coordinates could be found (e.g. spelling error), present a message to the user to re-enter their location
                         if (ll.size() == 0) {
                             final AlertDialog locationError = new AlertDialog.Builder(MoreDetailsSymptomActivity.this, R.style.CustomDialogTheme).create();
                             locationError.setTitle("Error");
@@ -258,7 +253,7 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
             }
         });
 
-        save.setOnClickListener(new View.OnClickListener(){
+        save.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             public void onClick(View view) {
 
@@ -278,16 +273,63 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
                 if (locationFound) {
                     Intent home_intent = new Intent(getApplicationContext(), MainActivity.class);
 
-
+                    Log.i("test", "a");
                     new RequestAsync().execute();
+                    Log.i("test", "b");
+                    System.out.println(new ReceiveData().execute());
+
+                    Log.i("data", data);
+
+                    String[] splits = data.split("split ");
+
+                    for (int i = 0; i < splits.length; i++) {
+                        String individualReceived = "{" + splits[i] + "}";
+                        Gson gson = new Gson();
+                        LogEntrySerial LogFromDBserial = gson.fromJson(individualReceived, LogEntrySerial.class);
+                        LoggedDataEntry LogFromDB = new LoggedDataEntry(LogFromDBserial.date, LogFromDBserial.time,
+                                LogFromDBserial.hf, LogFromDBserial.hb, LogFromDBserial.tf, LogFromDBserial.tb,
+                                LogFromDBserial.raf, LogFromDBserial.rab, LogFromDBserial.laf, LogFromDBserial.lab,
+                                LogFromDBserial.rlf, LogFromDBserial.rlb, LogFromDBserial.llf, LogFromDBserial.llb,
+                                LogFromDBserial.treatmentYorN, LogFromDBserial.treatmentUsed, LogFromDBserial.temperature,
+                                LogFromDBserial.humidity, LogFromDBserial.pollutionLevel, LogFromDBserial.pollenLevel,
+                                LogFromDBserial.location, LogFromDBserial.hfTreated, LogFromDBserial.hbTreated,
+                                LogFromDBserial.tfTreated, LogFromDBserial.tbTreated, LogFromDBserial.rafTreated,
+                                LogFromDBserial.rabTreated, LogFromDBserial.lafTreated, LogFromDBserial.labTreated,
+                                LogFromDBserial.rlfTreated, LogFromDBserial.rlbTreated, LogFromDBserial.llfTreated,
+                                LogFromDBserial.llbTreated, LogFromDBserial.notes);
+
+                        logList.add(LogFromDB);
+
+                    }
+
+
+                    Log.i("length", String.valueOf(logList.size()));
+                    //Log.i("location", logList.get(1).getLocation());
 
                     startActivity(home_intent);
-                }
 
+                }
             }
 
-
         });
+
+    }
+
+
+    public class ReceiveData extends AsyncTask<String,String,String> {
+        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+        @Override
+        protected String doInBackground(String... strings) {
+            try{
+                Log.i("data received?", "yes");
+                data = HttpTest.sendGet("https://eczema-app.herokuapp.com/eczemadatabase");
+                System.out.println("data: " + data);
+                return data;
+            } catch (Exception e) {
+                Log.i("caught?", "unfortunately");
+                return new String("Exception: " + e.getMessage());
+            }
+        }
     }
 
     public class RequestAsync extends AsyncTask<String,String,String> {
@@ -295,31 +337,26 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... strings) {
             try {
-                //GET Request
-                //return RequestHandler.sendGet("http://eczema-app.herokuapp.com");
-
                 // POST Request
-                JSONObject postDataParams = new JSONObject();
 
+                String currentDate = new SimpleDateFormat("dd-MM-yy", Locale.getDefault()).format(new Date());
+                String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
 
-                        String currentDate = new SimpleDateFormat("dd-MM-yy", Locale.getDefault()).format(new Date());
-                        String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
-
-                        LogEntrySerial currentLogSerial = new LogEntrySerial(currentDate, currentTime, currentLog.getHf().toString(),
-                        currentLog.getHb().toString(), currentLog.getTf().toString(), currentLog.getTb().toString(),
-                        currentLog.getRaf().toString(), currentLog.getRab().toString(), currentLog.getLaf().toString(),
-                        currentLog.getLab().toString(), currentLog.getRlf().toString(), currentLog.getRlb().toString(),
-                        currentLog.getLlf().toString(), currentLog.getLlb().toString(),currentLog.getTreatmentYorN(),
-                        currentLog.getTreatmentUsed(), currentLog.getTemperature(),
-                        currentLog.getHumidity(), currentLog.getPollutionLevel(),
-                        currentLog.getPollenLevel(), currentLog.getLocation(),
-                        currentLog.getHfTreated(), currentLog.getHbTreated(),
-                        currentLog.getTfTreated(), currentLog.getTbTreated(),
-                        currentLog.getRafTreated(), currentLog.getRabTreated(),
-                        currentLog.getLafTreated(), currentLog.getLabTreated(),
-                        currentLog.getRlfTreated(), currentLog.getRlbTreated(),
-                        currentLog.getLlfTreated(), currentLog.getLlbTreated(),
-                        currentLog.getNotes());
+                LogEntrySerial currentLogSerial = new LogEntrySerial(currentDate, currentTime, currentLog.getHf().toString(),
+                currentLog.getHb().toString(), currentLog.getTf().toString(), currentLog.getTb().toString(),
+                currentLog.getRaf().toString(), currentLog.getRab().toString(), currentLog.getLaf().toString(),
+                currentLog.getLab().toString(), currentLog.getRlf().toString(), currentLog.getRlb().toString(),
+                currentLog.getLlf().toString(), currentLog.getLlb().toString(),currentLog.getTreatmentYorN(),
+                currentLog.getTreatmentUsed(), currentLog.getTemperature(),
+                currentLog.getHumidity(), currentLog.getPollutionLevel(),
+                currentLog.getPollenLevel(), currentLog.getLocation(),
+                currentLog.getHfTreated(), currentLog.getHbTreated(),
+                currentLog.getTfTreated(), currentLog.getTbTreated(),
+                currentLog.getRafTreated(), currentLog.getRabTreated(),
+                currentLog.getLafTreated(), currentLog.getLabTreated(),
+                currentLog.getRlfTreated(), currentLog.getRlbTreated(),
+                currentLog.getLlfTreated(), currentLog.getLlbTreated(),
+                currentLog.getNotes());
 
                 Gson gson = new Gson();
                 String jsonString = gson.toJson(currentLogSerial);
@@ -327,10 +364,9 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
                 String message = jsonString;
                 byte[] body = message.getBytes(StandardCharsets.UTF_8);
 
-                postDataParams.put("message", body);
-
                 return HttpTest.sendPost("https://eczema-app.herokuapp.com/eczemadatabase", body);
             } catch (Exception e) {
+                Log.i("caught?", "unfortunately");
                 return new String("Exception: " + e.getMessage());
             }
         }

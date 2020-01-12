@@ -28,9 +28,8 @@
         <!-- android:label="@string/title_activity_graph" -->
         <!-- android:theme="@style/AppTheme.NoActionBar" /> -->
         <activity
-            android:name=".ui.settings.Locations"
-            android:label="Location Services"
-            android:parentActivityName=".ui.settings.SettingsActivity" />
+            android:name=".ui.home.HomeFragment"
+            android:label="Home" />
         <activity
             android:name=".ui.settings.Notifications"
             android:label="Notifications"
@@ -40,8 +39,6 @@
             android:label="More Details"
             android:parentActivityName=".ui.log.LogActivity" />
         <activity android:name=".ui.log.LogActivity" />
-        <activity android:name=".ui.home.HomeFragment"
-            android:label="Home"/>
         <activity android:name=".ui.settings.SettingsActivity" />
         <activity
             android:name=".MainActivity"

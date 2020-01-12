@@ -1,8 +1,11 @@
 package com.example.eczema_app.ui.log;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -25,7 +28,10 @@ import com.example.eczema_app.R;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -42,7 +48,7 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
     public String lat;
     public String lon;
     public String city;
-    public String latlon = "";
+    public String latlon;
     public String emptyString = "";
     public boolean locationFound = false;
 
@@ -76,13 +82,12 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
         dropDownWhat.setVisibility(View.GONE);
         dropDownWhere.setVisibility(View.GONE);
 
-        final LocationHelper lh = new LocationHelper(this);
 //        string array of treatments
         String[] treatments = new String[]{"Select Treatment", "Corticosteroids", "Emollient", "Systemic Therapy", "Other"};
 
 //      if there IS a location from location services (i.e. they are on), get the city name from the pulled coordinates to display
         if (!locServLat.equals("")){
-            city = lh.getSimplifiedAddress(locServLat, locServLon);
+            new LocationNameTask().execute();
 //          show city name as non-editable text
             String dispLocation = "Current Location: " + city;
             cityText.setText(dispLocation);
@@ -195,11 +200,12 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
                     if (!city.equals("")) {
 
                         System.out.println("asdfghjkl");
-                        latlon = lh.getLocationFromAddress(city);
+                        new LocationCoordTask().execute();
+                        System.out.println(latlon);
                         System.out.println("qwertyuiop");
 
   //                    if no coordinates could be found (e.g. spelling error), present a message to the user to re-enter their location
-                        if (latlon.equals("")) {
+                        if (latlon == null) {
                             final AlertDialog locationError = new AlertDialog.Builder(MoreDetailsSymptomActivity.this, R.style.CustomDialogTheme).create();
                             locationError.setTitle("Error");
                             locationError.setMessage("Location Not Found. Try Again or Check Spelling. Click Outside to Close");
@@ -211,7 +217,9 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
 
                             extractLatAndLon(latlon);
 
-                            city = lh.getSimplifiedAddress(lat, lon);
+                            new LocationNameTask().execute();
+
+                            System.out.println(city);
                             String dispLocation = "Current Location: " + city;
                             cityText.setText(dispLocation);
                             cityLocation.setVisibility(View.INVISIBLE);
@@ -477,6 +485,87 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
 
         }
 
+
+    }
+
+    public class LocationCoordTask extends AsyncTask<String, Void, String> {
+
+        private Context mContext;
+        public String location = "";
+        public String latlon;
+
+
+        @Override
+        protected String doInBackground(String... addressName) {
+            Geocoder coder = new Geocoder(MoreDetailsSymptomActivity.this);
+            List<Address> address;
+            System.out.println(addressName);
+
+            try {
+                address = coder.getFromLocationName(String.valueOf(addressName), 1);
+                System.out.println("aaaa");
+                if (address == null) {
+                    return null;
+                }
+                Address location = address.get(0);
+                double lat = location.getLatitude();
+                double lng = location.getLongitude();
+                latlon = lat + "," + lng;
+
+                return latlon;
+            } catch (Exception e) {
+                return null;
+            }
+        }
+
+        protected void onPostExecute(String latlon) {
+            if (location != null) {
+                System.out.println("no null yes");
+            }
+        }
+
+    }
+
+    public class LocationNameTask extends AsyncTask<String[], Void, String> {
+
+        private Context mContext;
+        public String location = "";
+//    public String latlon, str_Address;
+
+
+        @Override
+        protected String doInBackground(String[]... lat_lon) {
+            double latitude = Double.valueOf(String.valueOf(lat_lon[0]));
+            double longitude = Double.valueOf(String.valueOf(lat_lon[1]));
+            try {
+                Geocoder geocoder = new Geocoder(mContext, Locale.getDefault());
+                List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
+                if (addresses.size() > 0) {
+                    Address address = addresses.get(0);
+                    String subAdmin = address.getSubAdminArea();
+                    String subLocality = address.getSubLocality();
+                    String locality = address.getLocality();
+                    if (locality != null && subLocality != null) {
+                        location = subLocality + "," + locality;
+                    } else if (subLocality != null) {
+                        location = subLocality + "," + subAdmin;
+                    } else {
+                        location = subAdmin + "," + locality;
+                    }
+                }
+            } catch (
+                    IOException e) {
+                e.printStackTrace();
+            }
+            return location;
+        }
+
+        @Override
+        protected void onPostExecute(String location) {
+            if (location != null) {
+                System.out.println("null uh oh");
+            }
+        }
 
     }
 

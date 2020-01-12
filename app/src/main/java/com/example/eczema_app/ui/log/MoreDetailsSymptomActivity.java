@@ -46,7 +46,9 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -299,9 +301,11 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
                 // POST Request
                 JSONObject postDataParams = new JSONObject();
 
-//
 
-                        LogEntrySerial currentLogSerial = new LogEntrySerial(currentLog.getHf().toString(),
+                        String currentDate = new SimpleDateFormat("dd-MM-yy", Locale.getDefault()).format(new Date());
+                        String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
+
+                        LogEntrySerial currentLogSerial = new LogEntrySerial(currentDate, currentTime, currentLog.getHf().toString(),
                         currentLog.getHb().toString(), currentLog.getTf().toString(), currentLog.getTb().toString(),
                         currentLog.getRaf().toString(), currentLog.getRab().toString(), currentLog.getLaf().toString(),
                         currentLog.getLab().toString(), currentLog.getRlf().toString(), currentLog.getRlb().toString(),

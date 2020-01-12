@@ -38,12 +38,6 @@ public class LogFragment extends Fragment {
         loggingViewModel = ViewModelProviders.of(this).get(LoggingViewModel.class);
         View root = inflater.inflate(R.layout.fragment_new_log, container, false);
 
-//        String currentDate = new SimpleDateFormat("dd-MM-yy", Locale.getDefault()).format(new Date());
-//        String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
-//        final TextView date = root.findViewById(R.id.CurrentDate);
-//        final TextView time = root.findViewById(R.id.CurrentTime);
-//        date.setText(currentDate);
-//        time.setText(currentTime);
 
         final ImageButton head = root.findViewById(R.id.head);
         final ImageButton torso = root.findViewById(R.id.torso);

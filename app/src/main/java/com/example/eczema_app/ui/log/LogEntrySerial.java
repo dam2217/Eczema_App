@@ -3,6 +3,9 @@ package com.example.eczema_app.ui.log;
 import java.io.Serializable;
 
 public class LogEntrySerial implements Serializable {
+
+    public String date;
+    public String time;
     public String hf;
     public String hb;
     public String tf;
@@ -36,15 +39,18 @@ public class LogEntrySerial implements Serializable {
     public String llbTreated;
     public String notes;
 
-    public LogEntrySerial(String headf, String headb, String torsof,
+    public LogEntrySerial(String dateNow, String timeNow, String headf, String headb, String torsof,
                           String torsob, String rarmf,
                           String rarmb, String larmf, String larmb,
                           String rlegf, String rlegb,
-                          String llegf, String llegb,String treatmentyesorno,
+                          String llegf, String llegb, String treatmentyesorno,
                           String treatmentu, String temp, String hum, String pollution,
                           String pollen, String loc, String hft, String hbt, String tft, String tbt,
                           String raft, String rabt, String laft, String labt, String rlft,
                           String rlbt, String llft, String llbt, String n){
+
+        this.date = dateNow;
+        this.time = timeNow;
         this.hf = headf;
         this.hb = headb;
         this.tf = torsof;
@@ -78,7 +84,7 @@ public class LogEntrySerial implements Serializable {
         this.llbTreated = llbt;
         this.notes = n;
     }
+
+
+
 }
-
-
-

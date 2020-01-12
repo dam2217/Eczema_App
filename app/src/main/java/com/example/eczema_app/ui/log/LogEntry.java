@@ -39,38 +39,38 @@ public class LogEntry implements Parcelable {
     public String notes;
 
     public LogEntry(){
-        this.hf = "";
-        this.hb = "";
-        this.tf = "";
-        this.tb = "";
-        this.raf = "";
-        this.rab = "";
-        this.laf = "";
-        this.lab = "";
-        this.rlf = "";
-        this.rlb = "";
-        this.llf = "";
-        this.llb = "";
-        this.treatmentYorN = "";
-        this.treatmentUsed = "";
-        this.temperature = "";
-        this.humidity = "";
-        this.pollutionLevel = "";
-        this.pollenLevel = "";
-        this.location = "";
-        this.hfTreated = "";
-        this.hbTreated = "";
-        this.tfTreated = "";
-        this.tbTreated = "";
-        this.rafTreated = "";
-        this.rabTreated = "";
-        this.lafTreated = "";
-        this.labTreated = "";
-        this.rlfTreated = "";
-        this.rlbTreated = "";
-        this.llfTreated = "";
-        this.llbTreated = "";
-        this.notes = "";
+        this.hf = "N/A";
+        this.hb = "N/A";
+        this.tf = "N/A";
+        this.tb = "N/A";
+        this.raf = "N/A";
+        this.rab = "N/A";
+        this.laf = "N/A";
+        this.lab = "N/A";
+        this.rlf = "N/A";
+        this.rlb = "N/A";
+        this.llf = "N/A";
+        this.llb = "N/A";
+        this.treatmentYorN = "N/A";
+        this.treatmentUsed = "N/A";
+        this.temperature = "N/A";
+        this.humidity = "N/A";
+        this.pollutionLevel = "N/A";
+        this.pollenLevel = "N/A";
+        this.location = "N/A";
+        this.hfTreated = "N/A";
+        this.hbTreated = "N/A";
+        this.tfTreated = "N/A";
+        this.tbTreated = "N/A";
+        this.rafTreated = "N/A";
+        this.rabTreated = "N/A";
+        this.lafTreated = "N/A";
+        this.labTreated = "N/A";
+        this.rlfTreated = "N/A";
+        this.rlbTreated = "N/A";
+        this.llfTreated = "N/A";
+        this.llbTreated = "N/A";
+        this.notes = "N/A";
     }
 
     public void setHf(CharSequence hf) {
@@ -215,6 +215,82 @@ public class LogEntry implements Parcelable {
         this.location = city;
 
         Log.i("location", location);
+    }
+
+    public String getHbTreated() {
+        return hbTreated;
+    }
+
+    public String getHfTreated() {
+        return hfTreated;
+    }
+
+    public String getHumidity() {
+        return humidity;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public String getLabTreated() {
+        return labTreated;
+    }
+
+    public String getLafTreated() {
+        return lafTreated;
+    }
+
+    public String getLlbTreated() {
+        return llbTreated;
+    }
+
+    public String getLlfTreated() {
+        return llfTreated;
+    }
+
+    public String getPollenLevel() {
+        return pollenLevel;
+    }
+
+    public String getPollutionLevel() {
+        return pollutionLevel;
+    }
+
+    public String getTemperature() {
+        return temperature;
+    }
+
+    public String getRabTreated() {
+        return rabTreated;
+    }
+
+    public String getRafTreated() {
+        return rafTreated;
+    }
+
+    public String getRlbTreated() {
+        return rlbTreated;
+    }
+
+    public String getTreatmentUsed() {
+        return treatmentUsed;
+    }
+
+    public String getRlfTreated() {
+        return rlfTreated;
+    }
+
+    public String getTbTreated() {
+        return tbTreated;
+    }
+
+    public String getTfTreated() {
+        return tfTreated;
+    }
+
+    public String getTreatmentYorN() {
+        return treatmentYorN;
     }
 
     public void setHbTreated(boolean treatmentUsed){

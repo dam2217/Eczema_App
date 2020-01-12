@@ -52,7 +52,7 @@
         android:layout_width="198dp"
         android:layout_height="39dp"
         android:layout_marginBottom="457dp"
-        android:format12Hour="@null"
+        android:format12Hour="dd MMM yy   k:mm"
         android:format24Hour="dd MMM yy   k:mm"
         android:textStyle="bold"
         android:timeZone="GMT+0000"

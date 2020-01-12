@@ -301,11 +301,11 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
 
 //
 
-                        LogEntrySerial currentLogSerial = new LogEntrySerial(currentLog.getHf(),
-                        currentLog.getHb(), currentLog.getTf(), currentLog.getTb(),
-                        currentLog.getRaf(), currentLog.getRab(), currentLog.getLaf(),
-                        currentLog.getLab(), currentLog.getRlf(), currentLog.getRlb(),
-                        currentLog.getLlf(), currentLog.getLlb(),currentLog.getTreatmentYorN(),
+                        LogEntrySerial currentLogSerial = new LogEntrySerial(currentLog.getHf().toString(),
+                        currentLog.getHb().toString(), currentLog.getTf().toString(), currentLog.getTb().toString(),
+                        currentLog.getRaf().toString(), currentLog.getRab().toString(), currentLog.getLaf().toString(),
+                        currentLog.getLab().toString(), currentLog.getRlf().toString(), currentLog.getRlb().toString(),
+                        currentLog.getLlf().toString(), currentLog.getLlb().toString(),currentLog.getTreatmentYorN(),
                         currentLog.getTreatmentUsed(), currentLog.getTemperature(),
                         currentLog.getHumidity(), currentLog.getPollutionLevel(),
                         currentLog.getPollenLevel(), currentLog.getLocation(),

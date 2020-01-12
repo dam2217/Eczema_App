@@ -26,6 +26,7 @@ import javax.net.ssl.HttpsURLConnection;
 public class HttpCommunicate {
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    // method to send data to server
     public static String sendPost(String r_url , byte[] body) throws Exception {
 
         URL url = new URL(r_url);
@@ -70,6 +71,7 @@ public class HttpCommunicate {
         return null;
     }
 
+    // method to receive data from server
     public static String sendGet(String url) throws IOException {
         URL obj = new URL(url);
         HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();

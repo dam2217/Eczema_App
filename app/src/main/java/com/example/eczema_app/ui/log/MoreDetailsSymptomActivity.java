@@ -3,11 +3,8 @@ package com.example.eczema_app.ui.log;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
-import android.location.Address;
-import android.location.Geocoder;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -24,15 +21,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.androdocs.httprequest.HttpRequest;
 import com.example.eczema_app.MainActivity;
 import com.example.eczema_app.R;
-import com.google.android.gms.maps.model.LatLng;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -48,8 +41,12 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
     public String locServLon = "";
     public String lat;
     public String lon;
-    public boolean locationFound = false;
     public String city;
+    public String latlon = "";
+    public String emptyString = "";
+    public boolean locationFound = false;
+
+
 
 
     public static String API_KEY = "e495f8ed38cd43febc7730b66034f2cf";
@@ -79,26 +76,19 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
         dropDownWhat.setVisibility(View.GONE);
         dropDownWhere.setVisibility(View.GONE);
 
+        final LocationHelper lh = new LocationHelper(this);
 //        string array of treatments
         String[] treatments = new String[]{"Select Treatment", "Corticosteroids", "Emollient", "Systemic Therapy", "Other"};
 
-
-//        System.out.println(locServLat);
-//        System.out.println(locServLon);
-//        System.out.println("aaaaaaaaaa");
-
-//        System.out.println(locServLat);
-//        System.out.println(locServLon);
-//        System.out.println(!locServLat.equals(""));
-
 //      if there IS a location from location services (i.e. they are on), get the city name from the pulled coordinates to display
         if (!locServLat.equals("")){
-            city = getCityName(locServLat, locServLon);
+            city = lh.getSimplifiedAddress(locServLat, locServLon);
 //          show city name as non-editable text
             String dispLocation = "Current Location: " + city;
             cityText.setText(dispLocation);
             cityLocation.setVisibility(View.INVISIBLE);
             getLoc.setVisibility(View.GONE);
+            locationFound = true;
         }
 
 //      create a dropdown for the different treatments
@@ -196,24 +186,20 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
   //                when the 'Find' button is clicked, if there has been no text input to the 'Enter City' box (i.e. location has been automatically found), set the
     //              latitude and longitude to those obtained from location services
                     //
-                if (TextUtils.isEmpty(cityLocation.getText().toString())) {
-                      lat = locServLat;
-                      lon = locServLon;
-
-                      locationFound = true;
-  //              if text is input to the enter city box (i.e. location could not be automatically found), convert the city name to latitude and longitude
-                } while (!locationFound) {
+                //              if text is input to the enter city box (i.e. location could not be automatically found), convert the city name to latitude and longitude
+                while (!locationFound) {
 //                  https://stackoverflow.com/questions/20166328/how-to-get-longitude-latitude-from-the-city-name-android-code
 
                     String city = cityLocation.getText().toString();
-                    List<LatLng> ll = new ArrayList<>();
 
                     if (!city.equals("")) {
 
-                        ll = getLatAndLon(ll, city);
+                        System.out.println("asdfghjkl");
+                        latlon = lh.getLocationFromAddress(city);
+                        System.out.println("qwertyuiop");
 
   //                    if no coordinates could be found (e.g. spelling error), present a message to the user to re-enter their location
-                        if (ll.size() == 0) {
+                        if (latlon.equals("")) {
                             final AlertDialog locationError = new AlertDialog.Builder(MoreDetailsSymptomActivity.this, R.style.CustomDialogTheme).create();
                             locationError.setTitle("Error");
                             locationError.setMessage("Location Not Found. Try Again or Check Spelling. Click Outside to Close");
@@ -223,9 +209,9 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
 //                      if coordinates could be found, set the latitude and longitude values and present the city as non-editable text
                         } else {
 
-                            extractLatAndLon(ll);
+                            extractLatAndLon(latlon);
 
-                            city = getCityName(lat, lon);
+                            city = lh.getSimplifiedAddress(lat, lon);
                             String dispLocation = "Current Location: " + city;
                             cityText.setText(dispLocation);
                             cityLocation.setVisibility(View.INVISIBLE);
@@ -233,6 +219,8 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
                             getLoc.setVisibility(View.GONE);
                             locationFound = true;
                         }
+                    } else {
+
                     }
 
                 }
@@ -376,34 +364,10 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
 
     }
 
-    private void extractLatAndLon(List<LatLng> ll) {
-        String latLong = String.valueOf(ll.get(0));
-        String[] arrOfStr1 = latLong.split("\\(");
-        String[] arrOfStr2 = arrOfStr1[1].split(",");
-        lat = arrOfStr2[0];
-        String[] arrOfStr3 = arrOfStr2[1].split("\\)");
-        lon = arrOfStr3[0];
-    }
-
-    private List<LatLng> getLatAndLon(List<LatLng> ll, String city) {
-        if (Geocoder.isPresent()) {
-            try {
-                Geocoder gc = new Geocoder(getApplicationContext());
-                List<Address> addresses = gc.getFromLocationName(city, 5); // get the found Address Objects
-
-                ll = new ArrayList<>(addresses.size()); // A list to save the coordinates if they are available
-
-                for (Address a : addresses) {
-                    if (a.hasLatitude() && a.hasLongitude()) {
-                        ll.add(new LatLng(a.getLatitude(), a.getLongitude()));
-                    }
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-//                            end ref
-        }
-        return ll;
+    private void extractLatAndLon(String latlon) {
+        String[] splitLatLon = latlon.split(",");
+        lat = splitLatLon[0];
+        lon = splitLatLon[1];
     }
 
 //    https://www.androdocs.com/java/creating-an-android-weather-app-using-java.html
@@ -516,24 +480,6 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
 
     }
 
-//    function to get the name of the city from the latitude and longitude
-    protected String getCityName(String lat, String lon) {
-//        https://stackoverflow.com/questions/22323974/how-to-get-city-name-by-latitude-longitude-in-android
-        Geocoder geocoder = new Geocoder(MoreDetailsSymptomActivity.this, Locale.getDefault());
-        List<Address> addresses = null;
-        try {
-            addresses = geocoder.getFromLocation(Double.valueOf(lat), Double.valueOf(lon), 1);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        assert addresses != null;
-        String cityName = addresses.get(0).getLocality();
-        if (cityName == null){
-            cityName = addresses.get(0).getSubAdminArea();
-        }
-//            end ref
-        return cityName;
-    }
 
 //     end of ref
 }

@@ -44,14 +44,8 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".ui.settings.SettingsActivity$MyReceiver"
-            android:enabled="true"
-            android:exported="false"/>
+        <receiver android:name=".NotificationReceiver"/>
 
-        <service
-            android:name=".ui.settings.SettingsActivity$MyNewIntentService"
-            android:exported="false" >
-        </service>
     </application>
 
 </manifest>

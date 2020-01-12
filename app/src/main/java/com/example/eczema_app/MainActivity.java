@@ -18,7 +18,11 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.preference.PreferenceManager;
 
+import com.example.eczema_app.ui.home.LoggedDataEntry;
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements SharedPreferences.OnSharedPreferenceChangeListener {
 
@@ -28,9 +32,11 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
     View hview;
     TextView personName;
     TextView personEmail;
+    List<LoggedDataEntry> logList = new ArrayList<LoggedDataEntry>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        logList = getIntent().getParcelableExtra("logList");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);

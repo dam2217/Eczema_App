@@ -39,6 +39,7 @@ public class LoggedDataEntry implements Parcelable {
     public String llfTreated;
     public String llbTreated;
     public String notes;
+    public int severityScore;
 
     public LoggedDataEntry(){
         this.date = "";
@@ -75,6 +76,7 @@ public class LoggedDataEntry implements Parcelable {
         this.llfTreated = "";
         this.llbTreated = "";
         this.notes = "";
+        this.severityScore = 0;
     }
 
     public LoggedDataEntry(String dateNow, String timeNow, String headf, String headb, String torsof,
@@ -90,17 +92,125 @@ public class LoggedDataEntry implements Parcelable {
         this.date = dateNow;
         this.time = timeNow;
         this.hf = headf;
+        if (headf == "Mild") {
+            severityScore = severityScore + 1;
+        }
+        if (headf == "Moderate") {
+            severityScore = severityScore + 2;
+        }
+        if (headf == "Severe") {
+            severityScore = severityScore + 3;
+        }
         this.hb = headb;
+        if (headb == "Mild") {
+            severityScore = severityScore + 1;
+        }
+        if (headb == "Moderate") {
+            severityScore = severityScore + 2;
+        }
+        if (headb == "Severe") {
+            severityScore = severityScore + 3;
+        }
         this.tf = torsof;
+        if (torsof == "Mild") {
+            severityScore = severityScore + 1;
+        }
+        if (torsof == "Moderate") {
+            severityScore = severityScore + 2;
+        }
+        if (torsof == "Severe") {
+            severityScore = severityScore + 3;
+        }
         this.tb = torsob;
+        if (torsob == "Mild") {
+            severityScore = severityScore + 1;
+        }
+        if (torsob == "Moderate") {
+            severityScore = severityScore + 2;
+        }
+        if (torsob == "Severe") {
+            severityScore = severityScore + 3;
+        }
         this.raf = rarmf;
+        if (rarmf == "Mild") {
+            severityScore = severityScore + 1;
+        }
+        if (rarmf == "Moderate") {
+            severityScore = severityScore + 2;
+        }
+        if (rarmf == "Severe") {
+            severityScore = severityScore + 3;
+        }
         this.rab = rarmb;
+        if (rarmb == "Mild") {
+            severityScore = severityScore + 1;
+        }
+        if (rarmb == "Moderate") {
+            severityScore = severityScore + 2;
+        }
+        if (rarmb == "Severe") {
+            severityScore = severityScore + 3;
+        }
         this.laf = larmf;
+        if (larmf == "Mild") {
+            severityScore = severityScore + 1;
+        }
+        if (larmf == "Moderate") {
+            severityScore = severityScore + 2;
+        }
+        if (larmf == "Severe") {
+            severityScore = severityScore + 3;
+        }
         this.lab = larmb;
+        if (larmf == "Mild") {
+            severityScore = severityScore + 1;
+        }
+        if (larmf == "Moderate") {
+            severityScore = severityScore + 2;
+        }
+        if (larmf == "Severe") {
+            severityScore = severityScore + 3;
+        }
         this.rlf = rlegf;
+        if (rlegf == "Mild") {
+            severityScore = severityScore + 1;
+        }
+        if (rlegf == "Moderate") {
+            severityScore = severityScore + 2;
+        }
+        if (rlegf == "Severe") {
+            severityScore = severityScore + 3;
+        }
         this.rlb = rlegb;
+        if (rlegb == "Mild") {
+            severityScore = severityScore + 1;
+        }
+        if (rlegb == "Moderate") {
+            severityScore = severityScore + 2;
+        }
+        if (rlegb == "Severe") {
+            severityScore = severityScore + 3;
+        }
         this.llf = llegf;
+        if (llegf == "Mild") {
+            severityScore = severityScore + 1;
+        }
+        if (llegf == "Moderate") {
+            severityScore = severityScore + 2;
+        }
+        if (llegf == "Severe") {
+            severityScore = severityScore + 3;
+        }
         this.llb = llegb;
+        if (llegb == "Mild") {
+            severityScore = severityScore + 1;
+        }
+        if (llegb == "Moderate") {
+            severityScore = severityScore + 2;
+        }
+        if (llegb == "Severe") {
+            severityScore = severityScore + 3;
+        }
         this.treatmentYorN = treatmentyesorno;
         this.treatmentUsed = treatmentu;
         this.temperature = temp;

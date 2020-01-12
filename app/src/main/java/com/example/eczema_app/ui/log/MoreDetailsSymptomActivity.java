@@ -28,8 +28,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.androdocs.httprequest.HttpRequest;
 import com.example.eczema_app.MainActivity;
 import com.example.eczema_app.R;
+import com.example.eczema_app.ui.HttpCommunicate;
 import com.example.eczema_app.ui.LogEntrySerial;
-import com.example.eczema_app.ui.home.LoggedDataEntry;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
 
@@ -48,10 +48,6 @@ import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
 public class MoreDetailsSymptomActivity extends AppCompatActivity {
-
-    String data = "";
-
-    List<LoggedDataEntry> logList = new ArrayList<LoggedDataEntry>();
 
     LogEntry currentLog = new LogEntry();
 
@@ -274,13 +270,12 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
 
 //              when save button clicked, return to home page
                 if (locationFound) {
-                    Intent home_intent = new Intent(getApplicationContext(), MainActivity.class);
-
                     Log.i("test", "a");
                     new SendData().execute();
                     Log.i("test", "b");
-                    new ReceiveData().execute();
 
+
+                    Intent home_intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(home_intent);
 
                 }
@@ -290,49 +285,6 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
 
     }
 
-
-    public class ReceiveData extends AsyncTask<String,String,String> {
-        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-        @Override
-        protected String doInBackground(String... strings) {
-            try{
-                Log.i("data received?", "yes");
-                data = HttpTest.sendGet("https://eczema-app.herokuapp.com/eczemadatabase");
-                System.out.println("data: " + data);
-
-                String[] splits = data.split("split");
-
-                for (int i = 0; i < splits.length; i++) {
-                    String individualReceived = "{" + splits[i] + "}";
-                    Gson gson = new Gson();
-                    LogEntrySerial LogFromDBserial = gson.fromJson(individualReceived, LogEntrySerial.class);
-                    LoggedDataEntry LogFromDB = new LoggedDataEntry(LogFromDBserial.date, LogFromDBserial.time,
-                            LogFromDBserial.hf, LogFromDBserial.hb, LogFromDBserial.tf, LogFromDBserial.tb,
-                            LogFromDBserial.raf, LogFromDBserial.rab, LogFromDBserial.laf, LogFromDBserial.lab,
-                            LogFromDBserial.rlf, LogFromDBserial.rlb, LogFromDBserial.llf, LogFromDBserial.llb,
-                            LogFromDBserial.treatmentYorN, LogFromDBserial.treatmentUsed, LogFromDBserial.temperature,
-                            LogFromDBserial.humidity, LogFromDBserial.pollutionLevel, LogFromDBserial.pollenLevel,
-                            LogFromDBserial.location, LogFromDBserial.hfTreated, LogFromDBserial.hbTreated,
-                            LogFromDBserial.tfTreated, LogFromDBserial.tbTreated, LogFromDBserial.rafTreated,
-                            LogFromDBserial.rabTreated, LogFromDBserial.lafTreated, LogFromDBserial.labTreated,
-                            LogFromDBserial.rlfTreated, LogFromDBserial.rlbTreated, LogFromDBserial.llfTreated,
-                            LogFromDBserial.llbTreated, LogFromDBserial.notes);
-
-                    System.out.println("Location from db: " + LogFromDB.location);
-
-                    logList.add(LogFromDB);
-                }
-
-                Log.i("length", String.valueOf(logList.size()));
-                System.out.println(logList.get(1).location);
-
-                return data;
-            } catch (Exception e) {
-                Log.i("caught?", "unfortunately");
-                return new String("Exception: " + e.getMessage());
-            }
-        }
-    }
 
     public class SendData extends AsyncTask<String,String,String> {
         @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -368,7 +320,7 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
                 String message = jsonString;
                 byte[] body = message.getBytes(StandardCharsets.UTF_8);
 
-                return HttpTest.sendPost("https://eczema-app.herokuapp.com/eczemadatabase", body);
+                return HttpCommunicate.sendPost("https://eczema-app.herokuapp.com/eczemadatabase", body);
             } catch (Exception e) {
                 Log.i("caught?", "unfortunately");
                 return new String("Exception: " + e.getMessage());

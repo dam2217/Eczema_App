@@ -62,7 +62,7 @@ public class HomeFragment extends Fragment {
 //        if no notes, set button to 'gone', else set textview to gone
 //        get the locations on which treatment was used and put strings as list in popup
 
-
+        //creating activity of AlertDialog
         noLocations1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

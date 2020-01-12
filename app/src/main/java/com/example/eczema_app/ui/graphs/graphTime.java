@@ -86,8 +86,6 @@ public class graphTime extends AppCompatActivity {
     return yNewData;
 }
 
-
-
         private void addData(){
 
             ArrayList<BarEntry> yVals = new ArrayList<BarEntry>();

@@ -21,11 +21,6 @@
             android:layout_height="wrap_content"
             android:text="View your logbook through graphs!" />
 
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
         <Button
             android:id="@+id/btngraphTime"
             android:layout_width="match_parent"
@@ -53,7 +48,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="Severity vs Pollen level" />
-
 
 
     </LinearLayout>

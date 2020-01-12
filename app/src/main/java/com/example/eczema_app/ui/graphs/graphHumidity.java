@@ -83,7 +83,7 @@ public class graphHumidity extends AppCompatActivity {
 
         //setting limits of y-axis to be 3 severity levels
         yAxisLeft.setAxisMinimum(0f);
-        yAxisLeft.setAxisMaximum(2f);
+        yAxisLeft.setAxisMaximum(36);
 
         //plotting line chart
         LineData data = new LineData(lineDataSet);
@@ -96,7 +96,7 @@ public class graphHumidity extends AppCompatActivity {
     private ArrayList getData() {
         ArrayList<Entry> entries = new ArrayList<>();
         for (int i = 0; i < logList.size(); i++) {
-            entries.add(new Entry(logList.get(i).severityScore, Integer.parseInt(logList.get(i).humidity)));
+            entries.add(new Entry(Integer.parseInt(logList.get(i).humidity), logList.get(i).severityScore));
         }
         return entries;
     }

@@ -38,7 +38,7 @@ public class graphPollen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph_pollen);
 
-        lineChart = (LineChart)findViewById(R.id.lineChart);
+        lineChart = (LineChart) findViewById(R.id.lineChart);
         LineDataSet lineDataSet = new LineDataSet(getData(), "Severity levels");
         lineDataSet.setColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
 
@@ -82,7 +82,7 @@ public class graphPollen extends AppCompatActivity {
 
         //setting limits of y-axis to be 3 severity levels
         yAxisLeft.setAxisMinimum(0f);
-        yAxisLeft.setAxisMaximum(2f);
+        yAxisLeft.setAxisMaximum(36);
 
         //plotting line chart
         LineData data = new LineData(lineDataSet);
@@ -95,7 +95,7 @@ public class graphPollen extends AppCompatActivity {
     private ArrayList getData() {
         ArrayList<Entry> entries = new ArrayList<>();
         for (int i = 0; i < logList.size(); i++) {
-            entries.add(new Entry(logList.get(i).severityScore, Integer.parseInt(logList.get(i).pollenLevel)));
+            entries.add(new Entry(Integer.parseInt(logList.get(i).pollenLevel),logList.get(i).severityScore));
         }
         return entries;
     }
@@ -154,4 +154,5 @@ public class graphPollen extends AppCompatActivity {
             }
         }
     }
+
 }

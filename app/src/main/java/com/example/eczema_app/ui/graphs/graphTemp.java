@@ -1,6 +1,8 @@
 package com.example.eczema_app.ui.graphs;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
 import android.os.Bundle;
 
 import com.github.mikephil.charting.charts.LineChart;
@@ -31,11 +33,17 @@ public class graphTemp extends AppCompatActivity {
 
         lineChart = (LineChart)findViewById(R.id.lineChart);
         LineDataSet lineDataSet = new LineDataSet(getData(), "Severity levels");
-        lineDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-        /*
-        lineDataSet.setColor(ContextCompat.getColor(this, R.color.colorPrimary));
-        lineDataSet.setValueTextColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
-         */
+        lineDataSet.setColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
+
+        //enable scaling and dragging
+        lineChart.setDragEnabled(true);
+        lineChart.setScaleEnabled(true);
+        lineChart.setDrawGridBackground(false);
+
+        //if disabled, scaling can be done on x- and y-axis separately
+        lineChart.setPinchZoom(true);
+
+        //setting x-axis temperature
         XAxis xAxis = lineChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         final String[] dates = new String[]{"-10°", "0°", "10°", "20°","30°","40°"};
@@ -48,13 +56,12 @@ public class graphTemp extends AppCompatActivity {
         xAxis.setGranularity(1f);
         xAxis.setValueFormatter(formatter);
 
-
+        //y-axis code
         YAxis yAxisRight = lineChart.getAxisRight();
         yAxisRight.setEnabled(false);
-
         YAxis yAxisLeft = lineChart.getAxisLeft();
 
-        //
+        //setting y-axis
         final String[] severity = new String[]{"Mild", "Moderate", "Severe"};
         ValueFormatter formatter1 = new ValueFormatter() {
             @Override
@@ -62,16 +69,22 @@ public class graphTemp extends AppCompatActivity {
                 return severity[(int) value];
             }
         };
-        //
         yAxisLeft.setGranularity(1f);
+        yAxisLeft.setValueFormatter(formatter1);
 
+        //setting limits of y-axis to be 3 severity levels
+        yAxisLeft.setAxisMinimum(0f);
+        yAxisLeft.setAxisMaximum(2f);
+
+        //plotting line chart
         LineData data = new LineData(lineDataSet);
         lineChart.setData(data);
         lineChart.animateX(2500);
         lineChart.invalidate();
         lineDataSet.setLineWidth(7);
-
     }
+
+    //manually plotting sample data until API database comes online
     private ArrayList getData(){
         ArrayList<Entry> entries = new ArrayList<>();
         entries.add(new Entry(0f, 0f));
@@ -80,7 +93,6 @@ public class graphTemp extends AppCompatActivity {
         entries.add(new Entry(3f, 2f));
         entries.add(new Entry(4f, 2f));
         entries.add(new Entry(5f, 2f));
-
         return entries;
     }
 }

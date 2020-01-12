@@ -21,6 +21,8 @@
             android:parentActivityName=".ui.settings.SettingsActivity" /> <!-- <activity -->
         <!-- android:name=".ui.tools.graphStress"/> -->
         <activity android:name=".ui.graphs.graphHumidity" />
+        <activity android:name=".ui.graphs.graphTemp" />
+        <activity android:name=".ui.graphs.graphPollen" />
         <activity android:name=".ui.graphs.graphTime" /> <!-- <activity -->
         <!-- android:name=".ui.tools.testing" /> -->
         <!-- <activity -->
@@ -40,6 +42,8 @@
             android:label="More Details"
             android:parentActivityName=".ui.log.LogActivity" />
         <activity android:name=".ui.log.LogActivity" />
+        <activity android:name=".ui.home.HomeFragment"
+            android:label="Home"/>
         <activity android:name=".ui.settings.SettingsActivity" />
         <activity
             android:name=".MainActivity"

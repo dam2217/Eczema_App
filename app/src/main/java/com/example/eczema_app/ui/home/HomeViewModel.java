@@ -8,10 +8,11 @@ public class HomeViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
+    //prints out recent logs
     public HomeViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is home fragment");
-    }
+        mText.setValue("Your Recent Logs");
+}
 
     public LiveData<String> getText() {
         return mText;

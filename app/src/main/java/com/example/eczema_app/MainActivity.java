@@ -2,9 +2,13 @@ package com.example.eczema_app;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+
 import android.view.View;
 import android.widget.TextView;
 
+
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -55,8 +59,22 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        final AlertDialog inflammationLocations = new AlertDialog.Builder(this, R.style.CustomDialogTheme).create();
+        inflammationLocations.setTitle("Inflammations");
+        inflammationLocations.setMessage("Insert list of locations and severity ");
+//        show on click of locations button
+//        inflammationLocations.show();
 
+        final AlertDialog treatments = new AlertDialog.Builder(this, R.style.CustomDialogTheme).create();
+        treatments.setTitle("Treatment: **Name of Treatment**");
+        treatments.setMessage("Insert list of where treatment used");
+//        treatments.show();
 
+        final AlertDialog notes = new AlertDialog.Builder(this, R.style.CustomDialogTheme).create();
+        notes.setTitle("Notes");
+        notes.setMessage("Insert Notes");
+//        notes.show();
+        
     }
 
     @Override

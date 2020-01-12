@@ -19,6 +19,8 @@ android {
     }
 }
 
+
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -46,15 +48,19 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.7'
     testImplementation 'org.hamcrest:hamcrest:2.2'
     implementation 'com.google.android.gms:play-services-location:17.0.0'
+    compileOnly 'org.projectlombok:lombok:1.18.10'
+    annotationProcessor 'org.projectlombok:lombok:1.18.10'
+
+
 
 }
 
 buildscript {
     repositories {
+        mavenCentral()
         maven { url 'https://jitpack.io' }
     }
 }
-
 
 allprojects {
     repositories {

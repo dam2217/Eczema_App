@@ -267,44 +267,19 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
                 setTreatedAreas(treatedAreas);
 
                 String extraInformation = String.valueOf(notes.getText());
-                currentLog.setNotes(extraInformation);
+                if (extraInformation!=""){
+                    currentLog.setNotes(extraInformation);
+                }
+                else {currentLog.setNotes("N/A");}
 
 //              when save button clicked, return to home page
                 if (locationFound) {
                     Intent home_intent = new Intent(getApplicationContext(), MainActivity.class);
 
                     Log.i("test", "a");
-                    new RequestAsync().execute();
+                    new SendData().execute();
                     Log.i("test", "b");
-                    System.out.println(new ReceiveData().execute());
-
-                    Log.i("data", data);
-
-                    String[] splits = data.split("split ");
-
-                    for (int i = 0; i < splits.length; i++) {
-                        String individualReceived = "{" + splits[i] + "}";
-                        Gson gson = new Gson();
-                        LogEntrySerial LogFromDBserial = gson.fromJson(individualReceived, LogEntrySerial.class);
-                        LoggedDataEntry LogFromDB = new LoggedDataEntry(LogFromDBserial.date, LogFromDBserial.time,
-                                LogFromDBserial.hf, LogFromDBserial.hb, LogFromDBserial.tf, LogFromDBserial.tb,
-                                LogFromDBserial.raf, LogFromDBserial.rab, LogFromDBserial.laf, LogFromDBserial.lab,
-                                LogFromDBserial.rlf, LogFromDBserial.rlb, LogFromDBserial.llf, LogFromDBserial.llb,
-                                LogFromDBserial.treatmentYorN, LogFromDBserial.treatmentUsed, LogFromDBserial.temperature,
-                                LogFromDBserial.humidity, LogFromDBserial.pollutionLevel, LogFromDBserial.pollenLevel,
-                                LogFromDBserial.location, LogFromDBserial.hfTreated, LogFromDBserial.hbTreated,
-                                LogFromDBserial.tfTreated, LogFromDBserial.tbTreated, LogFromDBserial.rafTreated,
-                                LogFromDBserial.rabTreated, LogFromDBserial.lafTreated, LogFromDBserial.labTreated,
-                                LogFromDBserial.rlfTreated, LogFromDBserial.rlbTreated, LogFromDBserial.llfTreated,
-                                LogFromDBserial.llbTreated, LogFromDBserial.notes);
-
-                        logList.add(LogFromDB);
-
-                    }
-
-
-                    Log.i("length", String.valueOf(logList.size()));
-                    //Log.i("location", logList.get(1).getLocation());
+                    new ReceiveData().execute();
 
                     startActivity(home_intent);
 
@@ -324,6 +299,33 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
                 Log.i("data received?", "yes");
                 data = HttpTest.sendGet("https://eczema-app.herokuapp.com/eczemadatabase");
                 System.out.println("data: " + data);
+
+                String[] splits = data.split("split");
+
+                for (int i = 0; i < splits.length; i++) {
+                    String individualReceived = "{" + splits[i] + "}";
+                    Gson gson = new Gson();
+                    LogEntrySerial LogFromDBserial = gson.fromJson(individualReceived, LogEntrySerial.class);
+                    LoggedDataEntry LogFromDB = new LoggedDataEntry(LogFromDBserial.date, LogFromDBserial.time,
+                            LogFromDBserial.hf, LogFromDBserial.hb, LogFromDBserial.tf, LogFromDBserial.tb,
+                            LogFromDBserial.raf, LogFromDBserial.rab, LogFromDBserial.laf, LogFromDBserial.lab,
+                            LogFromDBserial.rlf, LogFromDBserial.rlb, LogFromDBserial.llf, LogFromDBserial.llb,
+                            LogFromDBserial.treatmentYorN, LogFromDBserial.treatmentUsed, LogFromDBserial.temperature,
+                            LogFromDBserial.humidity, LogFromDBserial.pollutionLevel, LogFromDBserial.pollenLevel,
+                            LogFromDBserial.location, LogFromDBserial.hfTreated, LogFromDBserial.hbTreated,
+                            LogFromDBserial.tfTreated, LogFromDBserial.tbTreated, LogFromDBserial.rafTreated,
+                            LogFromDBserial.rabTreated, LogFromDBserial.lafTreated, LogFromDBserial.labTreated,
+                            LogFromDBserial.rlfTreated, LogFromDBserial.rlbTreated, LogFromDBserial.llfTreated,
+                            LogFromDBserial.llbTreated, LogFromDBserial.notes);
+
+                    System.out.println("Location from db: " + LogFromDB.location);
+
+                    logList.add(LogFromDB);
+                }
+
+                Log.i("length", String.valueOf(logList.size()));
+                System.out.println(logList.get(1).location);
+
                 return data;
             } catch (Exception e) {
                 Log.i("caught?", "unfortunately");
@@ -332,7 +334,7 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
         }
     }
 
-    public class RequestAsync extends AsyncTask<String,String,String> {
+    public class SendData extends AsyncTask<String,String,String> {
         @RequiresApi(api = Build.VERSION_CODES.KITKAT)
         @Override
         protected String doInBackground(String... strings) {
@@ -341,6 +343,8 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
 
                 String currentDate = new SimpleDateFormat("dd-MM-yy", Locale.getDefault()).format(new Date());
                 String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
+
+                System.out.println(currentDate);
 
                 LogEntrySerial currentLogSerial = new LogEntrySerial(currentDate, currentTime, currentLog.getHf().toString(),
                 currentLog.getHb().toString(), currentLog.getTf().toString(), currentLog.getTb().toString(),

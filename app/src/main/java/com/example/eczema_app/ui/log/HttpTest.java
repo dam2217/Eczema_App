@@ -80,16 +80,11 @@ public class HttpTest {
             String inputLine;
             StringBuffer response = new StringBuffer();
 
-            System.out.println(in.readLine());
-
-            System.out.println("A");
             while ((inputLine = in.readLine()) != null) {
-                System.out.println("B");
                 response.append(inputLine);
             }
 
             in.close();
-            System.out.println(response.toString());
             return response.toString();
         } else {
             System.out.println("Not connected");

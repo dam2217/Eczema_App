@@ -41,9 +41,9 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey);
-        System.out.println("asdfghjkl");
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this.getActivity());
         getLastLocation();
+
     }
 
         //permission prompt

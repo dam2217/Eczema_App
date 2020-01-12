@@ -44,10 +44,9 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         System.out.println("asdfghjkl");
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this.getActivity());
         getLastLocation();
-
     }
 
-
+        //permission prompt
         @SuppressLint("MissingPermission")
         private void getLastLocation(){
                 if (checkPermissions()) {
@@ -94,7 +93,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                 );
 
         }
-
+        //getting geographical location
         private LocationCallback mLocationCallback = new LocationCallback() {
                 @Override
                 public void onLocationResult(LocationResult locationResult) {
@@ -103,7 +102,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                         lon = Double.toString(mLastLocation.getLongitude());
                 }
         };
-
+        //boolean of checking permission
         private boolean checkPermissions() {
                 if (ActivityCompat.checkSelfPermission(this.getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
                         ActivityCompat.checkSelfPermission(this.getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
@@ -111,7 +110,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                 }
                 return false;
         }
-
+        //request permission
         private void requestPermissions() {
                 ActivityCompat.requestPermissions(
                         this.getActivity(),
@@ -119,14 +118,14 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                         PERMISSION_ID
                 );
         }
-
+        //checking whether location is enabled
         private boolean isLocationEnabled() {
                 LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
                 return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(
                         LocationManager.NETWORK_PROVIDER
                 );
         }
-
+        //checking result of permission whether user allowed or not allowed location services
         @Override
         public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
                 super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -136,7 +135,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
                         }
                 }
         }
-
+        //if permission is granted, resume
         @Override
         public void onResume(){
                 super.onResume();

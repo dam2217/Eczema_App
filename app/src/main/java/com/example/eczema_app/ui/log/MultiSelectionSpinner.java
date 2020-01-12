@@ -19,6 +19,8 @@ import java.util.List;
 /**
  * Created by Aneh Thakur on 5/7/2015.
  */
+
+//spinner feature
 public class MultiSelectionSpinner extends AppCompatSpinner implements
         OnMultiChoiceClickListener {
     String[] _items = null;
@@ -123,7 +125,7 @@ public class MultiSelectionSpinner extends AppCompatSpinner implements
         multiAdapter.add(buildSelectedItemString());
     }
 
-
+    //checkign whether user tabbed on an unidentified region
     public void resetSelection(int index) {
         if (index >= 0 && index <= mSelection.length) {
             mSelection[index - 1] = false;

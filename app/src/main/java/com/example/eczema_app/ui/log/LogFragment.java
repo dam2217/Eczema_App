@@ -58,7 +58,7 @@ public class LogFragment extends Fragment {
         final TextView larmseverity = root.findViewById(R.id.larmSeverity);
         final TextView rlegseverity = root.findViewById(R.id.rlegSeverity);
         final TextView llegseverity = root.findViewById(R.id.llegSeverity);
-
+        //switch button for front/back body image
         final Switch frontOrBack = root.findViewById(R.id.FrontOrBack);
         frontOrBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,7 +93,7 @@ public class LogFragment extends Fragment {
 //        currentLog = LogEntry(headseverity.getText(), headseverity.getText(), torsoseverity.getText(), torsoseverity.getText(),
 //                rarmseverity.getText(), rarmseverity.getText(), larmseverity.getText(), larmseverity.getText(), rlegseverity.getText(), rlegseverity.getText(),
 //                llegseverity.getText(), llegseverity.getText());
-
+        //interactive head
         head.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,7 +136,7 @@ public class LogFragment extends Fragment {
                 }
             }
         });
-
+        //interactive torso
         torso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -179,7 +179,7 @@ public class LogFragment extends Fragment {
                 }
             }
         });
-
+        //interactive right arm
         rarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -222,7 +222,7 @@ public class LogFragment extends Fragment {
                 }
             }
         });
-
+        //interactive left arm
         larm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -265,7 +265,7 @@ public class LogFragment extends Fragment {
                 }
             }
         });
-
+        //interactive right leg
         rleg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -308,7 +308,7 @@ public class LogFragment extends Fragment {
                 }
             }
         });
-
+        //interactive left leg
         lleg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -354,7 +354,7 @@ public class LogFragment extends Fragment {
             }
         });
 
-
+        //button for more details
         Button more_details = root.findViewById(R.id.submitButton);
         more_details.setOnClickListener(new View.OnClickListener() {
             @Override

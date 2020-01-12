@@ -57,7 +57,7 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
+        //button for currentLog
         currentLog = getIntent().getParcelableExtra("currentLog");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_more_details_symptoms);
@@ -375,7 +375,7 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
         }
 
     }
-
+    //location database matching
     private void extractLatAndLon(List<LatLng> ll) {
         String latLong = String.valueOf(ll.get(0));
         String[] arrOfStr1 = latLong.split("\\(");
@@ -444,7 +444,7 @@ public class MoreDetailsSymptomActivity extends AppCompatActivity {
 
         }
     }
-
+    //getrequest for jsonobject from database
     @SuppressLint("StaticFieldLeak")
     class pollutionTask extends AsyncTask<String, Void, String> {
         @Override

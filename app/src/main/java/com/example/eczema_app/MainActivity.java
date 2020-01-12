@@ -50,8 +50,7 @@ public class MainActivity extends AppCompatActivity {
         notes.setTitle("Notes");
         notes.setMessage("Insert Notes");
 //        notes.show();
-
-
+        
     }
 
     @Override

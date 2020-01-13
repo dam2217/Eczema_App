@@ -20,14 +20,16 @@
         android:id="@+id/Treatment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="5dp"
         android:text="@string/treatment"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="25sp"
         app:fontFamily="@font/assistant_bold"
+        app:layout_constraintBottom_toTopOf="@+id/yesButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,32 +37,33 @@
         android:id="@+id/yesButton"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="20dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textOff="@string/no"
         android:textOn="@string/yes"
         android:textSize="18sp"
+        android:theme="@style/AppTheme.ToggleButton"
         app:fontFamily="@font/assistant_bold"
         app:layout_constraintBottom_toTopOf="@+id/selectTreatment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Treatment"
-        android:theme="@style/AppTheme.ToggleButton"/>
-
+        app:layout_constraintTop_toBottomOf="@+id/Treatment" />
 
 
     <TextView
         android:id="@+id/selectTreatment"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="If applicable, select your treatment"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="5dp"
+        android:text="@string/select_your_treatment"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="18sp"
         app:fontFamily="@font/assistant_bold"
+        app:layout_constraintBottom_toTopOf="@+id/whatTreatment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,10 +71,44 @@
 
     <Spinner
         android:id="@+id/whatTreatment"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="20dp"
+        android:background="#F1F8FC"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="18sp"
+        app:fontFamily="@font/assistant_bold"
+        app:layout_constraintBottom_toTopOf="@id/textWhereTreatment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectTreatment" />
+
+    <TextView
+        android:id="@+id/textWhereTreatment"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="5dp"
+        android:text="Where did you apply this treatment?"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="18sp"
+        app:fontFamily="@font/assistant_bold"
+        app:layout_constraintBottom_toTopOf="@id/whereTreatment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/whatTreatment" />
+
+
+    <com.example.eczema_app.ui.log.MultiSelectionSpinner
+        android:id="@+id/whereTreatment"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="30dp"
         android:background="#F1F8FC"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="18sp"
@@ -80,23 +117,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectTreatment" />
-
-
+        app:layout_constraintTop_toBottomOf="@+id/textWhereTreatment" />
 
 
     <EditText
         android:id="@+id/location"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"
         android:autofillHints=""
         android:background="#F1F8FC"
         android:ems="10"
         android:hint="@string/current_city_hint"
         android:inputType="text"
-        android:text="@string/location"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="18sp"
         app:fontFamily="@font/assistant_bold"
@@ -104,11 +138,45 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/whatTreatment" />
+        app:layout_constraintTop_toBottomOf="@+id/whereTreatment" />
+
+    <TextView
+        android:id="@+id/locFromGPS"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="5dp"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="18sp"
+        app:fontFamily="@font/assistant_bold"
+        app:layout_constraintBottom_toTopOf="@id/Notes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/whereTreatment" />
+
+    <Button
+        android:id="@+id/findLocation"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="5dp"
+        android:background="#F1F8FC"
+        android:text="Find"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="18sp"
+        app:fontFamily="@font/assistant_bold"
+        app:layout_constraintBottom_toTopOf="@id/Notes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/location"
+        app:layout_constraintTop_toBottomOf="@id/whereTreatment" />
 
     <EditText
         android:id="@+id/Notes"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:background="#F1F8FC"
@@ -117,7 +185,6 @@
         android:hint="@string/notes"
         android:importantForAutofill="no"
         android:inputType="textMultiLine"
-        android:text="@string/notes"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textSize="18sp"
         app:fontFamily="@font/assistant_bold"
@@ -142,6 +209,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintHorizontal_bias="0.93"
         app:layout_constraintVertical_bias="0.88" />
+
 
 
 

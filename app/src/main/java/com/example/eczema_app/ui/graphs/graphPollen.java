@@ -26,7 +26,8 @@ import java.util.ArrayList;
 import com.example.eczema_app.R;
 import com.google.gson.Gson;
 
-public class graphHumidity extends AppCompatActivity {
+public class graphPollen extends AppCompatActivity {
+
     private LineChart lineChart;
 
     String data = "";
@@ -35,9 +36,7 @@ public class graphHumidity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_graph_humidity);
-
-        new ReceiveData().execute();
+        setContentView(R.layout.activity_graph_pollen);
 
         lineChart = (LineChart) findViewById(R.id.lineChart);
         LineDataSet lineDataSet = new LineDataSet(getData(), "Severity levels");
@@ -51,11 +50,10 @@ public class graphHumidity extends AppCompatActivity {
         //if disabled, scaling can be done on x- and y-axis separately
         lineChart.setPinchZoom(true);
 
-
-        //setting x-axis humidity
+        //setting x-axis pollen level
         XAxis xAxis = lineChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        final String[] dates = new String[]{"0%", "20%", "40%", "60%", "80%", "100%"};
+        final String[] dates = new String[]{"none", "low°", "moderate°", "severe"};
         ValueFormatter formatter = new ValueFormatter() {
             @Override
             public String getAxisLabel(float value, AxisBase axis) {
@@ -78,6 +76,7 @@ public class graphHumidity extends AppCompatActivity {
                 return severity[(int) value];
             }
         };
+        //
         yAxisLeft.setGranularity(1f);
         yAxisLeft.setValueFormatter(formatter1);
 
@@ -96,10 +95,22 @@ public class graphHumidity extends AppCompatActivity {
     private ArrayList getData() {
         ArrayList<Entry> entries = new ArrayList<>();
         for (int i = 0; i < logList.size(); i++) {
-            entries.add(new Entry(Integer.parseInt(logList.get(i).humidity), logList.get(i).severityScore));
+            entries.add(new Entry(Integer.parseInt(logList.get(i).pollenLevel),logList.get(i).severityScore));
         }
         return entries;
     }
+
+//    //manually plotting sample data until API database comes online
+//    private ArrayList getData(){
+//        ArrayList<Entry> entries = new ArrayList<>();
+//        entries.add(new Entry(0f, 0f));
+//        entries.add(new Entry(1f, 1f));
+//        entries.add(new Entry(2f, 2f));
+//        entries.add(new Entry(3f, 2f));
+//        //entries.add(new Entry(4f, 1f));
+//        //entries.add(new Entry(5f, 1f));
+//        return entries;
+//    }
 
     public class ReceiveData extends AsyncTask<String, String, String> {
         @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -143,101 +154,5 @@ public class graphHumidity extends AppCompatActivity {
             }
         }
     }
+
 }
-
-    /*
-    //parsing ArrayList<LogEntry> and separating values with commas
-    public static String toCSV(String[] array){
-        String result = "";
-            if (array.length > 0) { StringBuilder sb = new StringBuilder();
-                for (String s : array) {
-                    sb.append(s).append(",");
-                    }
-                        result = sb.deleteCharAt(sb.length() - 1).toString();}
-            return result;
-    }
-
-    //getrequest from database's data
-    String url = "http://my-json-feed";
-
-    JsonObjectRequest jsonObjectRequest = new JsonObjectRequest
-            (Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
-
-                @Override
-                public void onResponse(JSONObject response) {
-                    textView.setText("Response: " + response.toString());
-                }
-            }, new Response.ErrorListener() {
-
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    // TODO: Handle error
-
-                }
-            });
-
-        // Access the RequestQueue through your singleton class.
-        MySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest);
-
-    JSONArray jsonarray = new JSONArray(jsonStr);
-
-        ArrayList List<LogEntry> = new ArrayList<>();
-
-        //breaking down long string of data
-        for (int i = 0; i < jsonarray.length(); i++) {
-            Integer x,y;
-            JSONObject jsonobject = jsonarray.getJSONObject(i);
-            System.out.println(jsonarray.get(i));
-            String severity = jsonobject.getString("severity");
-            List.add(x);
-            String date = jsonobject.getString("date");
-            float temp = jsonobject.getString("temperature");
-            String pollen = jsonobject.getString("pollen");
-
-            //assigning integer values for severity
-            if(severity == "mild"){
-                x = 0;
-                if(severity == "moderate"){
-                    x = 1;
-                    if(severity == "severe"){
-                        x = 2;
-                    }
-                }
-            }
-
-        }
-    }
-
-    //listing all elements of ArrayList for checking and testing
-    private ArrayList<LogEntry> list = new ArrayList<String>();
-		for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i));
-    }
-
-    //random code
-    private void drawlinechart(float [] yValues, String [] xValues){
-        ArrayList<Entry> yData = new ArrayList<>();
-        for (int i = 0; i < yValues.length; i++){
-            for (int j = 0; j<xValues.length; j++) {
-                yData.add(new Entry(i, yValues[i]));
-            }
-        }
-    }
-
-    //finally plotting data from database, still under work bcos there's error
-    private ArrayList getData(){
-		int x,y;
-        ArrayList<LogEntry> entries = new ArrayList<>();
-        entries.add(new Entry(x,y));
-        entries.add(new Entry(1,1));
-        entries.add(new Entry(1.5f, 1f));
-        entries.add(new Entry(2f, 2f));
-        entries.add(new Entry(3f, 2f));
-        entries.add(new Entry(4f, 2f));
-        entries.add(new Entry(5f, 2f));
-        return entries;
-    }
-*/
-
-
-

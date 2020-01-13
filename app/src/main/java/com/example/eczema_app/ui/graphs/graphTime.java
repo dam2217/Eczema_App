@@ -1,112 +1,220 @@
 package com.example.eczema_app.ui.graphs;
 
-import android.content.Context;
-import android.net.Uri;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+
+import android.database.Cursor;
+import android.graphics.Color;
+import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 
-import androidx.fragment.app.Fragment;
+import com.example.eczema_app.ui.HttpCommunicate;
+import com.example.eczema_app.ui.LogEntrySerial;
+import com.example.eczema_app.ui.home.LoggedDataEntry;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.LimitLine;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import java.util.ArrayList;
 
 import com.example.eczema_app.R;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.github.mikephil.charting.utils.ColorTemplate;
+import com.github.mikephil.charting.utils.ViewPortHandler;
+import com.google.gson.Gson;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link graphTime.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link graphTime#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class graphTime extends GraphsFragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class graphTime extends AppCompatActivity {
+    private LineChart lineChart;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    private OnFragmentInteractionListener mListener;
-
-    public graphTime() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment graphTime.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static graphTime newInstance(String param1, String param2) {
-        graphTime fragment = new graphTime();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    String data = "";
+    ArrayList<LoggedDataEntry> logList = new ArrayList<LoggedDataEntry>();
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+        setContentView(R.layout.activity_graph_time);
+
+        lineChart = (LineChart) findViewById(R.id.lineChart);
+        LineDataSet lineDataSet = new LineDataSet(getData(), "Severity levels");
+        lineDataSet.setColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
+
+        //enable scaling and dragging
+        lineChart.setDragEnabled(true);
+        lineChart.setScaleEnabled(true);
+        lineChart.setDrawGridBackground(false);
+
+        //if disabled, scaling can be done on x- and y-axis separately
+        lineChart.setPinchZoom(true);
+
+        //x-axis code
+        XAxis xAxis = lineChart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+
+        //setting x-axis date
+        final String[] dates = new String[]{"4/12/19", "5/12/19", "6/12/19", "7/12/19", "8/12/19", "9/12/19"};
+        ValueFormatter formatter = new ValueFormatter() {
+            @Override
+            public String getAxisLabel(float value, AxisBase axis) {
+                return dates[(int) value];
+            }
+        };
+        xAxis.setGranularity(1f);
+        xAxis.setValueFormatter(formatter);
+
+        /*
+        public ArrayList<String> queryXData(){
+            ArrayList<String> xNewData = new ArrayList<String>();
+            String query = "SELECT " + DAILY_DATE + " FROM " + TABLE_DAILY_FRAG;
+            Cursor cursor = mSQLiteDatabase.rawQuery(query, null);
+            for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+                xNewData.add(cursor.getString(cursor.getColumnIndex(DAILY_DATE)));
+            }
+            cursor.close();
+            return xNewData;
         }
-    }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_graph_time, container, false);
+        public ArrayList<Float> queryYData(){
+    ArrayList<Float> yNewData = new ArrayList<Float>();
+    String query = "SELECT " + DAILY_TOTAL + " FROM " + TABLE_DAILY_FRAG;
+    Cursor cursor = mSQLiteDatabase.rawQuery(query, null);
+    for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+        yNewData.add(cursor.getFloat(cursor.getColumnIndex(DAILY_TOTAL)));
     }
+    cursor.close();
+    return yNewData;
+}
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+        private void addData(){
+
+            ArrayList<BarEntry> yVals = new ArrayList<BarEntry>();
+
+            for (int i = 0; i < mExpenseDB.queryYData().size(); i++)
+                yVals.add(new BarEntry(mExpenseDB.queryYData().get(i), i));
+
+            ArrayList<String> xVals = new ArrayList<String>();
+            for(int i = 0; i < mExpenseDB.queryXData().size(); i++)
+                xVals.add(mExpenseDB.queryXData().get(i));
+
+            BarDataSet dataSet = new BarDataSet(yVals, "expense values");
+            dataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+
+            BarData data = new BarData(xVals, dataSet);
+
+
+            LimitLine line = new LimitLine(12f, "average daily expense");
+            line.setTextSize(12f);
+            line.setLineWidth(4f);
+            YAxis leftAxis = barChart.getAxisLeft();
+            leftAxis.addLimitLine(line);
+
+            barChart.setData(data);
+            barChart.setDescription("The expenses chart.");
+            barChart.animateY(2000);
+
         }
-    }
+        */
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+        //y-axis code
+        YAxis yAxisRight = lineChart.getAxisRight();
+        yAxisRight.setEnabled(false);
+        YAxis yAxisLeft = lineChart.getAxisLeft();
+
+        //setting y-axis
+        final String[] severity = new String[]{"Mild", "Moderate", "Severe"};
+        ValueFormatter formatter1 = new ValueFormatter() {
+            @Override
+            public String getAxisLabel(float value, AxisBase axis) {
+                return severity[(int) value];
+            }
+        };
+        yAxisLeft.setGranularity(1f);
+        yAxisLeft.setValueFormatter(formatter1);
+
+        //setting limits of y-axis to be 3 severity levels
+        yAxisLeft.setAxisMinimum(0f);
+        yAxisLeft.setAxisMaximum(2f);
+
+        //plotting line chart
+        LineData data = new LineData(lineDataSet);
+        lineChart.setData(data);
+        lineChart.animateX(2500);
+        lineChart.invalidate();
+        lineDataSet.setLineWidth(7);
+    }
+//    //manually plotting sample data until API database comes online
+//    private ArrayList getData(){
+//        ArrayList<Entry> entries = new ArrayList<>();
+//        entries.add(new Entry(0f, 0f));
+//        entries.add(new Entry(1f, 1f));
+//        entries.add(new Entry(2f, 2f));
+//        entries.add(new Entry(3f, 2f));
+//        entries.add(new Entry(4f, 1f));
+//        entries.add(new Entry(5f, 1f));
+//        return entries;
+//    }
+
+    private ArrayList getData() {
+        ArrayList<Entry> entries = new ArrayList<>();
+        for (int i = 0; i < logList.size(); i++) {
+            entries.add(new Entry(Integer.parseInt(logList.get(i).date), logList.get(i).severityScore));
         }
+        return entries;
     }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
+    public class ReceiveData extends AsyncTask<String, String, String> {
+        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+        @Override
+        protected String doInBackground(String... strings) {
+            try {
+                Log.i("data received?", "yes");
+                data = HttpCommunicate.sendGet("https://eczema-app.herokuapp.com/eczemadatabase");
+                System.out.println("data: " + data);
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+                String[] splits = data.split("split");
+
+                for (int i = 0; i < splits.length; i++) {
+                    String individualReceived = "{" + splits[i] + "}";
+                    Gson gson = new Gson();
+                    LogEntrySerial LogFromDBserial = gson.fromJson(individualReceived, LogEntrySerial.class);
+                    LoggedDataEntry LogFromDB = new LoggedDataEntry(LogFromDBserial.date, LogFromDBserial.time,
+                            LogFromDBserial.hf, LogFromDBserial.hb, LogFromDBserial.tf, LogFromDBserial.tb,
+                            LogFromDBserial.raf, LogFromDBserial.rab, LogFromDBserial.laf, LogFromDBserial.lab,
+                            LogFromDBserial.rlf, LogFromDBserial.rlb, LogFromDBserial.llf, LogFromDBserial.llb,
+                            LogFromDBserial.treatmentYorN, LogFromDBserial.treatmentUsed, LogFromDBserial.temperature,
+                            LogFromDBserial.humidity, LogFromDBserial.pollutionLevel, LogFromDBserial.pollenLevel,
+                            LogFromDBserial.location, LogFromDBserial.hfTreated, LogFromDBserial.hbTreated,
+                            LogFromDBserial.tfTreated, LogFromDBserial.tbTreated, LogFromDBserial.rafTreated,
+                            LogFromDBserial.rabTreated, LogFromDBserial.lafTreated, LogFromDBserial.labTreated,
+                            LogFromDBserial.rlfTreated, LogFromDBserial.rlbTreated, LogFromDBserial.llfTreated,
+                            LogFromDBserial.llbTreated, LogFromDBserial.notes);
+
+                    System.out.println("Location from db: " + LogFromDB.location);
+
+                    logList.add(LogFromDB);
+                }
+
+                Log.i("length", String.valueOf(logList.size()));
+                System.out.println(logList.get(1).location);
+
+                return data;
+            } catch (Exception e) {
+                Log.i("caught?", "unfortunately");
+                return new String("Exception: " + e.getMessage());
+            }
+        }
     }
 }

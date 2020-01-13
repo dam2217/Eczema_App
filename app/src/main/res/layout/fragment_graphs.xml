@@ -26,26 +26,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="Severity vs Humidity" />
+            android:text="Severity vs Date" />
 
         <Button
             android:id="@+id/btngraphHumidity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="Severity vs Time" />
+            android:text="Severity vs Humidity" />
 
         <Button
-            android:id="@+id/btngraphStress"
+            android:id="@+id/btngraphTemp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="Severity vs Stress" />
+            android:text="Severity vs Temperature" />
 
-        <Spinner
-            android:id="@+id/spinner"
+        <Button
+            android:id="@+id/btngraphPollen"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Severity vs Pollen level" />
 
 
     </LinearLayout>

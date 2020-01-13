@@ -24,7 +24,7 @@
             app:useSimpleSummaryProvider="true"
             android:dialogTitle="@string/name_hint"/>
         <EditTextPreference
-            app:key="birth"
+            app:key="email"
             app:title="@string/fragment_email"
             app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
@@ -57,14 +57,11 @@
     <PreferenceCategory app:title="@string/button_location" app:icon="@drawable/ic_locations">
         <SwitchPreference
             app:key="location"
-            app:title="@string/allow_location"/>
-<!--        <Preference-->
-<!--            app:key="launch_settings"-->
-<!--            app:title="Launch Settings">-->
+            app:title="@string/allow_location" />
 <!--            <intent-->
 <!--                android:action="android.intent.action.VIEW"-->
 <!--                />-->
-<!--        </Preference>-->
+<!--        </SwitchPreference>-->
     </PreferenceCategory>
 
 

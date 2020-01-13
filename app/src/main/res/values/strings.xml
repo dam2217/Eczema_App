@@ -31,6 +31,9 @@
     <string name="current_city_hint">Enter your current city</string>
     <string name="date">%1$s</string>DateFormat.getDateInstance(DateFormat.SHORT).format(date)
     <string name="title_activity_graph">GraphActivity</string>
+    <string name="treatment_prompt">Select Treatment</string>
+  
+    <string name="select_your_treatment">Select your treatment</string>
 
     <!--Notifications-->
     <string name="fragment_notifications">Notifications</string>
@@ -39,8 +42,10 @@
     <string name="fragment_repeat">Reminder Notification</string>
     <string name="attachment_summary_on">Automatically send reminder if log not entered</string>
     <string name="attachment_summary_off">Never send a reminder notification to enter log</string>
-
-    <!--Profilee-->
+    <string name="channel_name">Reminders</string>
+    <string name="channel_description">Daily Log Reminders</string>
+    
+    <!--Profile-->
     <string name="fragment_name">Name: </string>
     <string name="fragment_email">Email: </string>
     <string name="fragment_birth">Birth date: </string>
@@ -54,8 +59,6 @@
     <string name="title_activity_settings2">Settings</string>
     <string name="location_sum_on">Allow app to automatically use location</string>
     <string name="location_sum_off">Manually enter location when prompted</string>
-    <string name="channel_name">Reminders</string>
-    <string name="channel_description">Daily Log Reminders</string>
 
-
+    
 </resources>

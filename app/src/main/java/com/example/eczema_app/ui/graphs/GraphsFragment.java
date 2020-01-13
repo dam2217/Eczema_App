@@ -24,7 +24,6 @@ public class GraphsFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-
         graphsViewModel =
                 ViewModelProviders.of(this).get(GraphsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_graphs, container, false);
@@ -36,6 +35,7 @@ public class GraphsFragment extends Fragment {
 //            }
 //        });
 
+        //date graph button click with intent
         btngraphTime = root.findViewById(R.id.btngraphTime);
         btngraphTime.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -45,6 +45,7 @@ public class GraphsFragment extends Fragment {
             }
         });
 
+        //humidity graph button click with intent
         btngraphHumidity = root.findViewById(R.id.btngraphHumidity);
         btngraphHumidity.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -54,6 +55,7 @@ public class GraphsFragment extends Fragment {
             }
         });
 
+        //temperature graph button click with intent
         btngraphTemp = root.findViewById(R.id.btngraphTemp);
         btngraphTemp.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -63,6 +65,7 @@ public class GraphsFragment extends Fragment {
             }
         });
 
+        //pollen level graph button click with intent
         btngraphPollen = root.findViewById(R.id.btngraphPollen);
         btngraphPollen.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -74,5 +77,4 @@ public class GraphsFragment extends Fragment {
 
         return root;
     }
-
 }

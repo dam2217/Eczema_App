@@ -33,156 +33,262 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        final TextView noLocations1 = root.findViewById(R.id.no_locations_1);
-        final TextView treatment1 = root.findViewById(R.id.treatment_1);
+//     TODO: CHECK NUMBER OF DATABASE ENTRIES - IF LESS THAN FOUR, SET ADDITIONAL CARDVIEWS TO GONE
+
         final TextView date1 = root.findViewById((R.id.date_1));
-        noLocations1.setText("Locations: 3");
+//       TODO: SET DATE TO THE ONE OF THE LOG FROM DATABASE
+        date1.setText("get date");
+
+        final TextView noLocations1 = root.findViewById(R.id.no_locations_1);
+
+    //   TODO: UNCOMMENT THE BELOW AND INCLUDE THE ARRAY LENGTH TO SHOW THE NUMBER OF INFLAMED AREAS FROM DATABASE
+    //   String numberOfLocations1 = String.valueOf("Length of array holding affected areas");
+    //   noLocations1.setText("Locations: " + numberOfLocations1);
+
+        final TextView treatment1 = root.findViewById(R.id.treatment_1);
+
+//        TODO: UNCOMMENT THE BELOW AND SET THE TREATMENT TYPE FROM DATABASE, LIST THE TREATED AREAS FROM THE DATABASE -
+//         ****** REPRESENTS LINE THAT NEEDS CHANGING
+//      ******  if ("Treatment used is true"){
+//            treatment1.setText("Treatment Used");
+//            treatment1.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    final AlertDialog inflammationLocations = new AlertDialog.Builder(getActivity(), R.style.CustomDialogTheme).create();
+//       *******      String treatmentType = "treatment type"
+//                    inflammationLocations.setTitle("Treatment: " + treatmentType);
+//       *******      inflammationLocations.setMessage("List of treated areas for most recent entry");
+//                    inflammationLocations.show();
+//                }
+//            });
+//        } else {
+//            treatment1.setText("No Treatment Used");
+//        }
+
+        final TextView notes1None = root.findViewById(R.id.notes_1_none);
         final Button notes1 = root.findViewById(R.id.notes_1);
-
-        final TextView noLocations2 = root.findViewById(R.id.no_locations_2);
-        final TextView treatment2 = root.findViewById(R.id.treatment_2);
-        final TextView date2 = root.findViewById((R.id.date_2));
-        final Button notes2 = root.findViewById(R.id.notes_2);
-
-        final TextView noLocations3 = root.findViewById(R.id.no_locations_3);
-        final TextView treatment3 = root.findViewById(R.id.treatment_3);
-        final TextView date3 = root.findViewById((R.id.date_3));
-        final Button notes3 = root.findViewById(R.id.notes_3);
-
-        final TextView noLocations4 = root.findViewById(R.id.no_locations_4);
-        final TextView treatment4 = root.findViewById(R.id.treatment_4);
-        final TextView date4 = root.findViewById((R.id.date_4));
-        final Button notes4 = root.findViewById(R.id.notes_4);
-
-//        check number of entries, if less than 4 set additional cards to invisible
-
-//        check and set number of locations
-//        get the affected locations and put strings as list in popup
-//        get the treatment used
-//        if no notes, set button to 'gone', else set textview to gone
-//        get the locations on which treatment was used and put strings as list in popup
+//        TODO: UNCOMMENT BELOW,
+//         CHANGE INPUT FOR IF STATEMENT TO RELEVANT FIELD FROM DATABASE,
+//         GET NOTES FROM DATABASE
+//     *******   if ("notes field is empty"){
+//            notes1.setVisibility(View.GONE);
+//            notes1None.setVisibility(View.VISIBLE);
+//        } else {
+//            notes1.setVisibility(View.VISIBLE);
+//            notes1None.setVisibility(View.GONE);
+//            notes1.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    final AlertDialog inflammationLocations = new AlertDialog.Builder(getActivity(), R.style.CustomDialogTheme).create();
+//                    inflammationLocations.setTitle("Notes");
+//           ******** inflammationLocations.setMessage("notes for most recent entry");
+//                    inflammationLocations.show();
+//                }
+//            });
+//        }
 
 
+
+
+        //creating activity of AlertDialog
         noLocations1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final AlertDialog inflammationLocations = new AlertDialog.Builder(getActivity(), R.style.CustomDialogTheme).create();
                 inflammationLocations.setTitle("Inflammations");
+// TODO: LIST OF LOCATIONS AND SEVERITY FROM DATABASE
                 inflammationLocations.setMessage("Insert list of locations and severity for most recent entry ");
                 inflammationLocations.show();
             }
         });
 
-        treatment1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final AlertDialog inflammationLocations = new AlertDialog.Builder(getActivity(), R.style.CustomDialogTheme).create();
-                inflammationLocations.setTitle("Treatment: ....");
-                inflammationLocations.setMessage("List of treated areas for most recent entry");
-                inflammationLocations.show();
-            }
-        });
 
-        notes1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final AlertDialog inflammationLocations = new AlertDialog.Builder(getActivity(), R.style.CustomDialogTheme).create();
-                inflammationLocations.setTitle("Notes");
-                inflammationLocations.setMessage("notes for most recent entry");
-                inflammationLocations.show();
-            }
-        });
+
+        final TextView date2 = root.findViewById((R.id.date_2));
+//        TODO: BELOW
+        date2.setText("get date");
+
+        final TextView noLocations2 = root.findViewById(R.id.no_locations_2);
+        String numberOfLocations2 = String.valueOf("Length of array holding affected areas");
+        noLocations2.setText("Locations: " + numberOfLocations2);
+
+        final TextView treatment2 = root.findViewById(R.id.treatment_2);
+
+//        TODO: UNCOMMENT THE BELOW AND SET THE TREATMENT TYPE FROM DATABASE, LIST THE TREATED AREAS FROM THE DATABASE
+//       ***** if ("Treatment used is true"){
+//            treatment2.setText("Treatment Used");
+//            treatment2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                final AlertDialog inflammationLocations = new AlertDialog.Builder(getActivity(), R.style.CustomDialogTheme).create();
+//         ******  String treatmentType = "treatment type"
+////                    inflammationLocations.setTitle("Treatment: " + treatmentType);
+////       *******      inflammationLocations.setMessage("List of treated areas for most recent entry");
+////                    inflammationLocations.show();
+//            }
+//        });
+//        } else {
+//            treatment2.setText("No Treatment Used");
+//        }
+
+        final TextView notes2None = root.findViewById(R.id.notes_2_none);
+        final Button notes2 = root.findViewById(R.id.notes_2);
+//        TODO: UNCOMMENT BELOW,
+//         CHANGE INPUT FOR IF STATEMENT TO RELEVANT FIELD FROM DATABASE,
+//         GET NOTES FROM DATABASE
+
+//  ******  if ("notes field is empty"){
+//            notes2.setVisibility(View.GONE);
+//            notes2None.setVisibility(View.VISIBLE);
+//        } else {
+//            notes2.setVisibility(View.VISIBLE);
+//            notes2None.setVisibility(View.GONE);
+//            notes2.setOnClickListener(new View.OnClickListener() {
+    //            @Override
+    //            public void onClick(View v) {
+    //                final AlertDialog inflammationLocations = new AlertDialog.Builder(getActivity(), R.style.CustomDialogTheme).create();
+    //                inflammationLocations.setTitle("Notes");
+    //       ******   inflammationLocations.setMessage("notes for  second entry");
+    //                inflammationLocations.show();
+    //            }
+    //        });
+//        }
+
 
         noLocations2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final AlertDialog inflammationLocations = new AlertDialog.Builder(getActivity(), R.style.CustomDialogTheme).create();
                 inflammationLocations.setTitle("Inflammations");
+//      TODO: GET LIST OF LOCATIONS AND SEVERITY FOR SECOND-MOST RECENT ENTRY IN DATABASE
                 inflammationLocations.setMessage("Insert list of locations and severity for second entry ");
                 inflammationLocations.show();
             }
         });
 
-        treatment2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final AlertDialog inflammationLocations = new AlertDialog.Builder(getActivity(), R.style.CustomDialogTheme).create();
-                inflammationLocations.setTitle("Treatment: ....");
-                inflammationLocations.setMessage("List of treated areas for second entry");
-                inflammationLocations.show();
-            }
-        });
 
-        notes2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final AlertDialog inflammationLocations = new AlertDialog.Builder(getActivity(), R.style.CustomDialogTheme).create();
-                inflammationLocations.setTitle("Notes");
-                inflammationLocations.setMessage("notes for  second entry");
-                inflammationLocations.show();
-            }
-        });
+        final TextView date3 = root.findViewById((R.id.date_3));
+//        TODO: BELOW
+        date3.setText("get date");
+
+        final TextView noLocations3 = root.findViewById(R.id.no_locations_3);
+//        TODO: BELOW
+        String numberOfLocations3 = String.valueOf("Length of array holding affected areas");
+        noLocations3.setText("Locations: " + numberOfLocations3);
+
+        final TextView treatment3 = root.findViewById(R.id.treatment_3);
+//        TODO: BELOW
+//       ******* if ("Treatment used is true"){
+//            treatment3.setText("Treatment Used");
+//            treatment3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                final AlertDialog inflammationLocations = new AlertDialog.Builder(getActivity(), R.style.CustomDialogTheme).create();
+//               ******  String treatmentType = "treatment type"
+//////                    inflammationLocations.setTitle("Treatment: " + treatmentType);
+//////       *******      inflammationLocations.setMessage("List of treated areas for most recent entry");
+//////                    inflammationLocations.show();
+//            }
+//        });
+//        } else {
+//            treatment3.setText("No Treatment Used");
+//        }
+
+        final Button notes3 = root.findViewById(R.id.notes_3);
+        final TextView notes3None = root.findViewById(R.id.notes_3_none);
+//        TODO: BELOW
+//  ******      if ("notes field is empty"){
+//            notes3.setVisibility(View.GONE);
+//            notes3None.setVisibility(View.VISIBLE);
+//        } else {
+//            notes3.setVisibility(View.VISIBLE);
+//            notes3None.setVisibility(View.GONE);
+    //        notes3.setOnClickListener(new View.OnClickListener() {
+    //            @Override
+    //            public void onClick(View v) {
+    //                final AlertDialog inflammationLocations = new AlertDialog.Builder(getActivity(), R.style.CustomDialogTheme).create();
+    //                inflammationLocations.setTitle("Notes");
+    //     ******     inflammationLocations.setMessage("notes for third entry");
+    //                inflammationLocations.show();
+    //            }
+    //        });
+//        }
+
+
+
+
 
         noLocations3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final AlertDialog inflammationLocations = new AlertDialog.Builder(getActivity(), R.style.CustomDialogTheme).create();
                 inflammationLocations.setTitle("Inflammations");
+//                TODO: BELOW
                 inflammationLocations.setMessage("Insert list of locations and severity for third entry");
                 inflammationLocations.show();
             }
         });
 
-        treatment3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final AlertDialog inflammationLocations = new AlertDialog.Builder(getActivity(), R.style.CustomDialogTheme).create();
-                inflammationLocations.setTitle("Treatment: ....");
-                inflammationLocations.setMessage("List of treated areas for third entry");
-                inflammationLocations.show();
-            }
-        });
 
-        notes3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final AlertDialog inflammationLocations = new AlertDialog.Builder(getActivity(), R.style.CustomDialogTheme).create();
-                inflammationLocations.setTitle("Notes");
-                inflammationLocations.setMessage("notes for third entry");
-                inflammationLocations.show();
-            }
-        });
+
+
+        final TextView date4 = root.findViewById((R.id.date_4));
+//        TODO: BELOW
+        date4.setText("DATE OF FOURTH-MOST RECENT ENTRY");
+
+        final TextView noLocations4 = root.findViewById(R.id.no_locations_4);
+
+        final Button notes4 = root.findViewById(R.id.notes_4);
+        final TextView notes4None = root.findViewById(R.id.notes_4_none);
+//        TODO: BELOW
+//  ******      if ("notes field is empty"){
+//            notes3.setVisibility(View.GONE);
+//            notes3None.setVisibility(View.VISIBLE);
+//        } else {
+//            notes3.setVisibility(View.VISIBLE);
+//            notes3None.setVisibility(View.GONE);
+//            notes3.setOnClickListener(new View.OnClickListener() {
+    //            @Override
+    //            public void onClick(View v) {
+    //                final AlertDialog inflammationLocations = new AlertDialog.Builder(getActivity(), R.style.CustomDialogTheme).create();
+    //                inflammationLocations.setTitle("Notes");
+    //     ******     inflammationLocations.setMessage("notes for third entry");
+    //                inflammationLocations.show();
+    //            }
+    //        });
+//        }
+
+        final TextView treatment4 = root.findViewById(R.id.treatment_4);
+//        TODO: BELOW
+//       ******* if ("Treatment used is true"){
+//            treatment4.setText("Treatment Used");
+//            treatment4.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                final AlertDialog inflammationLocations = new AlertDialog.Builder(getActivity(), R.style.CustomDialogTheme).create();
+//               ******  String treatmentType = "treatment type"
+//////                    inflammationLocations.setTitle("Treatment: " + treatmentType);
+//////       *******      inflammationLocations.setMessage("List of treated areas for most recent entry");
+//////                    inflammationLocations.show();
+//            }
+//        });
+//        } else {
+//            treatment4.setText("No Treatment Used");
+//        }
 
         noLocations4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final AlertDialog inflammationLocations = new AlertDialog.Builder(getActivity(), R.style.CustomDialogTheme).create();
                 inflammationLocations.setTitle("Inflammations");
+//                TODO: BELOW
                 inflammationLocations.setMessage("Insert list of locations and severity for 4th entry");
                 inflammationLocations.show();
             }
         });
 
-        treatment4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final AlertDialog inflammationLocations = new AlertDialog.Builder(getActivity(), R.style.CustomDialogTheme).create();
-                inflammationLocations.setTitle("Treatment: ....");
-                inflammationLocations.setMessage("List of treated areas of 4th entry");
-                inflammationLocations.show();
-            }
-        });
 
-        notes4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final AlertDialog inflammationLocations = new AlertDialog.Builder(getActivity(), R.style.CustomDialogTheme).create();
-                inflammationLocations.setTitle("Notes");
-                inflammationLocations.setMessage("notes of 4th entry");
-                inflammationLocations.show();
-            }
-        });
         return root;
     }
-
 }
+

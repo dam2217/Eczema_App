@@ -8,6 +8,7 @@ public class HomeViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
+    //prints out recent logs
     public HomeViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("Your Recent Logs");

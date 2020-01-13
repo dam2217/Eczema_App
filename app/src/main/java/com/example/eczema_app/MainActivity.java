@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -50,7 +51,6 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        new ReceiveData().execute();
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -61,6 +61,8 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         personName = hview.findViewById(R.id.personName);
         personEmail = hview.findViewById(R.id.email);
 
+
+        new ReceiveData().execute();
 
 
 
@@ -92,7 +94,6 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
 
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
 
-//        logList = getIntent().getParcelableExtra("logList");
 
 
     }
@@ -125,6 +126,17 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
 
         personName.setText(userName);
         personEmail.setText(emailAddress);
+
+        new ReceiveData().execute();
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                System.out.println("Last location: " + logList.get(logList.size()-1).location);
+                Log.i("length in main", String.valueOf(logList.size()));
+
+                // ADD PLOTTING ETC HERE
+            }
+        }, 5000);   //5 seconds
 
     }
 
@@ -162,12 +174,12 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
                             LogFromDBserial.rlfTreated, LogFromDBserial.rlbTreated, LogFromDBserial.llfTreated,
                             LogFromDBserial.llbTreated, LogFromDBserial.notes);
 
-                    System.out.println("Location from db: " + LogFromDB.location);
+//                    System.out.println("Location from db: " + LogFromDB.location);
 
                     logList.add(LogFromDB);
                 }
 
-                Log.i("length", String.valueOf(logList.size()));
+                Log.i("length in receive data", String.valueOf(logList.size()));
                 System.out.println(logList.get(1).location);
 
                 return data;

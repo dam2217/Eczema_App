@@ -3,7 +3,7 @@ The XMA app was build as a project in the module Programming 3 at Imperial Colle
 The user is asked to select where on the body they had symptoms and select treatment used, if any. A graph is created with severity against time, temperature, humidity, pollen, and pollution. 
 
 ### Notes about running the app on an Emulator
-Thoroughout this process, we have noticied differences in the app between Emulators. To view the best looking form of the app, use a Pixel 2 virtual device or download on an Android device. 
+Thoroughout this process, we have noticed differences in the app between Emulators. To view the best looking form of the app, use a Pixel 2 virtual device or download on an Android device. 
 
 
 ### Instructions for obtaining BreezoMeter API Key

@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
     View hview;
     TextView personName;
     TextView personEmail;
-//    List<LoggedDataEntry> logList = new ArrayList<LoggedDataEntry>();
+
     String data = "";
     ArrayList<LoggedDataEntry> logList = new ArrayList<LoggedDataEntry>();
 
@@ -60,6 +60,8 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         hview = navigationView.getHeaderView(0);
         personName = hview.findViewById(R.id.personName);
         personEmail = hview.findViewById(R.id.email);
+//        TextView title = findViewById(R.id.text_home);
+//        title.setText("Your Recent Logs - Fetching Data");
 
 
         new ReceiveData().execute();
@@ -134,9 +136,72 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
                 System.out.println("Last location: " + logList.get(logList.size()-1).location);
                 Log.i("length in main", String.valueOf(logList.size()));
 
-                // ADD PLOTTING ETC HERE
+                updateHistory();
             }
         }, 5000);   //5 seconds
+
+    }
+
+    public void updateHistory(){
+        TextView title = findViewById(R.id.text_home);
+        title.setText("Your Recent Logs");
+
+        TextView lastDate = findViewById(R.id.date_1);
+        TextView secondLastDate = findViewById(R.id.date_2);
+        TextView thirdLastDate = findViewById(R.id.date_3);
+        String lastDateText = logList.get(logList.size()-1).date + " - Severity Score " + logList.get(logList.size()-1).severityScore;
+        String secondLastDateText = logList.get(logList.size()-2).date + " - Severity Score " + logList.get(logList.size()-2).severityScore;
+        String thirdLastDateText = logList.get(logList.size()-3).date + " - Severity Score " + logList.get(logList.size()-3).severityScore;
+        lastDate.setText(lastDateText);
+        secondLastDate.setText(secondLastDateText);
+        thirdLastDate.setText(thirdLastDateText);
+
+        TextView lastTreatment = findViewById(R.id.treatment_1);
+        TextView secondLastTreatment = findViewById(R.id.treatment_2);
+        TextView thirdLastTreatment = findViewById(R.id.treatment_3);
+        String lastTreatmentText = "Treatment: " + logList.get(logList.size()-1).treatmentUsed + "\n" + "Location: " + logList.get(logList.size()-1).location;
+        String secondLastTreatmentText = "Treatment: " + logList.get(logList.size()-2).treatmentUsed + "\n" + "Location: " + logList.get(logList.size()-2).location;
+        String thirdLastTreatmentText = "Treatment: " + logList.get(logList.size()-3).treatmentUsed + "\n" + "Location: " + logList.get(logList.size()-3).location;
+        lastTreatment.setText(lastTreatmentText);
+        secondLastTreatment.setText(secondLastTreatmentText);
+        thirdLastTreatment.setText(thirdLastTreatmentText);
+
+        final TextView lastNotes = findViewById(R.id.notes_1_none);
+        final TextView secondLastNotes = findViewById(R.id.notes_2_none);
+        final TextView thirdLastNotes = findViewById(R.id.notes_3_none);
+        final String lastNotesText = logList.get(logList.size()-1).notes;
+        final String secondLastNotesText = logList.get(logList.size()-2).notes;
+        final String thirdLastNotesText = logList.get(logList.size()-3).notes;
+
+        final Button lnbutton = findViewById(R.id.notes_1);
+        lnbutton.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            lastNotes.setText(lastNotesText);
+                                            lnbutton.setVisibility(View.GONE);
+                                            lnbutton.invalidate();
+                                        }
+                                    });
+
+        final Button slnbutton = findViewById(R.id.notes_2);
+        slnbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                secondLastNotes.setText(secondLastNotesText);
+                slnbutton.setVisibility(View.GONE);
+                slnbutton.invalidate();
+            }
+        });
+
+        final Button tlnbutton = findViewById(R.id.notes_3);
+        tlnbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                thirdLastNotes.setText(thirdLastNotesText);
+                tlnbutton.setVisibility(View.GONE);
+                tlnbutton.invalidate();
+            }
+        });
 
     }
 

@@ -231,6 +231,7 @@ public class LoggedDataEntry implements Parcelable {
         this.llfTreated = llft;
         this.llbTreated = llbt;
         this.notes = n;
+        System.out.println(severityScore);
     }
 
     public void setDate(String date) {

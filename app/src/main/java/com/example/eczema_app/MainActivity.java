@@ -66,10 +66,15 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
 
         new ReceiveData().execute();
 
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                System.out.println("Last location: " + logList.get(logList.size()-1).location);
+                Log.i("length in main", String.valueOf(logList.size()));
 
-
-
-
+                updateHistory();
+            }
+        }, 5000);   //5 seconds
 
 
 

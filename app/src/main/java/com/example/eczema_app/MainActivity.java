@@ -1,8 +1,11 @@
 package com.example.eczema_app;
 
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -12,7 +15,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 
-
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -23,8 +26,11 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.preference.PreferenceManager;
 
+import com.example.eczema_app.ui.HttpCommunicate;
+import com.example.eczema_app.ui.LogEntrySerial;
 import com.example.eczema_app.ui.home.LoggedDataEntry;
 import com.google.android.material.navigation.NavigationView;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +44,10 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
     View hview;
     TextView personName;
     TextView personEmail;
-    List<LoggedDataEntry> logList = new ArrayList<LoggedDataEntry>();
+//    List<LoggedDataEntry> logList = new ArrayList<LoggedDataEntry>();
+    String data = "";
+    ArrayList<LoggedDataEntry> logList = new ArrayList<LoggedDataEntry>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,13 +120,6 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-//
-//    protected void createLocationRequest() {
-//        LocationRequest locationRequest = LocationRequest.create();
-//        locationRequest.setInterval(10000);
-//        locationRequest.setFastestInterval(5000);
-//        locationRequest.setPriority(LocationRequest.PRIORITY_LOW_POWER);
-//    }
 
     @Override
     protected void onResume(){
@@ -149,6 +151,48 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         final TextView personEmail = findViewById(R.id.email);
         personEmail.setText(sharedPreferences.getString("email", ""));
         personName.setText(sharedPreferences.getString("name", ""));
+    }
+    public class ReceiveData extends AsyncTask<String, String, String> {
+        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+        @Override
+        protected String doInBackground(String... strings) {
+            try {
+                Log.i("data received?", "yes");
+                data = HttpCommunicate.sendGet("https://eczema-app.herokuapp.com/eczemadatabase");
+                System.out.println("data: " + data);
+
+                String[] splits = data.split("split");
+
+                for (int i = 0; i < splits.length; i++) {
+                    String individualReceived = "{" + splits[i] + "}";
+                    Gson gson = new Gson();
+                    LogEntrySerial LogFromDBserial = gson.fromJson(individualReceived, LogEntrySerial.class);
+                    LoggedDataEntry LogFromDB = new LoggedDataEntry(LogFromDBserial.date, LogFromDBserial.time,
+                            LogFromDBserial.hf, LogFromDBserial.hb, LogFromDBserial.tf, LogFromDBserial.tb,
+                            LogFromDBserial.raf, LogFromDBserial.rab, LogFromDBserial.laf, LogFromDBserial.lab,
+                            LogFromDBserial.rlf, LogFromDBserial.rlb, LogFromDBserial.llf, LogFromDBserial.llb,
+                            LogFromDBserial.treatmentYorN, LogFromDBserial.treatmentUsed, LogFromDBserial.temperature,
+                            LogFromDBserial.humidity, LogFromDBserial.pollutionLevel, LogFromDBserial.pollenLevel,
+                            LogFromDBserial.location, LogFromDBserial.hfTreated, LogFromDBserial.hbTreated,
+                            LogFromDBserial.tfTreated, LogFromDBserial.tbTreated, LogFromDBserial.rafTreated,
+                            LogFromDBserial.rabTreated, LogFromDBserial.lafTreated, LogFromDBserial.labTreated,
+                            LogFromDBserial.rlfTreated, LogFromDBserial.rlbTreated, LogFromDBserial.llfTreated,
+                            LogFromDBserial.llbTreated, LogFromDBserial.notes);
+
+                    System.out.println("Location from db: " + LogFromDB.location);
+
+                    logList.add(LogFromDB);
+                }
+
+                Log.i("length", String.valueOf(logList.size()));
+                System.out.println(logList.get(1).location);
+
+                return data;
+            } catch (Exception e) {
+                Log.i("caught?", "unfortunately");
+                return new String("Exception: " + e.getMessage());
+            }
+        }
     }
 
 

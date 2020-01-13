@@ -16,11 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".ui.settings.Profile"
-            android:label="Profile"
-            android:parentActivityName=".ui.settings.SettingsActivity" /> 
-      
+
         <activity android:name=".ui.graphs.graphHumidity" />
         <activity android:name=".ui.graphs.graphTemp" />
         <activity android:name=".ui.graphs.graphPollen" />
@@ -29,10 +25,6 @@
         <activity
             android:name=".ui.home.HomeFragment"
             android:label="Home" />
-        <activity
-            android:name=".ui.settings.Notifications"
-            android:label="Notifications"
-            android:parentActivityName=".ui.settings.SettingsActivity" />
         <activity
             android:name=".ui.log.MoreDetailsSymptomActivity"
             android:label="More Details"

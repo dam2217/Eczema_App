@@ -5,9 +5,9 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.os.Build;
 
-import static com.example.eczema_app.ui.settings.SettingsActivity.CHANNEL_ID;
-
 public class App extends Application {
+
+    public static String CHANNEL_ID = "ReminderNotifications";
 
     @Override
     public void  onCreate(){

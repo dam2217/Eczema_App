@@ -17,10 +17,14 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
 
-        <activity android:name=".ui.graphs.graphHumidity" />
-        <activity android:name=".ui.graphs.graphTemp" />
-        <activity android:name=".ui.graphs.graphPollen" />
-        <activity android:name=".ui.graphs.graphTime" /> 
+        <activity android:name=".ui.graphs.graphHumidity"
+            android:label="Humidity vs Severity"/>
+        <activity android:name=".ui.graphs.graphTemp" 
+            android:label="Temperature vs Severity"/>
+        <activity android:name=".ui.graphs.graphPollen"
+            android:label="Pollen vs Severity"/>
+        <activity android:name=".ui.graphs.graphTime" 
+            android:label="Time vs Severity"/> 
         
         <activity
             android:name=".ui.home.HomeFragment"

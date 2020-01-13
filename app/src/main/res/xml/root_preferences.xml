@@ -24,7 +24,7 @@
             app:useSimpleSummaryProvider="true"
             android:dialogTitle="@string/name_hint"/>
         <EditTextPreference
-            app:key="birth"
+            app:key="email"
             app:title="@string/fragment_email"
             app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>

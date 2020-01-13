@@ -43,7 +43,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
     implementation 'com.google.android.gms:play-services-location:17.0.0'
     //    implementation 'com.github.PhilJay:MPAndroidChart:v2.2.4'
-//    implementation 'com.github.androdocs:Simple-HTTP-Request:v1.0'
+    implementation 'com.github.androdocs:Simple-HTTP-Request:v1.0'
     implementation 'androidx.appcompat:appcompat:1.2.0-alpha01'
     implementation 'com.google.code.gson:gson:2.7'
     testImplementation 'org.hamcrest:hamcrest:2.2'

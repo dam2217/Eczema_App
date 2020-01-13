@@ -30,6 +30,7 @@ public class LogFragment extends Fragment {
 
     private String frontbackstate = "front";
 
+
     public LogEntry currentLog = new LogEntry();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -37,13 +38,21 @@ public class LogFragment extends Fragment {
         loggingViewModel = ViewModelProviders.of(this).get(LoggingViewModel.class);
         View root = inflater.inflate(R.layout.fragment_new_log, container, false);
 
-//        String currentDate = new SimpleDateFormat("dd-MM-yy", Locale.getDefault()).format(new Date());
-//        String currentTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date());
-//        final TextView date = root.findViewById(R.id.CurrentDate);
-//        final TextView time = root.findViewById(R.id.CurrentTime);
-//        date.setText(currentDate);
-//        time.setText(currentTime);
 
+        final ImageButton head = root.findViewById(R.id.head);
+        final ImageButton torso = root.findViewById(R.id.torso);
+        final ImageButton rarm = root.findViewById(R.id.rightarm);
+        final ImageButton larm = root.findViewById(R.id.leftarm);
+        final ImageButton rleg = root.findViewById(R.id.rightleg);
+        final ImageButton lleg = root.findViewById(R.id.leftleg);
+
+        final TextView headseverity = root.findViewById(R.id.headSeverity);
+        final TextView torsoseverity = root.findViewById(R.id.torsoSeverity);
+        final TextView rarmseverity = root.findViewById(R.id.rarmSeverity);
+        final TextView larmseverity = root.findViewById(R.id.larmSeverity);
+        final TextView rlegseverity = root.findViewById(R.id.rlegSeverity);
+        final TextView llegseverity = root.findViewById(R.id.llegSeverity);
+        //switch button for front/back body image
         final Switch frontOrBack = root.findViewById(R.id.FrontOrBack);
         frontOrBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,33 +61,33 @@ public class LogFragment extends Fragment {
                 if (switchcount % 2 == 1) {
                     frontOrBack.setText("Back");
                     frontbackstate = "back";
+                    headseverity.setText(currentLog.getHb());
+                    torsoseverity.setText(currentLog.getTb());
+                    rarmseverity.setText(currentLog.getRab());
+                    larmseverity.setText(currentLog.getLab());
+                    rlegseverity.setText(currentLog.getRlb());
+                    llegseverity.setText(currentLog.getLlb());
+                    head.setImageResource(R.drawable.headback);
 
                 }
                 if (switchcount % 2 == 0) {
                     frontOrBack.setText("Front");
                     frontbackstate = "front";
+                    headseverity.setText(currentLog.getHf());
+                    torsoseverity.setText(currentLog.getTf());
+                    rarmseverity.setText(currentLog.getRaf());
+                    larmseverity.setText(currentLog.getLaf());
+                    rlegseverity.setText(currentLog.getRlf());
+                    llegseverity.setText(currentLog.getLlf());
+                    head.setImageResource(R.drawable.headfront);
                 }
             }
         });
 
-        ImageButton head = root.findViewById(R.id.head);
-        ImageButton torso = root.findViewById(R.id.torso);
-        ImageButton rarm = root.findViewById(R.id.rightarm);
-        ImageButton larm = root.findViewById(R.id.leftarm);
-        ImageButton rleg = root.findViewById(R.id.rightleg);
-        ImageButton lleg = root.findViewById(R.id.leftleg);
-
-        final TextView headseverity = root.findViewById(R.id.headSeverity);
-        final TextView torsoseverity = root.findViewById(R.id.torsoSeverity);
-        final TextView rarmseverity = root.findViewById(R.id.rarmSeverity);
-        final TextView larmseverity = root.findViewById(R.id.larmSeverity);
-        final TextView rlegseverity = root.findViewById(R.id.rlegSeverity);
-        final TextView llegseverity = root.findViewById(R.id.llegSeverity);
-
 //        currentLog = LogEntry(headseverity.getText(), headseverity.getText(), torsoseverity.getText(), torsoseverity.getText(),
 //                rarmseverity.getText(), rarmseverity.getText(), larmseverity.getText(), larmseverity.getText(), rlegseverity.getText(), rlegseverity.getText(),
 //                llegseverity.getText(), llegseverity.getText());
-
+        //interactive head
         head.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,15 +122,15 @@ public class LogFragment extends Fragment {
                 if (headclickcount % 4 == 0) {
                     headseverity.setText("");
                     if (frontbackstate == "front") {
-                        currentLog.setHf(headseverity.getText());
+                        currentLog.setHf("N/A");
                     }
                     if (frontbackstate == "back") {
-                        currentLog.setHb(headseverity.getText());
+                        currentLog.setHb("N/A");
                     }
                 }
             }
         });
-
+        //interactive torso
         torso.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -156,15 +165,15 @@ public class LogFragment extends Fragment {
                 if (torsoclickcount % 4 == 0) {
                     torsoseverity.setText("");
                     if (frontbackstate == "front") {
-                        currentLog.setTf(torsoseverity.getText());
+                        currentLog.setTf("N/A");
                     }
                     if (frontbackstate == "back") {
-                        currentLog.setTb(torsoseverity.getText());
+                        currentLog.setTb("N/A");
                     }
                 }
             }
         });
-
+        //interactive right arm
         rarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -199,15 +208,15 @@ public class LogFragment extends Fragment {
                 if (rarmclickcount % 4 == 0) {
                     rarmseverity.setText("");
                     if (frontbackstate == "front") {
-                        currentLog.setRaf(rarmseverity.getText());
+                        currentLog.setRaf("N/A");
                     }
                     if (frontbackstate == "back") {
-                        currentLog.setRab(rarmseverity.getText());
+                        currentLog.setRab("N/A");
                     }
                 }
             }
         });
-
+        //interactive left arm
         larm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -242,15 +251,15 @@ public class LogFragment extends Fragment {
                 if (larmclickcount % 4 == 0) {
                     larmseverity.setText("");
                     if (frontbackstate == "front") {
-                        currentLog.setLaf(larmseverity.getText());
+                        currentLog.setLaf("N/A");
                     }
                     if (frontbackstate == "back") {
-                        currentLog.setLab(larmseverity.getText());
+                        currentLog.setLab("N/A");
                     }
                 }
             }
         });
-
+        //interactive right leg
         rleg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -285,15 +294,15 @@ public class LogFragment extends Fragment {
                 if (rlegclickcount % 4 == 0) {
                     rlegseverity.setText("");
                     if (frontbackstate == "front") {
-                        currentLog.setRlf(rlegseverity.getText());
+                        currentLog.setRlf("N/A");
                     }
                     if (frontbackstate == "back") {
-                        currentLog.setRlb(rlegseverity.getText());
+                        currentLog.setRlb("N/A");
                     }
                 }
             }
         });
-
+        //interactive left leg
         lleg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -328,10 +337,10 @@ public class LogFragment extends Fragment {
                 if (llegclickcount % 4 == 0) {
                     llegseverity.setText("");
                     if (frontbackstate == "front") {
-                        currentLog.setLlf(llegseverity.getText());
+                        currentLog.setLlf("N/A");
                     }
                     if (frontbackstate == "back") {
-                        currentLog.setLlb(llegseverity.getText());
+                        currentLog.setLlb("N/A");
                     }
                 }
 
@@ -339,7 +348,7 @@ public class LogFragment extends Fragment {
             }
         });
 
-
+        //button for more details
         Button more_details = root.findViewById(R.id.submitButton);
         more_details.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -287,8 +287,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardView2"
-        app:layout_constraintBottom_toTopOf="@id/cardView4">
+        app:layout_constraintTop_toBottomOf="@id/cardView2">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -398,131 +397,8 @@
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView4"
-        android:layout_width="match_parent"
-        android:layout_height="145dp"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardView3"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <View
-                android:id = "@+id/header4"
-                android:layout_height = "match_parent"
-                android:layout_width = "match_parent"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignTop="@id/date_4"
-                android:layout_alignBottom="@id/date_4"
-                android:background="#E7E3E3"
-                />
-
-            <TextView
-                android:id="@+id/date_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="10/01/2020"
-                android:fontFamily="@font/assistant_bold"
-                android:gravity="center_vertical"
-                android:layout_marginStart="10dp"
-                android:paddingTop="6dp"
-                android:paddingBottom="6dp"
-                android:layout_marginLeft="10dp"
-                android:textSize="23sp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true" />
-
-            <TextView
-                android:id="@+id/treatment_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:text="Treatment Used"
-                android:textColor="#000000"
-                android:gravity="center_vertical"
-                android:textAlignment="center"
-                android:textSize="18sp"
-                app:fontFamily="@font/assistant"
-                android:layout_alignTop="@id/notes_4"
-                android:layout_alignBottom="@id/notes_4"
-                android:layout_above="@id/empty_view4"/>
-
-            <Button
-                android:id="@+id/notes_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                android:text="Notes"
-                android:textAlignment="center"
-                android:textSize="18sp"
-                app:fontFamily="@font/assistant"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_above="@id/empty_view4" />
-
-            <TextView
-                android:id="@+id/notes_4_none"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                android:text="No Notes Added"
-                android:textColor="#000000"
-                android:gravity="center_vertical"
-                android:textAlignment="center"
-                android:textSize="18sp"
-                app:fontFamily="@font/assistant"
-                android:layout_alignTop="@id/notes_4"
-                android:layout_alignBottom="@id/notes_4"
-                android:layout_above="@id/empty_view4"/>
-
-            <View
-                android:id = "@+id/empty_view4"
-                android:layout_height = "12dp"
-                android:layout_width = "match_parent"
-                android:visibility="invisible"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
-                />
-
-            <TextView
-                android:id="@+id/no_locations_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                android:textAlignment="center"
-                android:textSize="22sp"
-                app:fontFamily="@font/assistant"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true" />
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
 
 
-    <Button
-        android:id="@+id/testeroni"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="167dp"
-        tools:layout_editor_absoluteY="141dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

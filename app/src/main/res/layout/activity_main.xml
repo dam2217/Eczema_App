@@ -23,12 +23,6 @@
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer" />
 
-    <fragment
-        android:id="@+id/fragment"
-        android:name="com.example.eczema_app.ui.home.HomeFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
 
 </androidx.drawerlayout.widget.DrawerLayout>
 

@@ -25,120 +25,126 @@ import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-
-
+//
+//
+//Code developed from https://developer.android.com/guide/topics/ui/settings
+//
 public class SettingsFragment extends PreferenceFragmentCompat {
 
-    public String lat = "lllll";
-    public String lon;
+
+    public String lat = "";
+    public String lon = "";
+    private Context mContext;
     private FusedLocationProviderClient mFusedLocationClient;
     private int PERMISSION_ID = 44;
+
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.root_preferences, rootKey);
-        System.out.println("asdfghjkl");
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this.getActivity());
         getLastLocation();
         addnotification();
     }
 
-    @SuppressLint("MissingPermission")
-    private void getLastLocation(){
-        if (checkPermissions()) {
-            if (isLocationEnabled()) {
-                mFusedLocationClient.getLastLocation().addOnCompleteListener(
-                        new OnCompleteListener<Location>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Location> task) {
-                                Location location = task.getResult();
-                                if (location == null) {
-                                    requestNewLocationData();
-                                    System.out.println("bbbb");
-                                } else {
-                                    lat = Double.toString(location.getLatitude());
-                                    System.out.println(lat);
-                                    System.out.println("cccccc");
-                                    lon = Double.toString(location.getLongitude());
-                                    System.out.println(lon);
+        //permission prompt
+        @SuppressLint("MissingPermission")
+        private void getLastLocation(){
+                if (checkPermissions()) {
+                    if (isLocationEnabled()) {
+                        mFusedLocationClient.getLastLocation().addOnCompleteListener(
+                            new OnCompleteListener<Location>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Location> task) {
+                                    Location location = task.getResult();
+                                    if (location == null) {
+                                        requestNewLocationData();
+                                    } else {
+                                        lat = Double.toString(location.getLatitude());
+                                        lon = Double.toString(location.getLongitude());
+                                        System.out.println(lat);
+                                        System.out.println(lon);
+                                    }
                                 }
-                            }
-                        });
-            } else {
-                Toast.makeText(this.getContext(), "Turn on location sdfghjnmk,", Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                startActivity(intent);
-            }
-        } else {
-            requestPermissions();
-            System.out.println("meg");
+                            });
+                    } else {
+                        Toast.makeText(this.getContext(), "Turn on location", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                        startActivity(intent);
+                    }
+                } else {
+                    requestPermissions();
+
+                }
         }
-    }
 
-    @SuppressLint("MissingPermission")
-    private void requestNewLocationData(){
-        LocationRequest mLocationRequest = new LocationRequest();
-        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-        mLocationRequest.setInterval(0);
-        mLocationRequest.setFastestInterval(0);
-        mLocationRequest.setNumUpdates(1);
-        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this.getActivity());
-        mFusedLocationClient.requestLocationUpdates(
-                mLocationRequest, mLocationCallback,
-                Looper.myLooper()
-        );
-    }
+        @SuppressLint("MissingPermission")
+        private void requestNewLocationData(){
 
-    private LocationCallback mLocationCallback = new LocationCallback() {
+                LocationRequest mLocationRequest = new LocationRequest();
+                mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+                mLocationRequest.setInterval(0);
+                mLocationRequest.setFastestInterval(0);
+                mLocationRequest.setNumUpdates(1);
+
+                mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this.getActivity());
+                mFusedLocationClient.requestLocationUpdates(
+                        mLocationRequest, mLocationCallback,
+                        Looper.myLooper()
+                );
+
+        }
+        //getting geographical location
+        private LocationCallback mLocationCallback = new LocationCallback() {
+                @Override
+                public void onLocationResult(LocationResult locationResult) {
+                        Location mLastLocation = locationResult.getLastLocation();
+                        lat = Double.toString(mLastLocation.getLatitude());
+                        lon = Double.toString(mLastLocation.getLongitude());
+                }
+        };
+        //boolean of checking permission
+        private boolean checkPermissions() {
+                if (ActivityCompat.checkSelfPermission(this.getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
+                        ActivityCompat.checkSelfPermission(this.getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+                        return true;
+                }
+                return false;
+        }
+        //request permission
+        private void requestPermissions() {
+                ActivityCompat.requestPermissions(
+                        this.getActivity(),
+                        new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION},
+                        PERMISSION_ID
+                );
+        }
+        //checking whether location is enabled
+        private boolean isLocationEnabled() {
+                LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+                return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(
+                        LocationManager.NETWORK_PROVIDER
+                );
+        }
+        //checking result of permission whether user allowed or not allowed location services
         @Override
-        public void onLocationResult(LocationResult locationResult) {
-            Location mLastLocation = locationResult.getLastLocation();
-            lat = Double.toString(mLastLocation.getLatitude());
-            lon = Double.toString(mLastLocation.getLongitude());
+        public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+                if (requestCode == PERMISSION_ID) {
+                        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                                getLastLocation();
+                        }
+                }
         }
-    };
+        //if permission is granted, resume
+        @Override
+        public void onResume(){
+                super.onResume();
+                if (checkPermissions()) {
+                        getLastLocation();
+                }
 
-    private boolean checkPermissions() {
-        if (ActivityCompat.checkSelfPermission(this.getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
-                ActivityCompat.checkSelfPermission(this.getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            return true;
         }
-        return false;
-    }
-
-    private void requestPermissions() {
-        ActivityCompat.requestPermissions(
-                this.getActivity(),
-                new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION},
-                PERMISSION_ID
-        );
-    }
-
-    private boolean isLocationEnabled() {
-        LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(
-                LocationManager.NETWORK_PROVIDER
-        );
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == PERMISSION_ID) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                getLastLocation();
-            }
-        }
-    }
-
-    @Override
-    public void onResume(){
-        super.onResume();
-        if (checkPermissions()) {
-            getLastLocation();
-        }
-    }
-
     private void addnotification(){
         NotificationCompat.Builder builder = new NotificationCompat.Builder(getContext())
                 .setSmallIcon(R.mipmap.ic_launcher_round)
@@ -151,4 +157,7 @@ public class SettingsFragment extends PreferenceFragmentCompat {
         NotificationManager manager = (NotificationManager) getActivity().getSystemService(Context.NOTIFICATION_SERVICE);
         manager.notify(0, builder.build());
     }
+
+
 }
+

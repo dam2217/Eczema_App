@@ -11,6 +11,7 @@ import android.util.Log;
 
 import com.example.eczema_app.ui.HttpCommunicate;
 import com.example.eczema_app.ui.LogEntrySerial;
+import com.example.eczema_app.ui.ReceiveData;
 import com.example.eczema_app.ui.home.LoggedDataEntry;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
@@ -38,6 +39,7 @@ public class graphHumidity extends AppCompatActivity {
         setContentView(R.layout.activity_graph_humidity);
 
         new ReceiveData().execute();
+        System.out.println(logList.get(1).humidity);
 
         lineChart = (LineChart) findViewById(R.id.lineChart);
         LineDataSet lineDataSet = new LineDataSet(getData(), "Severity levels");
@@ -87,7 +89,7 @@ public class graphHumidity extends AppCompatActivity {
 
         //plotting line chart
         LineData data = new LineData(lineDataSet);
-        lineChart.setData(data);
+//        lineChart.setData(data);
         lineChart.animateX(2500);
         lineChart.invalidate();
         lineDataSet.setLineWidth(7);
@@ -101,48 +103,48 @@ public class graphHumidity extends AppCompatActivity {
         return entries;
     }
 
-    public class ReceiveData extends AsyncTask<String, String, String> {
-        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-        @Override
-        protected String doInBackground(String... strings) {
-            try {
-                Log.i("data received?", "yes");
-                data = HttpCommunicate.sendGet("https://eczema-app.herokuapp.com/eczemadatabase");
-                System.out.println("data: " + data);
-
-                String[] splits = data.split("split");
-
-                for (int i = 0; i < splits.length; i++) {
-                    String individualReceived = "{" + splits[i] + "}";
-                    Gson gson = new Gson();
-                    LogEntrySerial LogFromDBserial = gson.fromJson(individualReceived, LogEntrySerial.class);
-                    LoggedDataEntry LogFromDB = new LoggedDataEntry(LogFromDBserial.date, LogFromDBserial.time,
-                            LogFromDBserial.hf, LogFromDBserial.hb, LogFromDBserial.tf, LogFromDBserial.tb,
-                            LogFromDBserial.raf, LogFromDBserial.rab, LogFromDBserial.laf, LogFromDBserial.lab,
-                            LogFromDBserial.rlf, LogFromDBserial.rlb, LogFromDBserial.llf, LogFromDBserial.llb,
-                            LogFromDBserial.treatmentYorN, LogFromDBserial.treatmentUsed, LogFromDBserial.temperature,
-                            LogFromDBserial.humidity, LogFromDBserial.pollutionLevel, LogFromDBserial.pollenLevel,
-                            LogFromDBserial.location, LogFromDBserial.hfTreated, LogFromDBserial.hbTreated,
-                            LogFromDBserial.tfTreated, LogFromDBserial.tbTreated, LogFromDBserial.rafTreated,
-                            LogFromDBserial.rabTreated, LogFromDBserial.lafTreated, LogFromDBserial.labTreated,
-                            LogFromDBserial.rlfTreated, LogFromDBserial.rlbTreated, LogFromDBserial.llfTreated,
-                            LogFromDBserial.llbTreated, LogFromDBserial.notes);
-
-                    System.out.println("Location from db: " + LogFromDB.location);
-
-                    logList.add(LogFromDB);
-                }
-
-                Log.i("length", String.valueOf(logList.size()));
-                System.out.println(logList.get(1).location);
-
-                return data;
-            } catch (Exception e) {
-                Log.i("caught?", "unfortunately");
-                return new String("Exception: " + e.getMessage());
-            }
-        }
-    }
+//    public class ReceiveData extends AsyncTask<String, String, String> {
+//        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+//        @Override
+//        protected String doInBackground(String... strings) {
+//            try {
+//                Log.i("data received?", "yes");
+//                data = HttpCommunicate.sendGet("https://eczema-app.herokuapp.com/eczemadatabase");
+//                System.out.println("data: " + data);
+//
+//                String[] splits = data.split("split");
+//
+//                for (int i = 0; i < splits.length; i++) {
+//                    String individualReceived = "{" + splits[i] + "}";
+//                    Gson gson = new Gson();
+//                    LogEntrySerial LogFromDBserial = gson.fromJson(individualReceived, LogEntrySerial.class);
+//                    LoggedDataEntry LogFromDB = new LoggedDataEntry(LogFromDBserial.date, LogFromDBserial.time,
+//                            LogFromDBserial.hf, LogFromDBserial.hb, LogFromDBserial.tf, LogFromDBserial.tb,
+//                            LogFromDBserial.raf, LogFromDBserial.rab, LogFromDBserial.laf, LogFromDBserial.lab,
+//                            LogFromDBserial.rlf, LogFromDBserial.rlb, LogFromDBserial.llf, LogFromDBserial.llb,
+//                            LogFromDBserial.treatmentYorN, LogFromDBserial.treatmentUsed, LogFromDBserial.temperature,
+//                            LogFromDBserial.humidity, LogFromDBserial.pollutionLevel, LogFromDBserial.pollenLevel,
+//                            LogFromDBserial.location, LogFromDBserial.hfTreated, LogFromDBserial.hbTreated,
+//                            LogFromDBserial.tfTreated, LogFromDBserial.tbTreated, LogFromDBserial.rafTreated,
+//                            LogFromDBserial.rabTreated, LogFromDBserial.lafTreated, LogFromDBserial.labTreated,
+//                            LogFromDBserial.rlfTreated, LogFromDBserial.rlbTreated, LogFromDBserial.llfTreated,
+//                            LogFromDBserial.llbTreated, LogFromDBserial.notes);
+//
+//                    System.out.println("Location from db: " + LogFromDB.location);
+//
+//                    logList.add(LogFromDB);
+//                }
+//
+//                Log.i("length", String.valueOf(logList.size()));
+//                System.out.println(logList.get(1).location);
+//
+//                return data;
+//            } catch (Exception e) {
+//                Log.i("caught?", "unfortunately");
+//                return new String("Exception: " + e.getMessage());
+//            }
+//        }
+//    }
 }
 
     /*

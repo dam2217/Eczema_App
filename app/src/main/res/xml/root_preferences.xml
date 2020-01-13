@@ -43,15 +43,6 @@
             app:summaryOn="@string/attachment_summary_on"
             app:dependency="notifications"/>
 
-        <ListPreference
-            app:defaultValue="reply"
-            app:entries="@array/reply_entries"
-            app:entryValues="@array/reply_values"
-            app:key="reply"
-            app:title="Repeat after"
-            app:useSimpleSummaryProvider="true"
-            app:dependency="alert"/>
-
     </PreferenceCategory>
 
     <PreferenceCategory app:title="@string/button_location" app:icon="@drawable/ic_locations">
@@ -65,19 +56,6 @@
     </PreferenceCategory>
 
 
-<!--    <PreferenceCategory app:title="@string/sync_header">-->
 
-<!--        <SwitchPreferenceCompat-->
-<!--            app:key="sync"-->
-<!--            app:title="@string/sync_title" />-->
-
-<!--        <SwitchPreferenceCompat-->
-<!--            app:dependency="sync"-->
-<!--            app:key="attachment"-->
-<!--            app:summaryOff="@string/attachment_summary_off"-->
-<!--            app:summaryOn="@string/attachment_summary_on"-->
-<!--            app:title="@string/attachment_title" />-->
-
-<!--    </PreferenceCategory>-->
 
 </PreferenceScreen>

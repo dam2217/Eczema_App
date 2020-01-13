@@ -26,6 +26,7 @@ import androidx.preference.PreferenceManager;
 
 import com.example.eczema_app.ui.HttpCommunicate;
 import com.example.eczema_app.ui.LogEntrySerial;
+import com.example.eczema_app.ui.ReceiveData;
 import com.example.eczema_app.ui.home.LoggedDataEntry;
 import com.google.android.material.navigation.NavigationView;
 import com.google.gson.Gson;
@@ -42,8 +43,8 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
     TextView personName;
     TextView personEmail;
 //    List<LoggedDataEntry> logList = new ArrayList<LoggedDataEntry>();
-    String data = "";
-    ArrayList<LoggedDataEntry> logList = new ArrayList<LoggedDataEntry>();
+
+
 
 
     @Override
@@ -135,49 +136,7 @@ public class MainActivity extends AppCompatActivity implements SharedPreferences
         personEmail.setText(sharedPreferences.getString("email", ""));
         personName.setText(sharedPreferences.getString("name", ""));
     }
-    public class ReceiveData extends AsyncTask<String, String, String> {
-        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-        @Override
-        protected String doInBackground(String... strings) {
-            try {
-                Log.i("data received?", "yes");
-                data = HttpCommunicate.sendGet("https://eczema-app.herokuapp.com/eczemadatabase");
-                System.out.println("data: " + data);
 
-                String[] splits = data.split("split");
-
-                for (int i = 0; i < splits.length; i++) {
-                    String individualReceived = "{" + splits[i] + "}";
-                    Gson gson = new Gson();
-                    LogEntrySerial LogFromDBserial = gson.fromJson(individualReceived, LogEntrySerial.class);
-                    LoggedDataEntry LogFromDB = new LoggedDataEntry(LogFromDBserial.date, LogFromDBserial.time,
-                            LogFromDBserial.hf, LogFromDBserial.hb, LogFromDBserial.tf, LogFromDBserial.tb,
-                            LogFromDBserial.raf, LogFromDBserial.rab, LogFromDBserial.laf, LogFromDBserial.lab,
-                            LogFromDBserial.rlf, LogFromDBserial.rlb, LogFromDBserial.llf, LogFromDBserial.llb,
-                            LogFromDBserial.treatmentYorN, LogFromDBserial.treatmentUsed, LogFromDBserial.temperature,
-                            LogFromDBserial.humidity, LogFromDBserial.pollutionLevel, LogFromDBserial.pollenLevel,
-                            LogFromDBserial.location, LogFromDBserial.hfTreated, LogFromDBserial.hbTreated,
-                            LogFromDBserial.tfTreated, LogFromDBserial.tbTreated, LogFromDBserial.rafTreated,
-                            LogFromDBserial.rabTreated, LogFromDBserial.lafTreated, LogFromDBserial.labTreated,
-                            LogFromDBserial.rlfTreated, LogFromDBserial.rlbTreated, LogFromDBserial.llfTreated,
-                            LogFromDBserial.llbTreated, LogFromDBserial.notes);
-
-                    System.out.println("Location from db: " + LogFromDB.location);
-
-                    logList.add(LogFromDB);
-                }
-
-                Log.i("length", String.valueOf(logList.size()));
-                System.out.println(logList.get(1).location);
-
-                return data;
-            } catch (Exception e) {
-                Log.i("caught?", "unfortunately");
-                return new String("Exception: " + e.getMessage());
-            }
-        }
-
-    }
 
 
 

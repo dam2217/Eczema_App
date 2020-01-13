@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -18,17 +19,13 @@
         <activity
             android:name=".ui.settings.Profile"
             android:label="Profile"
-            android:parentActivityName=".ui.settings.SettingsActivity" /> <!-- <activity -->
-        <!-- android:name=".ui.tools.graphStress"/> -->
+            android:parentActivityName=".ui.settings.SettingsActivity" /> 
+      
         <activity android:name=".ui.graphs.graphHumidity" />
         <activity android:name=".ui.graphs.graphTemp" />
         <activity android:name=".ui.graphs.graphPollen" />
-        <activity android:name=".ui.graphs.graphTime" /> <!-- <activity -->
-        <!-- android:name=".ui.tools.testing" /> -->
-        <!-- <activity -->
-        <!-- android:name=".GraphActivity" -->
-        <!-- android:label="@string/title_activity_graph" -->
-        <!-- android:theme="@style/AppTheme.NoActionBar" /> -->
+        <activity android:name=".ui.graphs.graphTime" /> 
+        
         <activity
             android:name=".ui.home.HomeFragment"
             android:label="Home" />
@@ -53,6 +50,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver android:name=".NotificationReceiver"/>
     </application>
 
 </manifest>
